@@ -12,18 +12,35 @@ public class Docente {
     private String nombres;
     private String apellidos;
     private String correo;
-    private String tipoDocente; // Ej: Cátedra, Tiempo completo, etc.
+    private String tipo; // Ej: Cátedra, Tiempo completo, etc.
+    private int cedula; 
+    private String titulo;
+    private String contrasenia;
+    private boolean coordinador; 
 
+    public boolean isCoordinador() {
+        return coordinador;
+    }
+
+    public void setCoordinador(boolean coordinador) {
+        this.coordinador = coordinador;
+    }
     // Constructor vacío
     public Docente() {}
 
     // Constructor con todos los campos (excepto id)
-    public Docente(String nombres, String apellidos, String correo, String tipoDocente) {
+
+    public Docente(String nombres, String apellidos, String correo, String tipo, int cc, String titulo, String contrasenia, boolean coordinador) {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.correo = correo;
-        this.tipoDocente = tipoDocente;
+        this.tipo = tipo;
+        this.cedula = cc;
+        this.titulo = titulo;
+        this.contrasenia = contrasenia;
+        this.coordinador = coordinador;
     }
+    
 
     // Getters y Setters
     public String getId() {
@@ -58,11 +75,37 @@ public class Docente {
         this.correo = correo;
     }
 
-    public String getTipoDocente() {
-        return tipoDocente;
+
+    public int getCedula() {
+        return cedula;
     }
 
-    public void setTipoDocente(String tipoDocente) {
-        this.tipoDocente = tipoDocente;
+    public void setCedula(int cc) {
+        this.cedula = cc;
     }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
 }

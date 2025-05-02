@@ -8,6 +8,7 @@ import co.unicauca.ra.service.DocenteService;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequestMapping("/api/docentes")
@@ -19,7 +20,7 @@ public class DocenteController {
 
     // Registrar docente
     @PostMapping
-    public Docente crearDocente(@RequestBody Docente docente) {
+    public ResponseEntity crearDocente(@RequestBody Docente docente) {
         return docenteService.save(docente);
     }
 
@@ -31,10 +32,19 @@ public class DocenteController {
 
     // Buscar docente por ID
     @GetMapping("/{id}")
-    public Optional<Docente> buscarDocente(@PathVariable String id) {
+    public Optional<Docente> buscarDocenteId(@PathVariable String id) {
         return docenteService.findById(id);
     }
 
+    @GetMapping("buscar-cedula/{cedula}")
+    public Optional<Docente> buscarDocenteCedula(@PathVariable int cedula) {
+        return docenteService.findByCedula(cedula); 
+    }
+    
+    @GetMapping("buscar-correo/{correo}")
+    public Optional<Docente> buscarDocenteCorreo(@PathVariable String correo) {
+        return docenteService.findByCorreo(correo);
+    }
     // Eliminar docente por ID
     @DeleteMapping("/{id}")
     public void eliminarDocente(@PathVariable String id) {
