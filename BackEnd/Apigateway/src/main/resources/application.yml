@@ -1,0 +1,39 @@
+server:
+  port: 8079
+
+spring:
+  application:
+    name: Apigateway
+  cloud:
+    gateway:
+      routes:
+        - id: docentes-evaluadores-service
+          uri: http://localhost:8080
+          predicates:
+            - Path=/api/docentes/**
+          filters:
+            - name: JwtAuthenticationFilter
+        - id: login-service
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/login/**
+        - id: rac-programa-asignatura-service
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/rac/**
+          filters:
+            - name: JwtAuthenticationFilter
+        - id: rubrica-service
+          uri: http://localhost:8083
+          predicates:
+            - Path=/api/rubrica/**
+          filters:
+            - name: JwtAuthenticationFilter  
+        - id: curso-asignatura-service
+          uri: http://localhost:8084
+          predicates:
+            - Path=/api/ac/asignatura/**
+            - Path=/api/ac/curso/**
+          filters:
+            - name: JwtAuthenticationFilter
+  
