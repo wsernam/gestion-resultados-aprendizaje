@@ -54,11 +54,17 @@ public class DocenteService {
         docenteRepository.deleteById(id);
     }
     
-    public Optional<Docente> findByCorreo(String correo) {
-        return docenteRepository.findByCorreo(correo);
+    public ResponseEntity findByCorreo(String correo) {
+        Optional<Docente>  docente = docenteRepository.findByCorreo(correo);
+        if(!docente.isPresent())
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontro a un docente con el correo " + correo); 
+        return ResponseEntity.status(HttpStatus.FOUND).body(docente);
     }
     
-    public Optional<Docente> findByCedula(int cedula) {
-        return docenteRepository.findByCedula(cedula);
+    public ResponseEntity findByCedula(int cedula) {
+        Optional<Docente>  docente = docenteRepository.findByCedula(cedula);
+        if(!docente.isPresent())
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontro a un docente con la cedula " + cedula); 
+        return ResponseEntity.status(HttpStatus.FOUND).body(docente);
     }
 }

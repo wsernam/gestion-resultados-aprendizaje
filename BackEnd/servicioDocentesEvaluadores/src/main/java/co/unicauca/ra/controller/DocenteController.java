@@ -37,12 +37,12 @@ public class DocenteController {
     }
 
     @GetMapping("buscar-cedula/{cedula}")
-    public Optional<Docente> buscarDocenteCedula(@PathVariable int cedula) {
+    public ResponseEntity buscarDocenteCedula(@PathVariable int cedula) {
         return docenteService.findByCedula(cedula); 
     }
     
     @GetMapping("buscar-correo/{correo}")
-    public Optional<Docente> buscarDocenteCorreo(@PathVariable String correo) {
+    public ResponseEntity buscarDocenteCorreo(@PathVariable String correo) {
         return docenteService.findByCorreo(correo);
     }
     // Eliminar docente por ID
