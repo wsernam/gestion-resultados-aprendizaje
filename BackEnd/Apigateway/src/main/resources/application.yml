@@ -14,23 +14,23 @@ spring:
           filters:
             - name: JwtAuthenticationFilter
         - id: login-service
-          uri: http://localhost:8081
+          uri: http://localhost:8082
           predicates:
             - Path=/api/login/**
         - id: rac-programa-asignatura-service
-          uri: http://localhost:8082
+          uri: http://localhost:8083
           predicates:
             - Path=/api/rac/**
           filters:
             - name: JwtAuthenticationFilter
         - id: rubrica-service
-          uri: http://localhost:8083
+          uri: http://localhost:8084
           predicates:
             - Path=/api/rubrica/**
           filters:
             - name: JwtAuthenticationFilter  
         - id: curso-asignatura-service
-          uri: http://localhost:8084
+          uri: http://localhost:8085
           predicates:
             - Path=/api/ac/asignatura/**
             - Path=/api/ac/curso/**
