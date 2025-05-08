@@ -1,0 +1,32 @@
+<div class="card text-white ng secondary mb-3" style="max-widht: 18rem;">
+    <div class="card-header">Docentes</div>
+    <div class="card-body">
+        <h5 class="card-title">Listado de Docentes</h5>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Titulo</th>
+                    <th>Correo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let docente of docentes">
+                    <td>{{docente.idDoc}}</td>
+                    <td>{{docente.tipoDoc}}</td>
+                    <td>{{docente.nombreDoc}}</td>
+                    <td>{{docente.apellidoDoc}}</td>
+                    <td>{{docente.titulo}}</td>
+                    <td>{{docente.correoDoc}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="my-2 text-left">
+            <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/docentes/registrarDocentes']">Registrar Docentes</button>
+        </div>
+
+    </div>
+</div>
