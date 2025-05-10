@@ -1,7 +1,7 @@
 <div class="card text-white ng secondary mb-3" style="max-widht: 18rem;">
-    <div class="card-header">Competencias</div>
+    <div class="card-header">Resultados de Aprendizaje de Programa</div>
     <div class="card-body">
-        <h5 class="card-title">Listado de Competencias</h5>
+        <h5 class="card-title">Listado de Resultados</h5>
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -13,16 +13,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let compentencia of cp">
-                    <td>{{compentencia.descripcion}}</td>
-                    <td>{{compentencia.programa}}</td>
-                    <td>{{compentencia.estado}}</td>
+                <tr *ngFor="let resultado of resultadop">
+                    <td>{{resultado.descripcion}}</td>
+                    <td>{{resultado.programa}}</td>
+                    <td>{{resultado.estado}}</td>
                 </tr>
             </tbody>
         </table>
 
         <div class="my-2 text-left">
-            <button class="btn btn-rounded btn-primary" type="button">Crear Compentencia</button>
+            <button class="btn btn-rounded btn-primary" type="button">Crear Resultado</button>
         </div>
 
     </div>

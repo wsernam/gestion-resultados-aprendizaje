@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CompetenciaP } from '../../competencia-p';
+import { ResultadoP } from '../../resultado-p';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-compentecias-p',
   standalone: true,
   imports: [ CommonModule, RouterLink ],
-  templateUrl: './compentecias-p.component.html',
-  styleUrl: './compentecias-p.component.css'
+  templateUrl: './resultados-p.component.html',
+  styleUrl: './resultados-p.component.css'
 })
 
 export class CompenteciasPComponent {
-  cp: CompetenciaP[] = []
+  resultadop: ResultadoP[] = []
 
   ngOnInit():void {
 
