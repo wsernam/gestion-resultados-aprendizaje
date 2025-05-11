@@ -9,8 +9,8 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  public title: string = 'Universidad del Cauca';
+  public title: string = 'Sistema de gestión de evaluación de resultados de aprendizaje (RA)';
   public facultad: string = 'Facultad de Ingeniería Electrónica y Telecomunicaciones';
   public programa: string = 'Ingeniería de Sistemas';
-  public descripcion: string = 'Sistema de gestión de evaluación de resultados de aprendizaje (RA).';
+  public descripcion: string = 'Aquí...';
 }

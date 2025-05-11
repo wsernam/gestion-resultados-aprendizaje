@@ -6,6 +6,17 @@ header {
     color: white;
 }
 
+.logo-container {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.logo-container img {
+    width: 20%;
+    height: auto;
+}
+
 .sistema-info {
     text-align: right;
 }
