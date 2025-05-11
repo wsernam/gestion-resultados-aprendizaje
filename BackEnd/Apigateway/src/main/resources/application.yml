@@ -29,11 +29,10 @@ spring:
             - Path=/api/rubrica/**
           filters:
             - name: JwtAuthenticationFilter  
-        - id: curso-asignatura-service
+        - id: curso-service
           uri: http://localhost:8085
           predicates:
-            - Path=/api/ac/asignatura/**
-            - Path=/api/ac/curso/**
+            - Path=/api/cursos/**
           filters:
             - name: JwtAuthenticationFilter
   

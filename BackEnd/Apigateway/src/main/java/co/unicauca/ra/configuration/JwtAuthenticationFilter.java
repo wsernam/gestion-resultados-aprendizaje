@@ -47,7 +47,7 @@ public class JwtAuthenticationFilter extends AbstractGatewayFilterFactory<JwtAut
             }
             //header contains token or not
             if (!exchange.getRequest().getHeaders().containsKey(HttpHeaders.AUTHORIZATION)) {
-                unauthorized(exchange, "Acceso denegado: se requiere token de autorizacion");
+               return unauthorized(exchange, "Acceso denegado: se requiere token de autorizacion");
             }
 
             String authHeader = exchange.getRequest().getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
@@ -63,6 +63,10 @@ public class JwtAuthenticationFilter extends AbstractGatewayFilterFactory<JwtAut
 
                 if (path.startsWith("/api/docentes/**") && !roles.contains("COORDINADOR")) {
                     return unauthorized(exchange, "Acceso denegado: requiere rol COORDINADOR");
+                }
+                
+                if (path.startsWith("/api/cursos/**") && !roles.contains("DOCENTE")) {
+                    return unauthorized(exchange, "Acceso denegado: requiere rol DOCENTE");
                 }
             } catch (Exception e) {
                 System.out.println("invalid access...!");
