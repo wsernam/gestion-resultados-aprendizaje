@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ResultadoP } from '../../resultado-p';
 import { RouterLink } from '@angular/router';
+import { ResultadoP } from '../../../Modelos/resultado-p';
 
 @Component({
   selector: 'app-resultados-p',
@@ -13,6 +13,7 @@ import { RouterLink } from '@angular/router';
 
 export class ResultadosPComponent {
   resultadop: ResultadoP[] = []
+  public title: String = 'Crear Resultado de Aprendizaje'
 
   ngOnInit():void {
 
