@@ -9,16 +9,16 @@ import co.unicauca.servicioracompetencias.model.CompetenciaPrograma;
 import co.unicauca.servicioracompetencias.service.CompetenciaProgramaService;
 
 @RestController
-@RequestMapping("/api/competencias")
-@CrossOrigin(origins = "*") // Permitir conexión desde Angular u otro frontend
+@RequestMapping("/api/competenciasPrograma")
+@CrossOrigin(origins = "*")
 public class CompetenciaProgramaController {
 
     @Autowired
     private CompetenciaProgramaService service;
 
-    // Crear una nueva competencia
-    @PostMapping
-    public ResponseEntity<?> crear(@RequestBody CompetenciaPrograma competencia) {
+    // Crear nueva competencia
+    @PostMapping("/guardar")
+    public ResponseEntity<?> guardar(@RequestBody CompetenciaPrograma competencia) {
         if (competencia.getDescripcion() == null || competencia.getDescripcion().trim().isEmpty()) {
             return ResponseEntity.badRequest().body("La descripción no puede estar vacía");
         }
@@ -29,20 +29,23 @@ public class CompetenciaProgramaController {
     }
 
     // Listar todas las competencias
-    @GetMapping
+    @GetMapping("/listar")
     public List<CompetenciaPrograma> listar() {
-        return service.findAll();
+        return service.listarTodos();
     }
 
     // Buscar competencia por ID
-    @GetMapping("/{id}")
-    public Optional<CompetenciaPrograma> buscarPorId(@PathVariable String id) {
-        return service.findById(id);
+    @GetMapping("/buscar/{id}")
+    public ResponseEntity<CompetenciaPrograma> buscarPorId(@PathVariable String id) {
+        Optional<CompetenciaPrograma> competencia = service.buscarPorId(id);
+        return competencia.map(ResponseEntity::ok)
+                          .orElse(ResponseEntity.notFound().build());
     }
 
     // Eliminar competencia por ID
-    @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable String id) {
-        service.deleteById(id);
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<Void> eliminar(@PathVariable String id) {
+        service.eliminar(id);
+        return ResponseEntity.noContent().build();
     }
 }

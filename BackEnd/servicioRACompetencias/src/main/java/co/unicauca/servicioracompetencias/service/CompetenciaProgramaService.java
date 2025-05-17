@@ -19,17 +19,17 @@ public class CompetenciaProgramaService {
     }
 
     // Listar todas las competencias
-    public List<CompetenciaPrograma> findAll() {
+    public List<CompetenciaPrograma> listarTodos() {
         return repo.findAll();
     }
 
     // Buscar competencia por ID
-    public Optional<CompetenciaPrograma> findById(String id) {
+    public Optional<CompetenciaPrograma> buscarPorId(String id) {
         return repo.findById(id);
     }
 
     // Eliminar competencia por ID
-    public void deleteById(String id) {
+    public void eliminar(String id) {
         repo.deleteById(id);
     }
 }
