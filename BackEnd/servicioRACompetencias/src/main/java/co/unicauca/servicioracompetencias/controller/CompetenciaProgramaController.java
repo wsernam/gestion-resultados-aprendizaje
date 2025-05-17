@@ -19,6 +19,7 @@ public class CompetenciaProgramaController {
     // Crear nueva competencia
     @PostMapping("/guardar")
     public ResponseEntity<?> guardar(@RequestBody CompetenciaPrograma competencia) {
+        System.out.println("Peticion de guardar competencia: " + competencia);
         if (competencia.getDescripcion() == null || competencia.getDescripcion().trim().isEmpty()) {
             return ResponseEntity.badRequest().body("La descripción no puede estar vacía");
         }
@@ -31,6 +32,7 @@ public class CompetenciaProgramaController {
     // Listar todas las competencias
     @GetMapping("/listar")
     public List<CompetenciaPrograma> listar() {
+        System.out.println("Peticion de listar competencias");
         return service.listarTodos();
     }
 

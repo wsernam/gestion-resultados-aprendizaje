@@ -9,7 +9,7 @@ import { Curso } from '../../../Modelos/curso';
 export class CursoService {
 
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-  private urlEndPoint: string = 'http://localhost:5000/api/cursos';
+  private urlEndPoint: string = 'http://localhost:8085/api/cursos';
 
   constructor(private http: HttpClient) { }
 

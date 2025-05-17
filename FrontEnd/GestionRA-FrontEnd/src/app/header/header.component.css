@@ -6,6 +6,12 @@ header {
     color: white;
 }
 
+h1 {
+    font-size: smaller;
+    margin: 0;
+    align-items: center;
+}
+
 .logo-container {
     display: flex;
     align-items: center;

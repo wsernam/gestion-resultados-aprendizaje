@@ -21,18 +21,19 @@ export class FormComponent {
   public docente: Docente = new Docente();
   public titulo: String = 'Registrar docente';
 
-  //constructor(private docenteService: DocenteService, private router: Router) { }
-  constructor(private docenteService: MockDocenteService, private router: Router) { }  
+  constructor(private docenteService: DocenteService, private router: Router) { }
+  //constructor(private docenteService: MockDocenteService, private router: Router) { }  
 
   public registrarDocente() {
-    console.log("Registrando docente");
+    console.log("Registrando docente : ", this.docente);
+    console.log("Docente: ", this.docente);
     this.docenteService.create(this.docente).subscribe(
       response => 
       {
         console.log("Docente creado exitosamente");
         console.log(this.docente);
         this.router.navigate(['docentes/listarDocentes'])
-        Swal.fire('Nuevo docente', `Docente ${response.nombreDoc} creado con éxito`, 'success');
+        Swal.fire('Nuevo docente', `Docente ${response.nombres} creado con éxito`, 'success');
       },
       error => {
         console.error("Error al registrar docente: ", error);

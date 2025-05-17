@@ -15,11 +15,13 @@ public class CompetenciaProgramaService {
 
     // Guardar una nueva competencia
     public CompetenciaPrograma save(CompetenciaPrograma competencia) {
+        System.out.println("Guardando competencia: " + competencia);
         return repo.save(competencia);
     }
 
     // Listar todas las competencias
     public List<CompetenciaPrograma> listarTodos() {
+        System.out.println("Listando todas las competencias");
         return repo.findAll();
     }
 

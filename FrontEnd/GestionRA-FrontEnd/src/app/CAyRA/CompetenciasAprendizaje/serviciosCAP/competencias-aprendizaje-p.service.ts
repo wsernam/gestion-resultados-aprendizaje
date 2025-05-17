@@ -9,15 +9,15 @@ import { Observable } from 'rxjs';
 export class CompetenciasAprendizajePService {
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
-  private urlEndPoint: string = 'http://localhost:8079/api/rac';
+  private urlEndPoint: string = 'http://localhost:8081/api/competenciasPrograma';
   
   constructor(private http: HttpClient) { }
 
   getCompetenciasAprendizajeP(): Observable<CompetenciasAprendizajeP[]> {
-    return this.http.get<CompetenciasAprendizajeP[]>(this.urlEndPoint);
+    return this.http.get<CompetenciasAprendizajeP[]>(`${this.urlEndPoint}/listar`);
   }
 
   create(competenciasAprendizajeP: CompetenciasAprendizajeP): Observable<CompetenciasAprendizajeP> {
-    return this.http.post<CompetenciasAprendizajeP>(this.urlEndPoint, competenciasAprendizajeP, { headers: this.httpHeaders });
+    return this.http.post<CompetenciasAprendizajeP>(`${this.urlEndPoint}/guardar`, competenciasAprendizajeP, { headers: this.httpHeaders });
   }
 }

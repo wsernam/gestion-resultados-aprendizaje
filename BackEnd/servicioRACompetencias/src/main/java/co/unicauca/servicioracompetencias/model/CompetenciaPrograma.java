@@ -12,6 +12,7 @@ import lombok.*;
 public class CompetenciaPrograma {
     @Id
     private String id;
+    private String programa;
     private String descripcion;
     private String nivel; // Básico, Intermedio, Avanzado
 }

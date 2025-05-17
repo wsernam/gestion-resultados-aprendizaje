@@ -21,7 +21,8 @@ public class DocenteController {
     // Registrar docente
     @PostMapping("/guardar")
     public ResponseEntity<?> crearDocente(@RequestBody Docente docente) {
-        if (docente.getNombres() == null || docente.getNombres().trim().isEmpty()) {
+        System.out.println("Petición para guardar docente: " + docente);
+        /*if (docente.getNombres() == null || docente.getNombres().trim().isEmpty()) {
             return ResponseEntity.badRequest().body("El nombre del docente no puede estar vacío");
         }
         if (docente.getCorreo() == null || docente.getCorreo().trim().isEmpty()) {
@@ -29,7 +30,7 @@ public class DocenteController {
         }
         if (docente.getCedula() <= 0) {
             return ResponseEntity.badRequest().body("La cédula del docente no es válida");
-        }
+        }*/
 
         return docenteService.save(docente);
     }
@@ -37,6 +38,7 @@ public class DocenteController {
     // Listar todos los docentes
     @GetMapping("/listar")
     public List<Docente> listarDocentes() {
+        System.out.println("Petición para listar docentes");
         return docenteService.findAll();
     }
 

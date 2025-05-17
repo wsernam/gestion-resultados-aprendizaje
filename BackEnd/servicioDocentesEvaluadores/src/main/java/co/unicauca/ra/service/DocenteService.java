@@ -22,6 +22,8 @@ public class DocenteService {
     private  PasswordEncoder passwordEncoder; 
     // Crear o actualizar un docente
     public ResponseEntity save(Docente docente) {
+        System.out.println("Guardando docente:");
+        System.out.println(docente);
         try{
             if(docenteRepository.findByCorreo(docente.getCorreo()).isPresent()){
                 return ResponseEntity.status(HttpStatus.CONFLICT).body("El correo ya se encuentra registrado"); 
@@ -41,6 +43,7 @@ public class DocenteService {
 
     // Listar todos los docentes
     public List<Docente> findAll() {
+        System.out.println("Listando todos los docentes");
         return docenteRepository.findAll();
     }
 
