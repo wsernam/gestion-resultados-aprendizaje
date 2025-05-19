@@ -8,11 +8,11 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "competencias")
+@Document(collection = "competencias_programa")
 public class CompetenciaPrograma {
     @Id
     private String id;
-    private String programa;
     private String descripcion;
-    private String nivel; // Básico, Intermedio, Avanzado
+    private String programa;
+    private String estado; // activo inactivo
 }

@@ -23,7 +23,7 @@ public class CompetenciaProgramaController {
         if (competencia.getDescripcion() == null || competencia.getDescripcion().trim().isEmpty()) {
             return ResponseEntity.badRequest().body("La descripción no puede estar vacía");
         }
-        if (competencia.getNivel() == null || competencia.getNivel().trim().isEmpty()) {
+        if (competencia.getEstado() == null || competencia.getEstado().trim().isEmpty()) {
             return ResponseEntity.badRequest().body("El nivel es obligatorio");
         }
         return ResponseEntity.ok(service.save(competencia));

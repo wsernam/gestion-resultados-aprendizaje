@@ -12,8 +12,6 @@ import lombok.*;
 public class ResultadoAprendizajeAsignatura {
     @Id
     private String id;
-    private String descripcion;
-    private String asignaturaId;
     private String competenciaAsignaturaId;
-    private String periodo;
+    private String descripcion;
 }
