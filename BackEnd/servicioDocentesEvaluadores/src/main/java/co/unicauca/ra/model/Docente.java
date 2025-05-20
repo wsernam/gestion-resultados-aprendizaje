@@ -2,14 +2,17 @@ package co.unicauca.ra.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.*;
 
-
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Document(collection = "docentes") // Nombre de la colección en MongoDB
 public class Docente {
 
     @Id
     private String id;
-
     private String nombres;
     private String apellidos;
     private String correo;
@@ -26,8 +29,6 @@ public class Docente {
     public void setCoordinador(boolean coordinador) {
         this.coordinador = coordinador;
     }
-    // Constructor vacío
-    public Docente() {}
 
     // Constructor con todos los campos (excepto id)
 
@@ -40,73 +41,6 @@ public class Docente {
         this.titulo = titulo;
         this.contrasenia = contrasenia;
         this.coordinador = coordinador;
-    }
-    
-
-    // Getters y Setters
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getNombres() {
-        return nombres;
-    }
-
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-
-    public int getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(int cc) {
-        this.cedula = cc;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getContrasenia() {
-        return contrasenia;
-    }
-
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
     }
 
     @Override
