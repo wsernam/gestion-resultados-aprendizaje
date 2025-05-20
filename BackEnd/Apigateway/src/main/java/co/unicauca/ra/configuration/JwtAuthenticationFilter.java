@@ -42,7 +42,7 @@ public class JwtAuthenticationFilter extends AbstractGatewayFilterFactory<JwtAut
             String method = request.getMethod().name();
 
             // rutas públicas
-            if (path.startsWith("/api/login") || (path.startsWith("/api/docentes") && method.equalsIgnoreCase("POST"))) {
+            if (path.startsWith("/api/login") || (path.startsWith("/api/docentes/guardar") && method.equalsIgnoreCase("POST"))) {
                 return chain.filter(exchange);
             }
             //header contains token or not
