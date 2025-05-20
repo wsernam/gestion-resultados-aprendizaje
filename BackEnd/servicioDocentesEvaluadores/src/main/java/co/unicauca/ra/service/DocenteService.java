@@ -34,7 +34,7 @@ public class DocenteService {
             
             docente.setContrasenia(passwordEncoder.encode(docente.getContrasenia()));
             Docente guardado = docenteRepository.save(docente);
-            return ResponseEntity.ok(HttpStatus.CREATED); 
+            return ResponseEntity.status(HttpStatus.CREATED).body(docente); 
         }catch(Exception ex){
             return ResponseEntity.internalServerError().body(ex.getMessage()); 
         }

@@ -3,6 +3,7 @@ package co.unicauca.ra.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+
 @Document(collection = "docentes") // Nombre de la colección en MongoDB
 public class Docente {
 
@@ -107,5 +108,12 @@ public class Docente {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    @Override
+    public String toString() {
+        return "Docente{" + "nombres=" + nombres + ", apellidos=" + apellidos + ", correo=" + correo + ", tipo=" + tipo + ", cedula=" + cedula + '}';
+    }
+    
+    
     
 }
