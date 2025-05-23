@@ -1,8 +1,8 @@
-<div class="card bg-dark text-white">
+<div class="card text-black">
     <div class="card-header">Registrar Docente</div>
     <div class="card-body">
         <form>
-            
+
             <div class="form-group row">
                 <label for="identificacion" class="col-form-label col-sm-2">Identificación</label>
                 <div class="col-sm-6">
@@ -25,9 +25,14 @@
             </div>
 
             <div class="form-group row">
-                <label for="tipo" class="col-form-label col-sm-2">Tipo</label>
+                <label for="tipo" class="col-form-label col-sm-2">Tipo: </label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="docente.tipo" name="tipo">
+                    <select class="form-control" id="tipoPersona" required [(ngModel)]="docente.tipo" name="tipo">
+                        <option value="" disabled selected>Seleccione una opción</option>
+                        <option>Cátedra</option>
+                        <option>Tiempo Completo</option>
+                        <option>Planta</option>
+                    </select>
                 </div>
             </div>
 
@@ -48,7 +53,16 @@
             <div class="form-group row">
                 <label for="contrasenia" class="col-form-label col-sm-2">Contraseña</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="docente.contrasenia" name="contrasenia">
+                    <input type="password" class="form-control" id="inputPassword" 
+                        [(ngModel)]="docente.contrasenia" name="contrasena" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="contrasenia" class="col-form-label col-sm-2">Contraseña</label>
+                <div class="col-sm-6">
+                    <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña"
+                        [(ngModel)]="docente.contrasenia" name="contrasena" required>
                 </div>
             </div>
 
@@ -57,7 +71,6 @@
                     <button class="btn btn-primary" role="button" (click)='registrarDocente()'>Registrar</button>
                 </div>
             </div>
-
         </form>
     </div>
 </div>

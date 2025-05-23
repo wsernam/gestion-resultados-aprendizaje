@@ -7,3 +7,51 @@
     font-weight: weight;
     font-style: normal;
 }
+
+.login-button {
+    background-color: #000066;
+    color: #fff;
+    font-size: 14px;
+    padding: 8px 20px; 
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s background-color;
+}
+
+.login-button:hover {
+    background-color: #010196;
+}
+
+.navbar-toggler {
+    border: none;
+    font-size: 1.25rem;
+}
+
+.navbar-toggler:focus, .btn-close:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.nav-link {
+    color: #32326d;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #000;
+}
+
+.nav-link::before{
+    content:"";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 2px;
+    background-color: #000666;
+    visibility: hidden;
+    transition: 0.3s ease-in-out;
+}
+

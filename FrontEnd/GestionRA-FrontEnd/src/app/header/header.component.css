@@ -6,29 +6,23 @@ header {
     color: white;
 }
 
-h1 {
-    font-size: smaller;
-    margin: 0;
-    align-items: center;
-}
-
 .logo-container {
-    display: flex;
     align-items: center;
     padding: 5px;
 }
 
 .logo-container img {
-    width: 20%;
+    width: 40%;
     height: auto;
 }
 
 .sistema-info {
-    text-align: right;
+    text-align: center;
+    align-items: center;
 }
 
 .sistema-info h1 {
-    font-size: 2.5em;
+    font-size: 1.5em;
     font-weight: bold;
 }
 

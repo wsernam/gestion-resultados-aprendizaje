@@ -1,40 +1,28 @@
-<div class="card bg-dark text-white">
+<div class="card text-black">
     <div class="card-header">{{ titulo }}</div>
     <div class="card-body">
         <form>
-            <div class="form-group row">
-                <label for="salon" class="col-form-label col-sm-2">Rol:</label>
-                <div class="col-sm-6">
-                    <!--
-                    <select class="form-control" [(ngModel)]="" name="salon">
-                        <option [ngValue]="null" disabled selected>Seleccione un salón</option>
-                        <option *ngFor="let salon of salones" [ngValue]="">{{salon.nombre}}</option>
-                    </select>
-                    -->
-                </div>
+            <div class="form-group">
+                <label for="tipoPersona">Tipo: </label>
+                <select class="form-control" id="tipoPersona" required [(ngModel)]="login.tipo" name="tipoPersona">
+                    <option value="" disabled selected>Seleccione una opción</option>
+                    <option>DOCENTE</option>
+                    <option>EVALUADOR EXTERNO</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail">Correo electrónico</label>
+                <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"
+                    placeholder="Ingrese su correo electrónico institucional" [(ngModel)]="login.correo" name="correo" required>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword">Contraseña</label>
+                <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña" [(ngModel)]="login.contrasena" name="contrasena" required>
             </div>
             <div class="form-group row">
-                <label for="apellidos" class="col-form-label col-sm-2">Usuario:</label>
-                <!--
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]= "" name="apellidos" required>
+                    <button class="btn btn-primary" role="button" (click)="ingresar()">Ingresar</button>
                 </div>
-                -->
-            </div>
-            <div class="form-group row">
-                <label for="cantidadPersonas" class="col-form-label col-sm-2">Contraseña:</label>
-                <!--
-                <div class="col-sm-6">
-                    <input type="number" class="form-control" [(ngModel)]= "" name="cantidadPersonas" min="1" required>
-                </div>
-                -->
-            </div>
-            <div class="form-group row">
-                <!--
-                <div class="col-sm-6">
-                    <button class="btn btn-primary" role="button" (click)= "crearReserva()">Registrar reserva</button>
-                </div>
-                -->
             </div>
         </form>
     </div>

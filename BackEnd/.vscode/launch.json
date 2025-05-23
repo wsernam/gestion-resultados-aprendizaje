@@ -35,7 +35,8 @@
             "mainClass": "co.unicauca.ra.ServicioLoginApplication",
             "projectName": "co.unicauca.ra-servicioLogin",
             "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=53042 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=co.unicauca.ra-servicioLogin"
         },
         {
             "type": "java",
@@ -76,6 +77,17 @@
             "cwd": "${workspaceFolder}",
             "mainClass": "co.unicauca.ra.BackendApplication",
             "projectName": "servicioDocentesEvaluadores",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=53176 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=servicioDocentesEvaluadores"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ServicioRubricasApplication<servicio-rubricas>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "co.unicauca.ra.servicio_rubricas.ServicioRubricasApplication",
+            "projectName": "servicio-rubricas",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }

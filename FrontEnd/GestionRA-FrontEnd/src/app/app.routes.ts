@@ -4,6 +4,7 @@ import { FormComponent } from './DocentesyEvaluadores/registrar-docente/form.com
 import { CompetenciasAprendizajePComponent } from './CAyRA/CompetenciasAprendizaje/listarCompetenciasAprendizajeP/competencias-aprendizaje-p.component';
 import { FormCAPComponent } from './CAyRA/CompetenciasAprendizaje/crearCompetenciasAprendizajeP/form-cap.component';
 import { CrearCursosComponent } from './AsignaturasyCursos/Cursos/crear-cursos/crear-cursos.component';
+import { LoginComponent } from './Login/login.component';
 
 export const routes: Routes = [
     //{path: '', redirectTo: '/docentes/listarDocentes', pathMatch: 'full'},
@@ -13,4 +14,5 @@ export const routes: Routes = [
     {path: 'CompetenciasAprendizaje/listarCompetenciasAprendizajeP', component: CompetenciasAprendizajePComponent},
     {path: 'CompetenciasAprendizaje/crearCompetenciasAprendizajeP', component: FormCAPComponent},
     {path: 'cursos/crearCursos', component: CrearCursosComponent},
+    {path: 'Login', component: LoginComponent},
 ];
