@@ -23,7 +23,7 @@ export class DocenteService {
 
   create(docente: Docente): Observable<Docente> {
     console.log("Creando docente desde servicio");
-    //return this.http.post<Docente>(`${this.urlEndPoint}/guardar`, docente, {headers: this.httpHeaders});
-    return this.http.post<Docente>(this.urlEndPoint, docente, {headers: this.httpHeaders});
+    return this.http.post<Docente>(`${this.urlEndPoint}/guardar`, docente, {headers: this.httpHeaders});
+    //return this.http.post<Docente>(this.urlEndPoint, docente, {headers: this.httpHeaders});
   }
 }

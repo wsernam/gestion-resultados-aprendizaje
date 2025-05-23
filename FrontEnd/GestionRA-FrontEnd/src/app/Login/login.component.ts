@@ -24,7 +24,7 @@ export class LoginComponent {
       (response) => {
         console.log('Login successful:', response);
         // Aquí puedes redirigir al usuario a otra página después de un inicio de sesión exitoso
-        this.router.navigate(['/']);
+        this.router.navigate(['docentes/listarDocentes']);
       },
       (error) => {
         console.error('Login failed:', error);

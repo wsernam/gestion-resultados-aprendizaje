@@ -13,8 +13,8 @@ export class LoginService {
 
   constructor(private http:HttpClient) { }
 
-  login(login: Login): Observable<any> {
+  login(login: Login): Observable<String> {
     console.log("Iniciando sesión desde el servicio");
-    return this.http.post(this.url, login, { headers: this.httpHeaders });
+    return this.http.post(this.url, login, { headers: this.httpHeaders, responseType: 'text'});
   }
 }

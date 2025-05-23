@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api/login")
-@CrossOrigin(origins = "*") // Para permitir peticiones desde Angular
 public class LoginController {
 
     @Autowired
