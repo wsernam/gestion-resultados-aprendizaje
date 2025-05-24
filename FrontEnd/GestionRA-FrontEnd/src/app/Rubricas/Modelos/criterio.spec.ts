@@ -1,4 +1,4 @@
-import { Criterio } from '../Rubricas/Modelos/criterio';
+import { Criterio } from './criterio';
 
 describe('Criterio', () => {
   it('should create an instance', () => {

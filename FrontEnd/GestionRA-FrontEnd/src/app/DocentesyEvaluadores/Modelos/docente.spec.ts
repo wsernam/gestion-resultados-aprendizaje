@@ -1,4 +1,4 @@
-import { Docente } from '../DocentesyEvaluadores/Modelos/docente';
+import { Docente } from './docente';
 
 describe('Docente', () => {
   it('should create an instance', () => {

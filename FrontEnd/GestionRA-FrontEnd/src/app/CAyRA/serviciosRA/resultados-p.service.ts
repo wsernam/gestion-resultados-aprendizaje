@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ResultadoP } from '../resultado-p';
 import { of } from 'rxjs';
+import { ResultadoP } from '../Modelos/resultado-p';
 
 
 @Injectable({

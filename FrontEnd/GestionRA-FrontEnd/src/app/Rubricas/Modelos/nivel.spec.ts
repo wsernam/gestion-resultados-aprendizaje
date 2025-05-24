@@ -1,4 +1,4 @@
-import { Nivel } from '../Rubricas/Modelos/nivel';
+import { Nivel } from './nivel';
 
 describe('Nivel', () => {
   it('should create an instance', () => {

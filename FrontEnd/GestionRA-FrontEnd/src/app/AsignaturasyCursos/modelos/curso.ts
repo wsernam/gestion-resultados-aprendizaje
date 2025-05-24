@@ -1,4 +1,4 @@
-import { Docente } from "./docente";
+import { Docente } from "../../DocentesyEvaluadores/Modelos/docente";
 import { Asignatura } from "./asignatura";
 import { Periodo } from "./periodo";
 

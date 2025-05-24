@@ -1,4 +1,4 @@
-import { Criterio } from "../Rubricas/Modelos/criterio";
+import { Criterio } from "./criterio";
 
 export class Rubrica {
 
