@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CompetenciasAprendizajeP } from '../listarCompetenciasAprendizajeP/competencias-aprendizaje-p';
+import { CompetenciasAprendizajeP } from '../../Modelos/competencias-aprendizaje-p';
 import { CommonModule } from '@angular/common';
 import { CompetenciasAprendizajePService } from '../serviciosCAP/competencias-aprendizaje-p.service';
 import { Router, RouterLink } from '@angular/router';

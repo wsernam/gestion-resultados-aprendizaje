@@ -5,8 +5,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ResultadoPService } from '../serviciosRA/resultados-p.service';
-import { ResultadoP } from '../../Modelos/resultado-p';
-import { CompetenciasAprendizajeP } from '../CompetenciasAprendizaje/listarCompetenciasAprendizajeP/competencias-aprendizaje-p';
+import { ResultadoP } from '../Modelos/resultado-p';
+import { CompetenciasAprendizajeP } from '../Modelos/competencias-aprendizaje-p';
 import { CompetenciasAprendizajePService } from '../CompetenciasAprendizaje/serviciosCAP/competencias-aprendizaje-p.service';
 
 @Component({

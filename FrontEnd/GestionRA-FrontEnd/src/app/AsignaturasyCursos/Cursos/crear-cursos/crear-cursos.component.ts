@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Curso } from '../../../Modelos/curso';
 import { CommonModule } from '@angular/common';
 import { FormComponent } from '../../../DocentesyEvaluadores/registrar-docente/form.component';
 import { FormsModule, NgForm } from '@angular/forms';
@@ -8,12 +7,13 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CursoService } from '../services/curso.service';
 import { Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
-import { Asignatura } from '../../../Modelos/asignatura';
-import { Docente } from '../../../Modelos/docente';
-import { Periodo } from '../../../Modelos/periodo';
+import { Docente } from '../../../DocentesyEvaluadores/Modelos/docente';
+import { Periodo } from '../../modelos/periodo';
 import { AsignaturaService } from '../services/asignatura.service';
 import { DocenteService } from '../../../DocentesyEvaluadores/servicios/docente.service';
 import { PeriodoService } from '../services/periodo.service';
+import { Curso } from '../../modelos/curso';
+import { Asignatura } from '../../modelos/asignatura';
 
 @Component({
   selector: 'app-crear-cursos',

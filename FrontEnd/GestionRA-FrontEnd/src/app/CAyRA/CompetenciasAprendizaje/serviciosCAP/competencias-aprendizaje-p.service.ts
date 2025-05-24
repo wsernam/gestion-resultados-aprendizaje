@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { CompetenciasAprendizajeP } from '../listarCompetenciasAprendizajeP/competencias-aprendizaje-p';
+import { CompetenciasAprendizajeP } from '../../Modelos/competencias-aprendizaje-p';
 import { Observable } from 'rxjs';
 
 @Injectable({

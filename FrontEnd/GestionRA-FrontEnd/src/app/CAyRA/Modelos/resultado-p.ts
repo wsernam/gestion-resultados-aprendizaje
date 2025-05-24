@@ -1,4 +1,4 @@
-import { CompetenciasAprendizajeP } from "../CAyRA/CompetenciasAprendizaje/listarCompetenciasAprendizajeP/competencias-aprendizaje-p";
+import { CompetenciasAprendizajeP } from "./competencias-aprendizaje-p";
 
 export class ResultadoP {
     programa!: String;
