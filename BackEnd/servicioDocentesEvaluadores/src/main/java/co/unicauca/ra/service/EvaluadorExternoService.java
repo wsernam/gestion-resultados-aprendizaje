@@ -23,7 +23,7 @@ public class EvaluadorExternoService {
     public ResponseEntity<?> save(EvaluadorExterno evaluador) {
         try {
             // Validar si ya existe por correo
-            Optional<EvaluadorExterno> existente = repository.findByCorreoInstitucional(evaluador.getCorreo());
+            Optional<EvaluadorExterno> existente = repository.findByCorreo(evaluador.getCorreo());
             if (existente.isPresent()) {
                 return ResponseEntity.status(HttpStatus.CONFLICT).body("El correo ya se encuentra registrado");
             }
