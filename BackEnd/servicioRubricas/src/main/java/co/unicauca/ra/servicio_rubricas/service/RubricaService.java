@@ -47,7 +47,8 @@ public class RubricaService {
     }
     
     public List<Rubrica> findByIdCurso (String id_curso){
-        List<Rubrica> rubricas_curso = rubricaRepository.findByIdcurso(id_curso);
+
+        List<Rubrica> rubricas_curso = rubricaRepository.findByIdCurso(id_curso);
         return rubricas_curso;
     }
     
@@ -57,9 +58,9 @@ public class RubricaService {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontro la rubrica con id" + id);
         }
         Rubrica rubrica = rubrica_antigua.get();
-        rubrica.setId(nueva_rubrica.getDescripcion());
-        rubrica.setIdcurso(nueva_rubrica.getIdcurso());
-        rubrica.setId_raAsignatura(nueva_rubrica.getId_raAsignatura());
+
+        rubrica.setIdCurso(nueva_rubrica.getIdCurso());
+        rubrica.setIdRaAsignatura(nueva_rubrica.getIdRaAsignatura());
         rubrica.setCriterios(nueva_rubrica.getCriterios());
         rubricaRepository.save(rubrica);
         return ResponseEntity.status(HttpStatus.OK).body(rubrica);

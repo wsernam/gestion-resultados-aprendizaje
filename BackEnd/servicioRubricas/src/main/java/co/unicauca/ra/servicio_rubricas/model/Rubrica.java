@@ -25,9 +25,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Rubrica {
     @Id
     private String id;
-    private String idcurso; 
+
+    private String idCurso; 
     private String descripcion;
     private float ponderado; 
-    private String id_raAsignatura;
+    private String idRaAsignatura;
     private List<Criterio> criterios;
 }

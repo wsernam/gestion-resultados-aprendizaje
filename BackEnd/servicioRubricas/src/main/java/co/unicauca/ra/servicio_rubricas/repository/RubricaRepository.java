@@ -14,5 +14,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  * @author ashle
  */
 public interface RubricaRepository extends MongoRepository<Rubrica, String>{
-    public List<Rubrica> findByIdcurso(String idcurso); 
+
+    public List<Rubrica> findByIdCurso(String id_curso); 
 }
