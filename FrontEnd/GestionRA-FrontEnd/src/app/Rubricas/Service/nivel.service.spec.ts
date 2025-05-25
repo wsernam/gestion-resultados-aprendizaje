@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { NivelServiceService } from './nivel-service.service';
+import { NivelService } from './nivel-service.service';
 
 describe('NivelServiceService', () => {
-  let service: NivelServiceService;
+  let service: NivelService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(NivelServiceService);
+    service = TestBed.inject(NivelService);
   });
 
   it('should be created', () => {

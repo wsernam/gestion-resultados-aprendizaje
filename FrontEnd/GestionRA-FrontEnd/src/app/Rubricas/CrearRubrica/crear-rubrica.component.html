@@ -1,1 +1,66 @@
-<p>crear-rubrica works!</p>
+<div class="container mt-4">
+    <h2>{{title}}</h2>
+
+    <!-- Rúbrica -->
+    <!-- Descripción rubrica -->
+    <div class="form-group mt-2">
+        <label for="descripcionRubrica">Descripción</label>
+        <textarea clas="form-control" id="descripcionRubrica" rows="2" [(ngModel)]="rubrica.descripcion"></textarea>
+    </div>
+
+    <!-- Ponderado rubrica -->
+    <div class="mb-3">
+        <label class="form-label">Ponderado</label>
+        <input type="number" class="form-control" [(ngModel)]="rubrica.ponderado" step="0.1" min="0" max="1">
+    </div>
+
+    <hr>
+
+    <!-- Criterios -->
+    <div *ngFor="let criterio of rubrica.listaCriterios; let i = index" class="mb-4 border rounded p-3">
+        <h5>Criterio {{ i + 1 }}</h5>
+
+        <!-- Descripción criterio -->
+        <div class="mb-2">
+            <label class="form-label">Descripción</label>
+            <textarea class="form-control" rows="2" [(ngModel)]="criterio.descripcion"></textarea>
+        </div>
+
+        <!-- Niveles -->
+        <div *ngFor="let nivel of criterio.listaNiveles; let j = index" class="ms-3 mb-2">
+            <h6 class="fw-bold">Nivel {{ j + 1 }}</h6>
+
+            <!-- Descripción nivel -->
+            <div class="mb-2">
+                <label class="form-label">Descripción</label>
+                <textarea class="form-control" [(ngModel)]="nivel.descripcion" rows="2"></textarea>
+            </div>
+
+            <!-- Nota nivel -->
+            <div class="mb-3">
+                <label class="form-label">Nota</label>
+                <input type="number" class="form-control" [(ngModel)]="nivel.nota" min="0" max="5">
+            </div>
+
+            <button class="btn btn-sm btn-danger" (click)="eliminarNivel(i, j)">Eliminar nivel</button>
+
+            <hr>
+
+        </div>
+
+        <button class="btn btn-sm btn-secondary mb-3" (click)="agregarNivel(i)">Agregar Nivel</button>
+        <button class="btn btn-sm btn-danger ms-2" (click)="eliminarCriterio(i)">Eliminar Criterio</button>
+
+        <hr>
+
+    </div>
+
+    <button class="btn btn-primary" (click)="agregarCriterio()">Agregar Criterio</button>
+
+    <hr>
+
+</div>
+
+<button class="btn btn-primary" (click)="guardarRubrica()">Guardar Rúbrica</button>
+
+<hr>
