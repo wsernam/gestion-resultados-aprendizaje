@@ -4,6 +4,7 @@
  */
 package co.unicauca.ra.model;
 
+import lombok.AllArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -15,7 +16,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 
-@Document(collection = "evaluadores") // Nombre de la colección en MongoDB
+@Document(collection = "evaluadores") 
+@Getter
+@Setter
+@AllArgsConstructor
 public class EvaluadorExterno {
     @Id
     private String id;
@@ -23,4 +27,5 @@ public class EvaluadorExterno {
     private String nombres;
     private String apellidos;
     private String correo;
+    private String contrasenia;
 }

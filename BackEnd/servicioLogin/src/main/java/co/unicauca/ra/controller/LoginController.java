@@ -10,6 +10,7 @@ import co.unicauca.ra.service.DocenteUserDetailsService;
 import co.unicauca.ra.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -32,17 +33,7 @@ public class LoginController {
 
     @PostMapping
     public ResponseEntity login(@RequestBody Credenciales credenciales) {
-        try {
-            if (credenciales.getTipo().equals("DOCENTE")) {
-                String token =  loginService.loginDocente(credenciales.getNombreUsuario(), credenciales.getContrasenia());
-                return ResponseEntity.status(HttpStatus.OK).body(token); 
-            }
-            if (credenciales.getTipo().equals("EVALUADOR EXTERNO")) {
-               return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("Login evaluador externo no ha sido implementado");
-            }
-        } catch (Exception ex) {
-             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario y/o contraseña incorrectos");
-        }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario y/o contraseña incorrectos");
+           String token = loginService.login(credenciales); 
+           return ResponseEntity.status(HttpStatus.OK).body(token); 
     }
 }

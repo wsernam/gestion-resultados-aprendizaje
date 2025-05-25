@@ -5,9 +5,11 @@
 package co.unicauca.ra.configuration;
 
 import co.unicauca.ra.service.DocenteUserDetailsService;
+import co.unicauca.ra.service.EvaluadorUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.ProviderManager;
@@ -30,29 +32,44 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Autowired
-    private DocenteUserDetailsService userDetailService;
+    private DocenteUserDetailsService docenteDetailService;
 
+    @Autowired
+    private EvaluadorUserDetailsService evaluadorDetailService; 
+    
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-        return userDetailService;
-    }
-
-    @Bean
-    public AuthenticationProvider authenticationProvider() {
+   
+    
+    @Bean(name = "docenteAuthenticationProvider")
+    
+    public AuthenticationProvider docenteAuthenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setUserDetailsService(userDetailService);
+        provider.setUserDetailsService(docenteDetailService);
+        provider.setPasswordEncoder(passwordEncoder());
+        return provider;
+    }
+    
+    @Bean(name = "evaluadorAuthenticationProvider")
+    public AuthenticationProvider evaluadorAuthenticationProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(evaluadorDetailService);
         provider.setPasswordEncoder(passwordEncoder());
         return provider;
     }
 
-    @Bean
-    public AuthenticationManager authenticationManager() {
-        return new ProviderManager(authenticationProvider());
+    @Bean(name = "docenteAuthenticationManager")
+    @Primary
+    public AuthenticationManager docenteAuthenticationManager() {
+        return new ProviderManager(docenteAuthenticationProvider());
+    }
+    
+    @Bean(name = "evaluadorAuthenticationManager")
+    public AuthenticationManager evaluadorAuthenticationManager() {
+        return new ProviderManager(evaluadorAuthenticationProvider());
     }
 
     @Bean
