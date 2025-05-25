@@ -1,4 +1,4 @@
-<div class="card bg-dark text-white">
+<div class="card text-black">
   <div class="card-header">{{ title }}</div>
   <div class="card-body">
     <form #formCurso="ngForm">
@@ -7,7 +7,8 @@
       <div class="form-group row">
         <label for="asignatura" class="col-form-label col-sm-2">Asignatura</label>
         <div class="col-sm-6">
-          <select class="form-control" [(ngModel)]="curso.objAsignatura.id" name="asignatura" id="asignatura" [class.is-invalid]="formCurso.submitted && !curso.objAsignatura.id">
+          <select class="form-control" [(ngModel)]="curso.objAsignatura.id" name="asignatura" id="asignatura"
+            [class.is-invalid]="formCurso.submitted && !curso.objAsignatura.id">
             <option *ngFor="let asignatura of asignaturas" [value]="asignatura.id">{{ asignatura.nombre }}</option>
           </select>
           <div *ngIf="formCurso.submitted && !curso.objAsignatura.id" class="invalid-feedback">
@@ -20,7 +21,8 @@
       <div class="form-group row">
         <label for="docente" class="col-form-label col-sm-2">Docente</label>
         <div class="col-sm-6">
-          <select class="form-control" [(ngModel)]="curso.objDocente.id" name="docente" id="docente" [class.is-invalid]="formCurso.submitted && !curso.objDocente.id">
+          <select class="form-control" [(ngModel)]="curso.objDocente.id" name="docente" id="docente"
+            [class.is-invalid]="formCurso.submitted && !curso.objDocente.id">
             <option *ngFor="let docente of docentes" [value]="docente.id">{{ docente.nombres }}</option>
           </select>
           <div *ngIf="formCurso.submitted && !curso.objDocente.id" class="invalid-feedback">
@@ -33,8 +35,8 @@
       <div class="form-group row">
         <label for="periodoAnio" class="col-form-label col-sm-2">Año</label>
         <div class="col-sm-6">
-          <select class="form-control" [(ngModel)]="curso.objPeriodo.anio" name="periodoAnio" id="periodoAnio" [class.is-invalid]="formCurso.submitted && !curso.objPeriodo.anio">
-            <option *ngFor="let periodo of periodos" [value]="periodo.anio">{{ periodo.anio }}</option>
+          <select class="form-control" id="anio">
+            <option *ngFor="let anio of anios" [value]="anio">{{ anio }}</option>
           </select>
           <div *ngIf="formCurso.submitted && !curso.objPeriodo.anio" class="invalid-feedback">
             Este campo es obligatorio.
@@ -46,8 +48,19 @@
       <div class="form-group row">
         <label for="periodoSemestre" class="col-form-label col-sm-2">Semestre</label>
         <div class="col-sm-6">
-          <select class="form-control" [(ngModel)]="curso.objPeriodo.semestre" name="periodoSemestre" id="periodoSemestre" [class.is-invalid]="formCurso.submitted && !curso.objPeriodo.semestre">
-            <option *ngFor="let periodo of periodos" [value]="periodo.semestre">{{ periodo.semestre }}</option>
+          <select class="form-control" [(ngModel)]="curso.objPeriodo.semestre" name="periodoSemestre"
+            id="periodoSemestre" [class.is-invalid]="formCurso.submitted && !curso.objPeriodo.semestre">
+            <option value="" disabled selected>Seleccione una opción</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
           </select>
           <div *ngIf="formCurso.submitted && !curso.objPeriodo.semestre" class="invalid-feedback">
             Este campo es obligatorio.

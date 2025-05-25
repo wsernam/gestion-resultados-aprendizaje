@@ -15,7 +15,7 @@ export class PeriodoService {
 
   getPeriodos(): Observable<Periodo[]>
   {
-    console.log("Listando peridos desde el servicio...");
+    console.log("Listando periodos desde el servicio...");
     return this.http.get<Periodo[]>(this.urlEndPoint);
   }
 

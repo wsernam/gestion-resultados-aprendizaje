@@ -18,6 +18,7 @@ export class CompetenciasAprendizajePService {
   }
 
   create(competenciasAprendizajeP: CompetenciasAprendizajeP): Observable<CompetenciasAprendizajeP> {
+    competenciasAprendizajeP.estado = 'activo';
     return this.http.post<CompetenciasAprendizajeP>(`${this.urlEndPoint}/guardar`, competenciasAprendizajeP, { headers: this.httpHeaders });
   }
 }

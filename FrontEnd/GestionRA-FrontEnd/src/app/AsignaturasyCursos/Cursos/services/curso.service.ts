@@ -14,15 +14,21 @@ export class CursoService {
 
   constructor(private http: HttpClient) { }
 
-  getCursos(): Observable<Curso[]>
+  getCursosDocente(cedula: number): Observable<Curso[]>
   {
-    console.log("Listando cursos desde el servicio...");
-    return this.http.get<Curso[]>(this.urlEndPoint);
+    console.log("Listando cursos del docente con cédula" + cedula + "desde el servicio...");
+    return this.http.get<Curso[]>(`${this.urlEndPoint}/buscar-cursos/cedula/${cedula}`);
   }
 
   create(curso: Curso): Observable<Curso>
   {
     console.log("Creando curso desde el servicio...");
     return this.http.post<Curso>(this.urlEndPoint, curso, {headers: this.httpHeaders});
+  }
+
+  getAllCursos(): Observable<Curso[]>
+  {
+    console.log("Listando cursos desde el servicio...");
+    return this.http.get<Curso[]>(this.urlEndPoint)
   }
 }

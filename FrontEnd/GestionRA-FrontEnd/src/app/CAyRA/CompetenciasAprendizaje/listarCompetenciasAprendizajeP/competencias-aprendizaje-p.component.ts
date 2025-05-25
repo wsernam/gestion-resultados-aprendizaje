@@ -22,6 +22,9 @@ export class CompetenciasAprendizajePComponent {
       competenciasAprendizajeP => {
         console.log("Listando competencias de aprendizaje");
         this.competenciasAprendizajeP = competenciasAprendizajeP;
+      },
+      error => {
+        console.log("Ha ocurrido un error", error);
       }
     );
   }

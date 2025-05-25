@@ -26,11 +26,21 @@ export class CrearCursosComponent {
 
   public curso: Curso = new Curso();
   public title: String = 'Crear curso';
-  asignaturas: Asignatura[] = []
-  docentes: Docente[] = []
-  periodos: Periodo[] = []
+  asignaturas: Asignatura[] = [];
+  docentes: Docente[] = [];
+  periodos: Periodo[] = [];
+  anios: number[] = [];
+  cedula:number = 0;
 
-  constructor(private cursoService: CursoService, private asignaturaService: AsignaturaService, private docenteService: DocenteService, private periodoService: PeriodoService, private router: Router) { }
+  constructor(private cursoService: CursoService, private asignaturaService: AsignaturaService, private docenteService: DocenteService, private periodoService: PeriodoService, private router: Router) {
+  
+    const anioActual = new Date().getFullYear();
+    const rango = 10; // Cambia este valor para aumentar los años futuros
+    for (let i = 0; i <= rango; i++) {
+      this.anios.push(anioActual + i);
+    }
+
+  }
 
   ngOnInit(): void
   {
@@ -55,18 +65,6 @@ export class CrearCursosComponent {
       },
       (error) => {
         console.error('Error cargando docentes', error);
-      }
-    );
-
-    /**
-     * Cargar peridos
-     */
-    this.periodoService.getPeriodos().subscribe(
-      (data) => {
-        this.periodos = data;
-      },
-      (error) => {
-        console.error('Error cargando periodos', error);
       }
     );
   }

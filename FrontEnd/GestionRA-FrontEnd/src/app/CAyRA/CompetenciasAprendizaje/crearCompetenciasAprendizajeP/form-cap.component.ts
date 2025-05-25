@@ -22,7 +22,7 @@ export class FormCAPComponent {
   constructor(private competenciasAprendizajePService: CompetenciasAprendizajePService,
     private router: Router) { }
 
-  public crearCliente() {
+  public crearCAP() {
     console.log('Creando Competencias de Aprendizaje de Programa');
     this.competenciasAprendizajePService.create(this.competenciasAprendizajeP).subscribe(
       response => {

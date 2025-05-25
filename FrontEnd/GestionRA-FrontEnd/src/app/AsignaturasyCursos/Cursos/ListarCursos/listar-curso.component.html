@@ -1,0 +1,35 @@
+<div class="card text-white ng secondary mb-3" style="max-widht: 18rem;">
+    <div class="card-header">Docentes</div>
+    <div class="card-body">
+        <h5 class="card-title">Listado de Docentes</h5>
+        <div *ngIf="cursos?.length==0" class="alert alert-info">
+            No hay registros en la base de datos
+        </div>
+        <table class="table table-bordered table-striped" *ngIf="cursos.length>0">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Asignatura</th>
+                    <th>Docente</th>
+                    <th>Semestre</th>
+                    <th>Año</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let curso of cursos">
+                    <td>{{curso.id}}</td>
+                    <td>{{curso.objAsignatura.nombre}}</td>
+                    <td>{{curso.objDocente.nombres}}</td>
+                    <td>{{curso.objPeriodo.semestre}}</td>
+                    <td>{{curso.objPeriodo.anio}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="my-2 text-left">
+            <button class="btn btn-rounded btn-primary" type="button"
+                [routerLink]="['/cursos/crearCursos']">Crear Curso</button>
+        </div>
+
+    </div>
+</div>

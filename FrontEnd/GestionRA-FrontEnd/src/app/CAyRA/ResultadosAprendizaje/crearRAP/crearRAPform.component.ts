@@ -4,17 +4,17 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
-import { ResultadoPService } from '../../serviciosRA/resultados-p.service';
 import { ResultadoP } from '../../Modelos/resultado-p';
 import { CompetenciasAprendizajeP } from '../../Modelos/competencias-aprendizaje-p';
 import { CompetenciasAprendizajePService } from '../../CompetenciasAprendizaje/serviciosCAP/competencias-aprendizaje-p.service';
+import { ResultadoPService } from '../service/resultados-p.service';
 
 @Component({
   selector: 'app-form',
   standalone: true,
   imports: [FormsModule, SweetAlert2Module, HttpClientModule, RouterLink],
-  templateUrl: './crearRAform.component.html',
-  styleUrl: './crearRAform.component.css'
+  templateUrl: './crearRAPform.component.html',
+  styleUrl: './crearRAPform.component.css'
 })
 
 export class FormComponent {

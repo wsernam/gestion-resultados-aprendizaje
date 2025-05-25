@@ -9,14 +9,14 @@ import { Asignatura } from '../../modelos/asignatura';
 export class AsignaturaService {
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
-  private urlEndPoint: string = 'http://localhost:5000/api/cursos';
+  private urlEndPoint: string = 'http://localhost:8085/api/asignatura';
 
   constructor(private http: HttpClient) { }
 
   getAsignaturas(): Observable<Asignatura[]>
   {
     console.log("Listando asignaturas desde el servicio...");
-    return this.http.get<Asignatura[]>(this.urlEndPoint);
+    return this.http.get<Asignatura[]>(`${this.urlEndPoint}/listar`);
   }
 
 }

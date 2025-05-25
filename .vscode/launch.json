@@ -1,0 +1,66 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ServicioRubricasApplication<servicio-rubricas>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "co.unicauca.ra.servicio_rubricas.ServicioRubricasApplication",
+            "projectName": "servicio-rubricas",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=49690 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=servicio-rubricas"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-BackendApplication<servicioDocentesEvaluadores>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "co.unicauca.ra.BackendApplication",
+            "projectName": "servicioDocentesEvaluadores",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ServicioLoginApplication<co.unicauca.ra-servicioLogin>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "co.unicauca.ra.ServicioLoginApplication",
+            "projectName": "co.unicauca.ra-servicioLogin",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-AsignaturasCursosApplication<co.unicauca.ra-servicioDocentesEvaluadores>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "co.unicauca.ra.AsignaturasCursosApplication",
+            "projectName": "co.unicauca.ra-servicioDocentesEvaluadores",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ServicioracompetenciasApplication<co.unicauca-servicioracompetencias>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "co.unicauca.servicioracompetencias.ServicioracompetenciasApplication",
+            "projectName": "co.unicauca-servicioracompetencias",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ApigatewayApplication<co.unicauca.ra-Apigateway>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "co.unicauca.ra.ApigatewayApplication",
+            "projectName": "co.unicauca.ra-Apigateway",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
