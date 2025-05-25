@@ -5,5 +5,6 @@ import co.unicauca.servicioracompetencias.model.ResultadoAprendizajeAsignatura;
 import java.util.List;
 
 public interface ResultadoAprendizajeAsignaturaRepository extends MongoRepository<ResultadoAprendizajeAsignatura, String> {
-    List<ResultadoAprendizajeAsignatura> findByAsignaturaId(String asignaturaId);
+    List<ResultadoAprendizajeAsignatura> findByCompetenciaAsignaturaId(String competenciaAsignaturaId);
+
 }

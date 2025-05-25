@@ -47,7 +47,7 @@ public class RubricaService {
     }
     
     public List<Rubrica> findByIdCurso (String id_curso){
-        List<Rubrica> rubricas_curso = rubricaRepository.findById_curso(id_curso);
+        List<Rubrica> rubricas_curso = rubricaRepository.findByIdcurso(id_curso);
         return rubricas_curso;
     }
     
@@ -58,7 +58,7 @@ public class RubricaService {
         }
         Rubrica rubrica = rubrica_antigua.get();
         rubrica.setId(nueva_rubrica.getDescripcion());
-        rubrica.setId_curso(nueva_rubrica.getId_curso());
+        rubrica.setIdcurso(nueva_rubrica.getIdcurso());
         rubrica.setId_raAsignatura(nueva_rubrica.getId_raAsignatura());
         rubrica.setCriterios(nueva_rubrica.getCriterios());
         rubricaRepository.save(rubrica);

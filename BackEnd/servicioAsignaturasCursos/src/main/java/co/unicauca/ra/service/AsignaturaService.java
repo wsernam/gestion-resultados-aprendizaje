@@ -3,11 +3,9 @@ package co.unicauca.ra.service;
 import co.unicauca.ra.model.Asignatura;
 import co.unicauca.ra.model.AsignaturaCurso;
 import co.unicauca.ra.repository.AsignaturaRepository;
-
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,17 +14,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class AsignaturaService {
 
-    // Lista temporal para simular persistencia
-    private List<AsignaturaCurso> asignaturasCursos = new ArrayList<>();
     @Autowired
     private AsignaturaRepository asignaturaRepository;
 
-    public ResponseEntity<?> save(AsignaturaCurso asignaturaCurso) {
-        asignaturasCursos.add(asignaturaCurso);
-        return ResponseEntity.status(HttpStatus.CREATED).body("AsignaturaCurso registrada correctamente.");
+    public ResponseEntity<?> save(Asignatura asignatura) {
+        asignaturaRepository.save(asignatura);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Asignatura registrada correctamente.");
     }
 
-       public List<AsignaturaCurso> findAll() {
+    public List<AsignaturaCurso> findAll() {
         List<Asignatura> asignaturas = asignaturaRepository.findAll();
 
         return asignaturas.stream()
@@ -44,18 +40,26 @@ public class AsignaturaService {
     }
 
     public ResponseEntity<?> deleteByNombre(String nombre) {
-        boolean removed = asignaturasCursos.removeIf(a -> a.getNombre().equalsIgnoreCase(nombre));
-        if (removed) {
-            return ResponseEntity.ok("AsignaturaCurso eliminada correctamente.");
+        Optional<Asignatura> asignatura = asignaturaRepository.findAll().stream()
+                .filter(a -> a.getNombre().equalsIgnoreCase(nombre))
+                .findFirst();
+
+        if (asignatura.isPresent()) {
+            asignaturaRepository.delete(asignatura.get());
+            return ResponseEntity.ok("Asignatura eliminada correctamente.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Asignatura no encontrada.");
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("AsignaturaCurso no encontrada.");
     }
 
     public ResponseEntity<?> findByNombre(String nombre) {
-        return asignaturasCursos.stream()
-            .filter(a -> a.getNombre().equalsIgnoreCase(nombre))
-            .findFirst()
-            .<ResponseEntity<?>>map(ResponseEntity::ok)
-            .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body("No encontrada."));
+        Optional<Asignatura> asignatura = asignaturaRepository.findAll().stream()
+                .filter(a -> a.getNombre().equalsIgnoreCase(nombre))
+                .findFirst();
+
+        return asignatura
+                .<ResponseEntity<?>>map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body("Asignatura no encontrada."));
     }
 }
+

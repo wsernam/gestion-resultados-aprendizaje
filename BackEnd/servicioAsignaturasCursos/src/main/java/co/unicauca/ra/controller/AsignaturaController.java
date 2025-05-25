@@ -1,29 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 package co.unicauca.ra.controller;
-
+import co.unicauca.ra.model.Asignatura;
 import co.unicauca.ra.model.AsignaturaCurso;
+import co.unicauca.ra.service.AsignaturaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/asignaturaCurso")
+@RequestMapping("/api/asignatura")
 public class AsignaturaController {
 
     @Autowired
-    private AsignaturaController asignaturaCursoService;
+    private AsignaturaService asignaturaCursoService;
 
-    @PostMapping
-    public ResponseEntity<?> save(@RequestBody AsignaturaCurso asignaturaCurso) {
-        return asignaturaCursoService.save(asignaturaCurso);
+    @PostMapping("/guardar")
+    public ResponseEntity<?> save(@RequestBody Asignatura asignatura) {
+        return asignaturaCursoService.save(asignatura);
     }
 
-    @GetMapping
+    @GetMapping("/listar")
     public List<AsignaturaCurso> findAll() {
         return asignaturaCursoService.findAll();
     }

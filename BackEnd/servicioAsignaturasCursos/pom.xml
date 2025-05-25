@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>co.unicauca.ra</groupId>
-    <artifactId>servicioDocentesEvaluadores</artifactId>
+    <artifactId>servicioAsignaturaCurso</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>servicioCursosAsignaturas</name>
+    <name>servicioAsignaturaCurso</name>
     <description>Demo project for Spring Boot</description>
     <url/>
     <licenses>

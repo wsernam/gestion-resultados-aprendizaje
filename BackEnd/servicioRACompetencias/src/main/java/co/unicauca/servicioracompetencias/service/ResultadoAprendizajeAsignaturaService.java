@@ -26,7 +26,7 @@ public class ResultadoAprendizajeAsignaturaService {
     }
 
     public List<ResultadoAprendizajeAsignatura> listarPorAsignatura(String asignaturaId) {
-        return repository.findByAsignaturaId(asignaturaId);
+        return repository.findByCompetenciaAsignaturaId(asignaturaId);
     }
 
     public Optional<ResultadoAprendizajeAsignatura> findById(String id) {
