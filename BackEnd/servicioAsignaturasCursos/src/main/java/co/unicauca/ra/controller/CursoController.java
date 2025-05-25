@@ -34,7 +34,7 @@ public class CursoController {
     @Autowired 
     private CursoService cursoService;
     
-    @PostMapping
+    @PostMapping("/guardar")
     public ResponseEntity crearCurso(@RequestBody Curso curso){
         AsignaturaCurso a = curso.getAsignatura();
         a.setNombre(a.getNombre().toUpperCase());
