@@ -68,6 +68,9 @@ public class JwtAuthenticationFilter extends AbstractGatewayFilterFactory<JwtAut
                 if (path.startsWith("/api/cursos/**") && !roles.contains("DOCENTE")) {
                     return unauthorized(exchange, "Acceso denegado: requiere rol DOCENTE");
                 }
+                if (path.startsWith("/api/rubricas/**") && !roles.contains("DOCENTE")) {
+                    return unauthorized(exchange, "Acceso denegado: requiere rol DOCENTE");
+                }
             } catch (Exception e) {
                 System.out.println("invalid access...!");
                 throw new RuntimeException("un authorized access to application");
