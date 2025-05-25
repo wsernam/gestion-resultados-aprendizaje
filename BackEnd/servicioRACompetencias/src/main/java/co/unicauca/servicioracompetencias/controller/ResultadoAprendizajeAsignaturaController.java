@@ -11,7 +11,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/RAAsignatura")
-@CrossOrigin(origins = "*")
 public class ResultadoAprendizajeAsignaturaController {
     @Autowired
     private CompetenciaAsignaturaService competenciaAsignaturaService;

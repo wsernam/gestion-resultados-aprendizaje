@@ -10,7 +10,6 @@ import co.unicauca.servicioracompetencias.service.CompetenciaProgramaService;
 
 @RestController
 @RequestMapping("/api/competenciasPrograma")
-@CrossOrigin(origins = "*")
 public class CompetenciaProgramaController {
 
     @Autowired

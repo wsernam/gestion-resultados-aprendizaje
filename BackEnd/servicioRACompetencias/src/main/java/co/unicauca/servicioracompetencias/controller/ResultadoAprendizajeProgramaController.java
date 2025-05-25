@@ -11,7 +11,6 @@ import co.unicauca.servicioracompetencias.service.ResultadoAprendizajeProgramaSe
 
 @RestController
 @RequestMapping("/api/RAPrograma")
-@CrossOrigin(origins = "*")
 public class ResultadoAprendizajeProgramaController {
 
     @Autowired
