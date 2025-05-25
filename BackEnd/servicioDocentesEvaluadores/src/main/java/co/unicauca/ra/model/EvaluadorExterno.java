@@ -15,6 +15,6 @@ public class EvaluadorExterno {
     private String id;
     private String nombres;
     private String apellidos;
-    private String correoInstitucional;
+    private String correo;
     private String contrasenia;
 }

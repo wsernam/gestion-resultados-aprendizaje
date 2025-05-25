@@ -22,13 +22,7 @@ public class Docente {
     private String contrasenia;
     private boolean coordinador; 
 
-    public boolean isCoordinador() {
-        return coordinador;
-    }
-
-    public void setCoordinador(boolean coordinador) {
-        this.coordinador = coordinador;
-    }
+   
 
     // Constructor con todos los campos (excepto id)
 

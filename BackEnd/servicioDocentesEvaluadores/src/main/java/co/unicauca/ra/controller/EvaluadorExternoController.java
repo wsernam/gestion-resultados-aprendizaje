@@ -16,7 +16,7 @@ public class EvaluadorExternoController {
     private EvaluadorExternoService service;
 
     // Crear un evaluador externo con validaciones manuales
-    @PostMapping("/guardar/{id}")
+    @PostMapping("/guardar")
     public ResponseEntity<?> crear(@RequestBody EvaluadorExterno evaluador) {
         if (evaluador.getNombres() == null || evaluador.getNombres().trim().isEmpty()) {
             return ResponseEntity.badRequest().body("El campo 'nombres' es obligatorio");
@@ -24,7 +24,7 @@ public class EvaluadorExternoController {
         if (evaluador.getApellidos() == null || evaluador.getApellidos().trim().isEmpty()) {
             return ResponseEntity.badRequest().body("El campo 'apellidos' es obligatorio");
         }
-        if (evaluador.getCorreoInstitucional() == null || evaluador.getCorreoInstitucional().trim().isEmpty()) {
+        if (evaluador.getCorreo() == null || evaluador.getCorreo().trim().isEmpty()) {
             return ResponseEntity.badRequest().body("El correo institucional es obligatorio");
         }
         if (evaluador.getContrasenia() == null || evaluador.getContrasenia().trim().isEmpty()) {
