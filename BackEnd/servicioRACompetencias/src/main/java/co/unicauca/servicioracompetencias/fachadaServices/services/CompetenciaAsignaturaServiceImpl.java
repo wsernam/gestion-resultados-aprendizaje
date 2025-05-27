@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import co.unicauca.servicioracompetencias.capaAccesoAdatos.model.CompetenciaAsignatura;
 import co.unicauca.servicioracompetencias.capaAccesoAdatos.repository.CompetenciaAsignaturaRepository;
 import co.unicauca.servicioracompetencias.capaControladores.controladorExcepciones.excepcionesPropias.EntidadNoExisteException;
+import co.unicauca.servicioracompetencias.capaControladores.controladorExcepciones.excepcionesPropias.ReglaNegocioExcepcion;
 import co.unicauca.servicioracompetencias.fachadaServices.DTO.CompetenciaAsignaturaDTOPeticion;
 import co.unicauca.servicioracompetencias.fachadaServices.DTO.CompetenciaAsignaturaDTORespuesta;
 import co.unicauca.servicioracompetencias.fachadaServices.mapper.MapeadorCompetenciaAsignatura;
@@ -21,6 +22,9 @@ public class CompetenciaAsignaturaServiceImpl implements ICompetenciaAsignaturaS
 
     @Override
     public CompetenciaAsignaturaDTORespuesta crear(CompetenciaAsignaturaDTOPeticion dto) {
+        if (!repository.existsByCompetenciaProgramaId(dto.getCompetenciaProgramaId())) {
+            throw new ReglaNegocioExcepcion("No existe una competencia de programa con el ID proporcionado.");
+        }
         CompetenciaAsignatura entity = mapeador.convertirPeticionAEntity(dto);
         return mapeador.convertirEntityARespuesta(repository.save(entity));
     }
@@ -43,11 +47,14 @@ public class CompetenciaAsignaturaServiceImpl implements ICompetenciaAsignaturaS
     public CompetenciaAsignaturaDTORespuesta buscarPorId(String id) {
         return repository.findById(id)
             .map(mapeador::convertirEntityARespuesta)
-            .orElse(null);
+            .orElseThrow(() -> new ReglaNegocioExcepcion("No se encontró  CompetenciaAsignatura con ID: " + id));
     }
 
     @Override
     public void eliminar(String id) {
+        if (!repository.existsById(id)) {
+            throw new EntidadNoExisteException("Error: el evaluador externo a eliminar no existe.");
+        }
         repository.deleteById(id);
     }
 

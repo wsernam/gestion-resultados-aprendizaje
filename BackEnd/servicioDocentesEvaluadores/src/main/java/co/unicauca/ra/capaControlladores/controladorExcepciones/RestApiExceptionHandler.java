@@ -1,20 +1,20 @@
-package co.unicauca.servicioracompetencias.capaControladores.controladorExcepciones;
+package co.unicauca.ra.capaControlladores.controladorExcepciones;
 
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-import co.unicauca.servicioracompetencias.capaControladores.controladorExcepciones.estructuraExcepciones.Error;
+import co.unicauca.ra.capaControlladores.controladorExcepciones.estructuraExcepciones.Error;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import co.unicauca.servicioracompetencias.capaControladores.controladorExcepciones.excepcionesPropias.EntidadYaExisteException;
-import co.unicauca.servicioracompetencias.capaControladores.controladorExcepciones.excepcionesPropias.ReglaNegocioExcepcion;
-import co.unicauca.servicioracompetencias.capaControladores.controladorExcepciones.excepcionesPropias.EntidadNoExisteException;
-import co.unicauca.servicioracompetencias.capaControladores.controladorExcepciones.estructuraExcepciones.CodigoError;
-import co.unicauca.servicioracompetencias.capaControladores.controladorExcepciones.estructuraExcepciones.ErrorUtils;
+import co.unicauca.ra.capaControlladores.controladorExcepciones.estructuraExcepciones.CodigoError;
+import co.unicauca.ra.capaControlladores.controladorExcepciones.estructuraExcepciones.ErrorUtils;
+import co.unicauca.ra.capaControlladores.controladorExcepciones.excepcionesPropias.EntidadNoExisteException;
+import co.unicauca.ra.capaControlladores.controladorExcepciones.excepcionesPropias.EntidadYaExisteException;
+import co.unicauca.ra.capaControlladores.controladorExcepciones.excepcionesPropias.ReglaNegocioExcepcion;
 
 @ControllerAdvice
 public class RestApiExceptionHandler {

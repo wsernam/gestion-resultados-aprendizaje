@@ -1,4 +1,4 @@
-package co.unicauca.ra.model;
+package co.unicauca.ra.capaAcesoAdatos.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

@@ -10,6 +10,7 @@ import co.unicauca.servicioracompetencias.capaAccesoAdatos.model.CompetenciaProg
 import co.unicauca.servicioracompetencias.capaAccesoAdatos.repository.CompetenciaAsignaturaRepository;
 import co.unicauca.servicioracompetencias.capaAccesoAdatos.repository.CompetenciaProgramaRepository;
 import co.unicauca.servicioracompetencias.capaAccesoAdatos.repository.ResultadoAprendizajeProgramaRepository;
+import co.unicauca.servicioracompetencias.capaControladores.controladorExcepciones.excepcionesPropias.EntidadNoExisteException;
 import co.unicauca.servicioracompetencias.capaControladores.controladorExcepciones.excepcionesPropias.ReglaNegocioExcepcion;
 import co.unicauca.servicioracompetencias.fachadaServices.DTO.CompetenciaProgramaDTOPeticion;
 import co.unicauca.servicioracompetencias.fachadaServices.DTO.CompetenciaProgramaDTORespuesta;
@@ -44,17 +45,21 @@ public class CompetenciaProgramaServiceImpl implements ICompetenciaProgramaServi
     public CompetenciaProgramaDTORespuesta buscarPorId(String id) {
         return competenciaProgramaRepository.findById(id)
             .map(mapeador::convertirEntityARespuesta)
-            .orElse(null);
+            .orElseThrow(() -> new ReglaNegocioExcepcion("No se encontró  CompetenciaPrograma con ID: " + id));
     }
 
     @Override
     public void eliminar(String id) {
-         boolean usadaEnRA = resultadoAprendizajeProgramaRepository.existsByCompetenciaProgramaId(id);
+        boolean usadaEnRA = resultadoAprendizajeProgramaRepository.existsByCompetenciaProgramaId(id);
         boolean usadaEnAsignatura = competenciaAsignaturaRepository.existsByCompetenciaProgramaId(id);
 
         if (usadaEnRA || usadaEnAsignatura) {
             throw new ReglaNegocioExcepcion("No se puede eliminar la competencia porque está asociada a un RA o asignatura.");
         }
+        if (!competenciaAsignaturaRepository.existsById(id)) {
+            throw new EntidadNoExisteException("Error: el evaluador externo a eliminar no existe.");
+        }
+        competenciaAsignaturaRepository.deleteById(id);
     }
 
     @Override
