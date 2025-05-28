@@ -23,12 +23,11 @@ export class LoginComponent {
     this.loginService.login(this.login).subscribe(
       (response) => {
         console.log('Login successful:', response);
-        // Aquí puedes redirigir al usuario a otra página después de un inicio de sesión exitoso
-        this.router.navigate(['docentes/listarDocentes']);
+        sessionStorage.setItem('token', response.toString());
+        this.router.navigate(['cursos/listarCursos']);
       },
       (error) => {
         console.error('Login failed:', error);
-        // Aquí puedes manejar el error de inicio de sesión
       }
     );
   }

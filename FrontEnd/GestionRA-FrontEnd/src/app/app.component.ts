@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./header/header.component";
 import { FooterComponent } from "./footer/footer.component";
 import { NavbarComponent } from "./navbar/navbar.component";
+import { LoginService } from './Login/Servicio/login.service';
 
 @Component({
   selector: 'app-root',
@@ -14,4 +15,6 @@ import { NavbarComponent } from "./navbar/navbar.component";
 })
 export class AppComponent {
   title = 'GestionRA-FrontEnd';
+
+  constructor(public loginSerive: LoginService) { }
 }

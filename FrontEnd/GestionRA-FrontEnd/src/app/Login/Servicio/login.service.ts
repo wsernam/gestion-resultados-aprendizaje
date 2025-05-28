@@ -17,4 +17,13 @@ export class LoginService {
     console.log("Iniciando sesión desde el servicio");
     return this.http.post(this.url, login, { headers: this.httpHeaders, responseType: 'text'});
   }
+
+  estaAutenticado(): boolean {
+    if (typeof window !== 'undefined' && !!window.sessionStorage && !!sessionStorage.getItem('token')) {
+      console.log("Usuario autenticado");
+      console.log("Token: " + sessionStorage);
+      return true;
+    }
+    return false;
+  }
 }

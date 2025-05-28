@@ -39,22 +39,14 @@
             <div class="form-group row">
                 <label for="titulo" class="col-form-label col-sm-2">Titulo</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="docente.titulo" name="titulo">
+                    <input type="text" class="form-control" [(ngModel)]="docente.titulo" name="titulo" required>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="corre" class="col-form-label col-sm-2">Correo</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="docente.correo" name="correo">
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="contrasenia" class="col-form-label col-sm-2">Contraseña</label>
-                <div class="col-sm-6">
-                    <input type="password" class="form-control" id="inputPassword" 
-                        [(ngModel)]="docente.contrasenia" name="contrasena" required>
+                    <input type="text" class="form-control" [(ngModel)]="docente.correo" name="correo" required>
                 </div>
             </div>
 
@@ -62,7 +54,20 @@
                 <label for="contrasenia" class="col-form-label col-sm-2">Contraseña</label>
                 <div class="col-sm-6">
                     <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña"
-                        [(ngModel)]="docente.contrasenia" name="contrasena" required>
+                        [(ngModel)]="docente.contrasenia" (ngModelChange)="validarContrasenias()" name="contrasena"
+                        required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="contrasenia" class="col-form-label col-sm-2">Repetir contraseña</label>
+                <div class="col-sm-6">
+                    <input type="password" class="form-control" id="repetirContrasenia" placeholder="Repetir Contraseña"
+                        [(ngModel)]="repetirContrasenia" (ngModelChange)="validarContrasenias()"
+                        name="repetirContrasenia" required>
+                    <div *ngIf="!contraseniasCoinciden && repetirContrasenia" class="text-danger">
+                        Las contraseñas no coinciden.
+                    </div>
                 </div>
             </div>
 

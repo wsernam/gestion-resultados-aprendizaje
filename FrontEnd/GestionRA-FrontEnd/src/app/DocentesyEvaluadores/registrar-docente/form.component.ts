@@ -20,11 +20,22 @@ import { MockDocenteService } from '../servicios/docente.service.mock';
 export class FormComponent {
   public docente: Docente = new Docente();
   public titulo: String = 'Registrar docente';
+  public repetirContrasenia: string = '';
+  public contraseniasCoinciden: boolean = true;
 
   constructor(private docenteService: DocenteService, private router: Router) { }
-  //constructor(private docenteService: MockDocenteService, private router: Router) { }  
+  //constructor(private docenteService: MockDocenteService, private router: Router) { }
+  
+  public validarContrasenias(){
+    this.contraseniasCoinciden = this.docente.contrasenia === this.repetirContrasenia || !this.repetirContrasenia;
+  }
 
   public registrarDocente() {
+    this.contraseniasCoinciden = true;
+    if(this.docente.contrasenia !== this.repetirContrasenia) {
+      this.contraseniasCoinciden = false;
+      return;
+    }
     console.log("Registrando docente : ", this.docente);
     console.log("Docente: ", this.docente);
     this.docenteService.create(this.docente).subscribe(

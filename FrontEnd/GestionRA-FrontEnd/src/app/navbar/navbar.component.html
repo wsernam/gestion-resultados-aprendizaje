@@ -1,28 +1,3 @@
-<!--
-<nav class="navbar navbar-expand-lg navbar-dark custom-navbar w-100">
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav w-100 d-flex">
-                <li class="nav-item">
-                    <a routerLink="" routerLinkActive="active">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/docentes/listarDocentes" routerLinkActive="active">Docentes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/cursos/crearCursos" routerLinkActive="active">Cursos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/CompetenciasAprendizaje/listarCompetenciasAprendizajeP" routerLinkActive="active">Competencias de Aprendizaje</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav> -->
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
     <a class="navbar-brand me-auto" href="#">Logo</a>
@@ -34,19 +9,13 @@
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link mx-lg-2 active" aria-current="page" routerLink="" routerLinkActive="active">Inicio</a>
+            <a class="nav-link mx-lg-2 active" aria-current="page" routerLink="cursos/listarCursos" routerLinkActive="active">Mis Cursos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/docentes/listarDocentes" routerLinkActive="active">Docentes</a>
+            <a class="nav-link" routerLink="/competenciasAprendizaje/listarCompetenciasAprendizajeP" routerLinkActive="active">Competencias y Resultados de Aprendizaje</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link mx-lg-2" href="#">Evaluadores Externos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/cursos/listarCursos" routerLinkActive="active">Cursos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/CompetenciasAprendizaje/listarCompetenciasAprendizajeP" routerLinkActive="active">Competencias de Aprendizaje</a>
+          <li *ngIf="isCoordinador" class="nav-item">
+            <a class="nav-link" routerLink="/docentes/listarDocentes" routerLinkActive="active">Docentes y Evaluadores Externos</a>
           </li>
           <!--
           <li class="nav-item dropdown">
@@ -72,7 +41,8 @@
         -->
       </div>
     </div>
-    <a class="login-button" routerLink="/Login" routerLinkActive="active">Login</a>
+    <!--
+    <a class="login-button" routerLink="/Login" routerLinkActive="active">Login</a>-->
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

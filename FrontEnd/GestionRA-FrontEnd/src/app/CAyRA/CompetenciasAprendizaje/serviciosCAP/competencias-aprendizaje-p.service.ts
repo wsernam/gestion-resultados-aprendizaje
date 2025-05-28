@@ -9,12 +9,13 @@ import { Observable } from 'rxjs';
 export class CompetenciasAprendizajePService {
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
-  private urlEndPoint: string = 'http://localhost:8081/api/competenciasPrograma';
+  private urlEndPoint: string = 'http://localhost:8079/api/competenciasAsignatura';
   
   constructor(private http: HttpClient) { }
 
   getCompetenciasAprendizajeP(): Observable<CompetenciasAprendizajeP[]> {
-    return this.http.get<CompetenciasAprendizajeP[]>(`${this.urlEndPoint}/listar`);
+    //return this.http.get<CompetenciasAprendizajeP[]>(`${this.urlEndPoint}/listar`);
+    return this.http.get<CompetenciasAprendizajeP[]>(`${this.urlEndPoint}`);
   }
 
   create(competenciasAprendizajeP: CompetenciasAprendizajeP): Observable<CompetenciasAprendizajeP> {

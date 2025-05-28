@@ -10,7 +10,7 @@ import { Docente } from '../Modelos/docente';
 export class DocenteService {
 
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-  private urlEndPoint: string = "http://localhost:8080/api/docentes";
+  private urlEndPoint: string = "http://localhost:8079/api/docentes";
 
   constructor (private http: HttpClient) { }
 

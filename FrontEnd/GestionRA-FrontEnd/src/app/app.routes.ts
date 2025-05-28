@@ -10,18 +10,18 @@ import { ListarCursoComponent } from './AsignaturasyCursos/Cursos/ListarCursos/l
 import { CompetenciaAprendizajeA } from './CAyRA/Modelos/competencia-aprendizaje-a';
 import { ListarCompentenciaAComponent } from './CAyRA/CompetenciasAprendizaje/CompetenciasAsignatura/ListarCompetenciaAsignatura/listar-compentencia-a.component';
 import { CrearCompetenciasAComponent } from './CAyRA/CompetenciasAprendizaje/CompetenciasAsignatura/CrearCompenteciaAsignatura/crear-competencias-a/crear-competencias-a.component';
+import { authGuard } from './Guardia/auth.guard';
 
 export const routes: Routes = [
-    //{path: '', redirectTo: '/docentes/listarDocentes', pathMatch: 'full'},
-    {path: 'docentes/listarDocentes', component: ListarDocentesComponent},
+    {path: '', redirectTo: 'Login', pathMatch: 'full'},
+    {path: 'docentes/listarDocentes', component: ListarDocentesComponent, canActivate: [authGuard]},
     {path: 'docentes/registrarDocentes', component: FormComponent},
-    //{path: '', redirectTo: '/CompetenciasAprendizaje/listarCompetenciasAprendizajeP', pathMatch: 'full'},
-    {path: 'competenciasAprendizaje/listarCompetenciasAprendizajeP', component: CompetenciasAprendizajePComponent},
-    {path: 'competenciasAprendizaje/crearCompetenciasAprendizajeP', component: FormCAPComponent},
-    {path: 'compentenciasAprendizaje/listarCompetenciasAprendizajeA', component: ListarCompentenciaAComponent},
-    {path: 'compentenciasAprendizaje/crearCompetenciasAprendizajeA', component: CrearCompetenciasAComponent},
-    {path: 'cursos/listarCursos', component: ListarCursoComponent},
-    {path: 'cursos/crearCursos', component: CrearCursosComponent},
+    {path: 'competenciasAprendizaje/listarCompetenciasAprendizajeP', component: CompetenciasAprendizajePComponent, canActivate: [authGuard]},
+    {path: 'competenciasAprendizaje/crearCompetenciasAprendizajeP', component: FormCAPComponent, canActivate: [authGuard]},
+    {path: 'compentenciasAprendizaje/listarCompetenciasAprendizajeA', component: ListarCompentenciaAComponent, canActivate: [authGuard]},
+    {path: 'compentenciasAprendizaje/crearCompetenciasAprendizajeA', component: CrearCompetenciasAComponent, canActivate: [authGuard]},
+    {path: 'cursos/listarCursos', component: ListarCursoComponent, canActivate: [authGuard]},
+    {path: 'cursos/crearCursos', component: CrearCursosComponent, canActivate: [authGuard]},
     {path: 'Login', component: LoginComponent},
-    {path: 'rubricas/crearRubricas', component: CrearRubricaComponent},
+    {path: 'rubricas/crearRubricas', component: CrearRubricaComponent, canActivate: [authGuard]},
 ];
