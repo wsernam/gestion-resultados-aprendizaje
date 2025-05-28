@@ -11,11 +11,15 @@ import { CompetenciaAprendizajeA } from './CAyRA/Modelos/competencia-aprendizaje
 import { ListarCompentenciaAComponent } from './CAyRA/CompetenciasAprendizaje/CompetenciasAsignatura/ListarCompetenciaAsignatura/listar-compentencia-a.component';
 import { CrearCompetenciasAComponent } from './CAyRA/CompetenciasAprendizaje/CompetenciasAsignatura/CrearCompenteciaAsignatura/crear-competencias-a/crear-competencias-a.component';
 import { authGuard } from './Guardia/auth.guard';
+import { RegistrarEvaluadorComponent } from './DocentesyEvaluadores/Evaluadores/RegistrarEvaluadores/registrar-evaluador.component';
+import { ListarEvaluadoresComponent } from './DocentesyEvaluadores/Evaluadores/ListarEvaluadores/listar-evaluadores.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'Login', pathMatch: 'full'},
     {path: 'docentes/listarDocentes', component: ListarDocentesComponent, canActivate: [authGuard]},
     {path: 'docentes/registrarDocentes', component: FormComponent},
+    {path: 'evaluador/registrarEvaluador', component: RegistrarEvaluadorComponent},
+    {path: 'evaluador/listarEvaluador', component: ListarEvaluadoresComponent},
     {path: 'competenciasAprendizaje/listarCompetenciasAprendizajeP', component: CompetenciasAprendizajePComponent, canActivate: [authGuard]},
     {path: 'competenciasAprendizaje/crearCompetenciasAprendizajeP', component: FormCAPComponent, canActivate: [authGuard]},
     {path: 'compentenciasAprendizaje/listarCompetenciasAprendizajeA', component: ListarCompentenciaAComponent, canActivate: [authGuard]},

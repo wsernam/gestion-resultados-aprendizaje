@@ -1,0 +1,27 @@
+<div class="card ng secondary mb-3">
+    <div class="card-header">Evaluador</div>
+    <div class="card-body">
+        <h5 class="card-title">Listado de evaluadores</h5>
+        <div *ngIf="evaluadores?.length==0" class="alert alert-info">
+            No hay registros en la base de datos
+        </div>
+        <table class="table table-bordered table-striped" *ngIf="evaluadores.length>0">
+            <thead>
+                <tr>
+                    <th>Identificación</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Correo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let evaluador of evaluadores">
+                    <td>{{evaluador.idEvaluador}}</td>
+                    <td>{{evaluador.nombres}}</td>
+                    <td>{{evaluador.apellidos}}</td>
+                    <td>{{evaluador.correo}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
