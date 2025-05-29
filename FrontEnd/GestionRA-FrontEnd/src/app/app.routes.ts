@@ -14,6 +14,7 @@ import { authGuard } from './Guardia/auth.guard';
 import { RegistrarEvaluadorComponent } from './DocentesyEvaluadores/Evaluadores/RegistrarEvaluadores/registrar-evaluador.component';
 import { ListarEvaluadoresComponent } from './DocentesyEvaluadores/Evaluadores/ListarEvaluadores/listar-evaluadores.component';
 import { RegistrarComponent } from './Registrar/registrar.component';
+import { CompetenciasRaComponent } from './components/competencias-ra.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'Login', pathMatch: 'full'},
@@ -30,4 +31,5 @@ export const routes: Routes = [
     {path: 'cursos/crearCursos', component: CrearCursosComponent, canActivate: [authGuard]},
     {path: 'Login', component: LoginComponent},
     {path: 'rubricas/crearRubricas', component: CrearRubricaComponent, canActivate: [authGuard]},
+    {path: 'competencias-ra', component: CompetenciasRaComponent, canActivate: [authGuard]}
 ];
