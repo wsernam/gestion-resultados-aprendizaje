@@ -1,29 +1,40 @@
-<div class="card text-black">
-    <div class="card-header">{{ titulo }}</div>
-    <div class="card-body">
-        <form>
-            <div class="form-group">
-                <label for="tipoPersona">Tipo: </label>
-                <select class="form-control" id="tipoPersona" required [(ngModel)]="login.tipo" name="tipoPersona">
-                    <option value="" disabled selected>Seleccione una opción</option>
-                    <option>DOCENTE</option>
-                    <option>EVALUADOR EXTERNO</option>
-                </select>
+<section class="login py-5">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6 d-none d-md-block text-center">
+                <img src="assets/Imagenes/signin-image.jpg" alt="imagenLogin" class="img-fluid rounded">
+                <a [routerLink]="['/docentes/registrarDocentes']" class="btn btn-link">¿No tienes cuenta? Regístrate
+                    aquí</a>
             </div>
-            <div class="form-group">
-                <label for="inputEmail">Correo electrónico</label>
-                <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"
-                    placeholder="Ingrese su correo electrónico institucional" [(ngModel)]="login.nombreUsuario" name="correo" required>
-            </div>
-            <div class="form-group">
-                <label for="inputPassword">Contraseña</label>
-                <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña" [(ngModel)]="login.contrasenia" name="contrasena" required>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-6">
-                    <button class="btn btn-primary" role="button" (click)="ingresar()">Ingresar</button>
+            <div class="col-md-6">
+                <div class="tarjeta1 card shadow p-4">
+                    <h2 class="text-center mb-4">Iniciar sesión</h2>
+                    <form>
+                        <div class="mb-3">
+                            <label for="tipoPersona">Tipo: </label>
+                            <select class="form-control" id="tipoPersona" required [(ngModel)]="login.tipo"
+                                name="tipoPersona">
+                                <option value="" selected>Seleccione una opción</option>
+                                <option>DOCENTE</option>
+                                <option>EVALUADOR EXTERNO</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputEmail" class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"
+                                placeholder="Ingrese su correo electrónico institucional"
+                                [(ngModel)]="login.nombreUsuario" name="correo" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputPassword" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña"
+                                [(ngModel)]="login.contrasenia" name="contrasena" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100" role="button"
+                            (click)="ingresar()">Ingresar</button>
+                    </form>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
-</div>
+</section>

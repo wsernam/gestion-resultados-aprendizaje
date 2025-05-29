@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { Component, importProvidersFrom } from '@angular/core';
 import { Docente } from '../Modelos/docente';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { DocenteService } from '../servicios/docente.service';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
@@ -12,7 +12,7 @@ import { MockDocenteService } from '../servicios/docente.service.mock';
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [ CommonModule, FormsModule, HttpClientModule],
+  imports: [ CommonModule, FormsModule, HttpClientModule, RouterLink],
   templateUrl: './form.component.html',
   styleUrl: './form.component.css'
 })
