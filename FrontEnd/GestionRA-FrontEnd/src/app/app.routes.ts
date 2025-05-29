@@ -13,9 +13,11 @@ import { CrearCompetenciasAComponent } from './CAyRA/CompetenciasAprendizaje/Com
 import { authGuard } from './Guardia/auth.guard';
 import { RegistrarEvaluadorComponent } from './DocentesyEvaluadores/Evaluadores/RegistrarEvaluadores/registrar-evaluador.component';
 import { ListarEvaluadoresComponent } from './DocentesyEvaluadores/Evaluadores/ListarEvaluadores/listar-evaluadores.component';
+import { RegistrarComponent } from './Registrar/registrar.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'Login', pathMatch: 'full'},
+    { path: 'registro', component: RegistrarComponent },
     {path: 'docentes/listarDocentes', component: ListarDocentesComponent, canActivate: [authGuard]},
     {path: 'docentes/registrarDocentes', component: FormComponent},
     {path: 'evaluador/registrarEvaluador', component: RegistrarEvaluadorComponent},
