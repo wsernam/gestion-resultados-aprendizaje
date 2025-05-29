@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormComponent } from '../../../DocentesyEvaluadores/registrar-docente/form.component';
 import { FormsModule, NgForm } from '@angular/forms';
@@ -22,7 +22,7 @@ import { Asignatura } from '../../modelos/asignatura';
   templateUrl: './crear-cursos.component.html',
   styleUrl: './crear-cursos.component.css'
 })
-export class CrearCursosComponent {
+export class CrearCursosComponent implements OnInit {
 
   public curso: Curso = new Curso();
   public title: String = 'Crear curso';
@@ -49,6 +49,7 @@ export class CrearCursosComponent {
      */
     this.asignaturaService.getAsignaturas().subscribe(
       (data) => {
+        console.log("Cargando asignaturas...");
         this.asignaturas = data;
       },
       (error) => {
@@ -61,6 +62,7 @@ export class CrearCursosComponent {
      */
     this.docenteService.getDocentes().subscribe(
       (data) => {
+        console.log("Listando docentes");
         this.docentes = data;
       },
       (error) => {
@@ -91,7 +93,7 @@ export class CrearCursosComponent {
         },
         error => {
           console.log("Error al crear curso");
-          Swal.fire('Error al crear Curso', `Ha ocurrido un error al crear el curso`, 'warning');
+          Swal.fire('Error al crear Curso', `Ha ocurrido un error al crear el curso`, 'error');
         }
       );
 

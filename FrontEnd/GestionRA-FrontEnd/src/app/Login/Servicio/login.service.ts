@@ -20,8 +20,8 @@ export class LoginService {
 
   estaAutenticado(): boolean {
     if (typeof window !== 'undefined' && !!window.sessionStorage && !!sessionStorage.getItem('token')) {
-      console.log("Usuario autenticado");
-      console.log("Token: " + sessionStorage);
+      //console.log("Usuario autenticado");
+      //console.log("Token: " + sessionStorage);
       return true;
     }
     return false;

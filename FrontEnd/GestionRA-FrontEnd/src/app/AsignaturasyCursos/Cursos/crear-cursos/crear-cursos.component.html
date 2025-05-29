@@ -7,11 +7,12 @@
       <div class="form-group row">
         <label for="asignatura" class="col-form-label col-sm-2">Asignatura</label>
         <div class="col-sm-6">
-          <select class="form-control" [(ngModel)]="curso.objAsignatura.id" name="asignatura" id="asignatura"
-            [class.is-invalid]="formCurso.submitted && !curso.objAsignatura.id">
-            <option *ngFor="let asignatura of asignaturas" [value]="asignatura.id">{{ asignatura.nombre }}</option>
+          <select class="form-control" [(ngModel)]="curso.objAsignatura" name="asignatura" id="asignatura"
+            [class.is-invalid]="formCurso.submitted && !curso.objAsignatura">
+            <option [ngValue]="null" disabled selected>Seleccione una asignatura</option>
+            <option *ngFor="let asignatura of asignaturas" [ngValue]="asignatura">{{ asignatura.nombre }}</option>
           </select>
-          <div *ngIf="formCurso.submitted && !curso.objAsignatura.id" class="invalid-feedback">
+          <div *ngIf="formCurso.submitted && !curso.objAsignatura" class="invalid-feedback">
             Este campo es obligatorio.
           </div>
         </div>
@@ -23,6 +24,7 @@
         <div class="col-sm-6">
           <select class="form-control" [(ngModel)]="curso.objDocente.id" name="docente" id="docente"
             [class.is-invalid]="formCurso.submitted && !curso.objDocente.id">
+            <option [ngValue]="null" disabled selected>Seleccione un docente</option>
             <option *ngFor="let docente of docentes" [value]="docente.id">{{ docente.nombres }}</option>
           </select>
           <div *ngIf="formCurso.submitted && !curso.objDocente.id" class="invalid-feedback">
@@ -36,6 +38,7 @@
         <label for="periodoAnio" class="col-form-label col-sm-2">Año</label>
         <div class="col-sm-6">
           <select class="form-control" id="anio">
+            <option [ngValue]="null" disabled selected>Seleccione un año</option>
             <option *ngFor="let anio of anios" [value]="anio">{{ anio }}</option>
           </select>
           <div *ngIf="formCurso.submitted && !curso.objPeriodo.anio" class="invalid-feedback">
@@ -50,7 +53,7 @@
         <div class="col-sm-6">
           <select class="form-control" [(ngModel)]="curso.objPeriodo.semestre" name="periodoSemestre"
             id="periodoSemestre" [class.is-invalid]="formCurso.submitted && !curso.objPeriodo.semestre">
-            <option value="" disabled selected>Seleccione una opción</option>
+            <option [ngValue]="null" disabled selected>Seleccione una asignatura</option>
             <option>1</option>
             <option>2</option>
             <option>3</option>
