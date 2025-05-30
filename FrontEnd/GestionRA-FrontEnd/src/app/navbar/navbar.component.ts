@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs';
+import { LoginService } from '../Login/Servicio/login.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +15,7 @@ export class NavbarComponent {
 
   public isCoordinador: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
   ngOnInit() {
     this.verificarRol();
@@ -44,6 +45,11 @@ export class NavbarComponent {
       console.error('Error parsing token:', error);
       return null;
     }
+  }
+
+  public logOut(): void{
+    this.loginService.logout();
+    this.router.navigate(['/Login']);
   }
 
 }

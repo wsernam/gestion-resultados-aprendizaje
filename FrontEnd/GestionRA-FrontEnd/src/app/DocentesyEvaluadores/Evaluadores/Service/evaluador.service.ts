@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 export class EvaluadorService {
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
-  private urlEndPoint: string = "http://localhost:8080/api/evaluadores";
+  private urlEndPoint: string = "http://localhost:8079/api/evaluadores";
 
   constructor(private http: HttpClient) { }
 

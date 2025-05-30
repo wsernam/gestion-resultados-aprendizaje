@@ -15,10 +15,12 @@ import { RegistrarEvaluadorComponent } from './DocentesyEvaluadores/Evaluadores/
 import { ListarEvaluadoresComponent } from './DocentesyEvaluadores/Evaluadores/ListarEvaluadores/listar-evaluadores.component';
 import { RegistrarComponent } from './Registrar/registrar.component';
 import { CompetenciasRaComponent } from './components/competencias-ra.component';
+import { PerfilComponent } from './Perfil/perfil.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'Login', pathMatch: 'full'},
     { path: 'registro', component: RegistrarComponent },
+    {path: 'perfil', component: PerfilComponent},
     {path: 'docentes/listarDocentes', component: ListarDocentesComponent, canActivate: [authGuard]},
     {path: 'docentes/registrarDocentes', component: FormComponent},
     {path: 'evaluador/registrarEvaluador', component: RegistrarEvaluadorComponent},

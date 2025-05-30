@@ -18,6 +18,11 @@ export class LoginService {
     return this.http.post(this.url, login, { headers: this.httpHeaders, responseType: 'text'});
   }
 
+  logout(): void {
+    console.log("Cerrando sesión");
+    sessionStorage.clear();
+  }
+
   estaAutenticado(): boolean {
     if (typeof window !== 'undefined' && !!window.sessionStorage && !!sessionStorage.getItem('token')) {
       //console.log("Usuario autenticado");
