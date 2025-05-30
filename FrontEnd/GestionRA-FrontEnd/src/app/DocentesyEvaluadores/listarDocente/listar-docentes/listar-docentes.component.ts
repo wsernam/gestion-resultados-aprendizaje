@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class ListarDocentesComponent {
 
+  filtro = '';
   docentes: Docente[] = [];
 
   constructor(private objDocenteService: DocenteService, private router: Router) { }
@@ -25,6 +26,13 @@ export class ListarDocentesComponent {
         console.log("Listando docentes desde el componente");
         this.docentes = docentes;
       }
+    );
+  }
+
+  filtrarDocentes() {
+    const f = this.filtro.toLowerCase();
+    this.docentes = this.docentes.filter(doc =>
+      doc.correo.toLowerCase().includes(f)
     );
   }
 

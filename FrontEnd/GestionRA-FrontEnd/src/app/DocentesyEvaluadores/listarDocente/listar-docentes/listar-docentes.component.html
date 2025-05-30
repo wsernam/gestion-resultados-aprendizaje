@@ -1,36 +1,41 @@
-<div class="card text-white ng secondary mb-3">
-    <div class="card-header">Docentes</div>
-    <div class="card-body">
-        <h5 class="card-title">Listado de Docentes</h5>
+<div class="container mt-4">
+    <h4 class="mb-3 fw-bold">Listado docentes</h4>
+
+    <!-- Buscador -->
+    <div class="input-group mb-4 w-50">
+        <input type="text" class="form-control rounded-start-pill" placeholder="Buscar docente correo"
+            (input)="filtrarDocentes()" /> <!--[(ngModel)]="filtro"-->
+        <span class="input-group-text bg-secondary text-white rounded-end-pill">
+            <i class="bi bi-search"></i>
+        </span>
+    </div>
+
+    <!-- Tabla -->
+    <div class="table-responsive">
         <div *ngIf="docentes?.length==0" class="alert alert-info">
             No hay registros en la base de datos
         </div>
-        <table class="table table-bordered table-striped" *ngIf="docentes.length>0">
-            <thead>
+        <table class="table table-bordered table-hover shadow-sm" *ngIf="docentes.length>0">
+            <thead class="table-light text-center">
                 <tr>
-                    <th>Id</th>
-                    <th>Nombres</th>
-                    <th>Apellidos</th>
-                    <th>Titulo</th>
+                    <th>Cédula</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Tipo docente</th>
                     <th>Correo</th>
+                    <th>Título</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="text-center align-middle">
                 <tr *ngFor="let docente of docentes">
-                    <td>{{docente.id}}</td>
-                    <td>{{docente.tipo}}</td>
-                    <td>{{docente.nombres}}</td>
-                    <td>{{docente.apellidos}}</td>
-                    <td>{{docente.titulo}}</td>
-                    <td>{{docente.correo}}</td>
+                    <td>{{ docente.cedula }}</td>
+                    <td>{{ docente.nombres }}</td>
+                    <td>{{ docente.apellidos }}</td>
+                    <td>{{ docente.tipo }}</td>
+                    <td>{{ docente.correo }}</td>
+                    <td>{{ docente.titulo }}</td>
                 </tr>
             </tbody>
         </table>
-
-        <div class="my-2 text-left">
-            <button class="btn btn-rounded btn-primary" type="button"
-                [routerLink]="['/docentes/registrarDocentes']">Registrar Docentes</button>
-        </div>
-
     </div>
 </div>
