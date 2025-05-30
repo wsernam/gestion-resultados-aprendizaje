@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -40,15 +41,22 @@ public class LoginService {
     @Autowired
     private EvaluadorUserDetailsService evaluadorDetailsService; 
     
-    public String loginDocente(String username, String password){
-       Authentication authentication = docentAauthenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-       username, password)); 
-       if(authentication.isAuthenticated()){
-           return jwtService.generateToken(docenteDetailsService.loadUserByUsername(username));
-       }else{
-           throw new UsernameNotFoundException("Usuario y/o contraseña incorrectos"); 
-       }
+public String loginDocente(String username, String password) {
+    try {
+        Authentication authentication = docentAauthenticationManager.authenticate(
+            new UsernamePasswordAuthenticationToken(username, password)
+        );
+
+        if (authentication.isAuthenticated()) {
+            return jwtService.generateToken(docenteDetailsService.loadUserByUsername(username));
+        } else {
+            throw new UsernameNotFoundException("Usuario y/o contraseña incorrectos");
+        }
+    } catch (UsernameNotFoundException | BadCredentialsException ex) {
+        throw new IllegalArgumentException("Usuario y/o contraseña incorrectos"); // 💬 este mensaje sí se verá
     }
+}
+
     
     public String loginEvaluador(String username, String password){
        Authentication authentication = evaluadorAuthenticationManager.authenticate(new UsernamePasswordAuthenticationToken(

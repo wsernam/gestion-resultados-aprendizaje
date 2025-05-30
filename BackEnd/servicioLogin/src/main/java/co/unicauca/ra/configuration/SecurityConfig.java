@@ -41,9 +41,28 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-   
     
+   @Bean(name = "docenteAuthenticationManager")
+   @Primary
+    public AuthenticationManager docenteAuthenticationManager(DocenteUserDetailsService userDetailsService,
+                                                            PasswordEncoder passwordEncoder) {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(userDetailsService);
+        provider.setPasswordEncoder(passwordEncoder);
+
+        return new ProviderManager(provider);
+    }
+
+    @Bean(name = "evaluadorAuthenticationManager")
+    public AuthenticationManager evaluadorAuthenticationManager(EvaluadorUserDetailsService userDetailsService,
+                                                                PasswordEncoder passwordEncoder) {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(userDetailsService);
+        provider.setPasswordEncoder(passwordEncoder);
+
+        return new ProviderManager(provider);
+    }
+        
     @Bean(name = "docenteAuthenticationProvider")
     
     public AuthenticationProvider docenteAuthenticationProvider() {
@@ -59,17 +78,6 @@ public class SecurityConfig {
         provider.setUserDetailsService(evaluadorDetailService);
         provider.setPasswordEncoder(passwordEncoder());
         return provider;
-    }
-
-    @Bean(name = "docenteAuthenticationManager")
-    @Primary
-    public AuthenticationManager docenteAuthenticationManager() {
-        return new ProviderManager(docenteAuthenticationProvider());
-    }
-    
-    @Bean(name = "evaluadorAuthenticationManager")
-    public AuthenticationManager evaluadorAuthenticationManager() {
-        return new ProviderManager(evaluadorAuthenticationProvider());
     }
 
     @Bean
