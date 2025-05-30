@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormComponent } from '../../../DocentesyEvaluadores/registrar-docente/form.component';
+import { FormComponent } from '../../../DocentesyEvaluadores/Docentes/registrar-docente/form.component';
 import { FormsModule, NgForm } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { HttpClient, HttpClientModule } from '@angular/common/http';

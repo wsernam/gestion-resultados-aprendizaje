@@ -3,7 +3,12 @@
     <!-- Competencias de programa -->
     <div class="col-md-6 mb-4">
       <div class="card shadow-sm p-3 position-relative">
-        <h5 class="mb-3">Competencias de programa</h5>
+        <h5 class="mb-3 d-flex justify-content-between align-items-center">
+          Competencias de programa
+          <button class="btn btn-sm btn-outline-success rounded-circle" (click)="irACrearCompetenciaP()">
+            +
+          </button>
+        </h5>
         <app-competencias-aprendizaje-p></app-competencias-aprendizaje-p>
       </div>
     </div>
@@ -13,7 +18,7 @@
       <div class="card shadow-sm p-3 position-relative">
         <h5 class="mb-3 d-flex justify-content-between align-items-center">
           Competencias de asignatura
-          <button class="btn btn-sm btn-outline-success rounded-circle">
+          <button class="btn btn-sm btn-outline-success rounded-circle" (click)="irACrearCompetenciaA()">
             +
           </button>
         </h5>
@@ -24,7 +29,12 @@
     <!-- Resultados de aprendizaje de programa -->
     <div class="col-md-6 mb-4">
       <div class="card shadow-sm p-3 position-relative">
-        <h5 class="mb-3">Resultados de aprendizaje de programa</h5>
+        <h5 class="mb-3 d-flex justify-content-between align-items-center">
+          Resultados de aprendizaje de programa
+          <button class="btn btn-sm btn-outline-success rounded-circle" (click)="irACrearRAP()">
+            +
+          </button>
+        </h5>
         <app-resultados-p></app-resultados-p>
       </div>
     </div>
@@ -34,11 +44,11 @@
       <div class="card shadow-sm p-3 position-relative">
         <h5 class="mb-3 d-flex justify-content-between align-items-center">
           Resultados de aprendizaje de asignatura
-          <button class="btn btn-sm btn-outline-success rounded-circle">
+          <button class="btn btn-sm btn-outline-success rounded-circle" (click)="irACrearRAA()">
             +
           </button>
         </h5>
-        <!--<app-resultados-asignatura></app-resultados-asignatura>-->
+        <app-listar-raa></app-listar-raa>
       </div>
     </div>
   </div>

@@ -1,0 +1,26 @@
+.card {
+    margin: 20px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    left: 16px;
+    color: #6dabe4;
+    font-size: 1.3rem;
+    z-index: 2;
+}
+
+.form-group input,
+.form-group select {
+    flex: 1;
+    padding: 10px 10px 10px 44px; /* espacio para el ícono */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}

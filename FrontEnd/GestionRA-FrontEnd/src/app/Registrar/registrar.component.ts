@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegistrarEvaluadorComponent } from '../DocentesyEvaluadores/Evaluadores/RegistrarEvaluadores/registrar-evaluador.component';
-import { FormComponent } from '../DocentesyEvaluadores/registrar-docente/form.component';
+import { FormComponent } from '../DocentesyEvaluadores/Docentes/registrar-docente/form.component';
 import { Router } from 'express';
 import { RouterModule } from '@angular/router';
 

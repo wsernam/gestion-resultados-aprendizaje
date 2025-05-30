@@ -1,0 +1,26 @@
+<div class="card text-black">
+    <div class="card-header">Registrar Resultado de Aprendizaje Asignatura</div>
+    <div class="card-body">
+        <form>
+            <div class="form-group">
+                <span class="input-icon"><i class="zmdi zmdi-label"></i></span>
+                <select class="form-control" required [(ngModel)]="resultadoA.competenciaAsignaturaId" name="tipo">
+                    <option value="" disabled>Tipo</option>
+                    <option>Cátedra</option>
+                    <option>Tiempo Completo</option>
+                    <option>Planta</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <span class="input-icon"><i class="zmdi zmdi-graduation-cap"></i></span>
+                <input type="text" class="form-control" [(ngModel)]="resultadoA.descripcion" name="titulo" placeholder="Titulo"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary" role="button" (click)='registrarResultadoA()'>Registrar</button>
+            </div>
+        </form>
+    </div>
+</div>

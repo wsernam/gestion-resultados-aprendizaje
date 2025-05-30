@@ -4,7 +4,9 @@ import { CompetenciasAprendizajePComponent } from '../CAyRA/CompetenciasAprendiz
 import { FormCAPComponent } from '../CAyRA/CompetenciasAprendizaje/crearCompetenciasAprendizajeP/form-cap.component';
 import { ListarCompentenciaAComponent } from '../CAyRA/CompetenciasAprendizaje/CompetenciasAsignatura/ListarCompetenciaAsignatura/listar-compentencia-a.component';
 import { CrearCompetenciasAComponent } from '../CAyRA/CompetenciasAprendizaje/CompetenciasAsignatura/CrearCompenteciaAsignatura/crear-competencias-a/crear-competencias-a.component';
-import { ResultadosPComponent } from '../CAyRA/ResultadosAprendizaje/ListarRAP/resultados-p.component';
+import { ResultadosPComponent } from '../CAyRA/ResultadosAprendizaje/Programa/ListarRAP/resultados-p.component';
+import { ListarRAAComponent } from '../CAyRA/ResultadosAprendizaje/Asignatura/listarRAA/listar-raa.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-competencias-ra',
@@ -15,9 +17,29 @@ import { ResultadosPComponent } from '../CAyRA/ResultadosAprendizaje/ListarRAP/r
     FormCAPComponent,
     ListarCompentenciaAComponent,
     CrearCompetenciasAComponent,
-    ResultadosPComponent
+    ResultadosPComponent,
+    ListarRAAComponent,
   ],
   templateUrl: './competencias-ra.component.html',
   styleUrl: './competencias-ra.component.css'
 })
-export class CompetenciasRaComponent {}
+export class CompetenciasRaComponent {
+
+  constructor(private router: Router) { }
+  
+  irACrearCompetenciaP() {
+    this.router.navigate(['/competenciasAprendizaje/crearCompetenciasAprendizajeP']);
+  }
+
+  irACrearCompetenciaA() {
+    this.router.navigate(['/compentenciasAprendizaje/crearCompetenciasAprendizajeA']);
+  }
+
+  irACrearRAP() {
+    this.router.navigate(['/resultadosAprendizaje/crearRAP']);
+  }
+
+  irACrearRAA() {
+    this.router.navigate(['/resultadosAprendizaje/crearRAA']);
+  }
+}

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { ResultadoP } from '../../Modelos/resultado-p';
+import { ResultadoP } from '../../../Modelos/resultado-p';
 
 @Component({
   selector: 'app-resultados-p',
