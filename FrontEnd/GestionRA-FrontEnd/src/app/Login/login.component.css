@@ -80,3 +80,51 @@
     display: none;
   }
 }
+
+.input-icon-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+/* Solo el select necesita la flecha personalizada */
+.select-group select.form-control {
+  padding-left: 44px;
+  padding-right: 36px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  background-image: none;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Flecha personalizada solo para el select */
+.select-group::after {
+  content: '';
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 7px solid #6dabe4;
+  transform: translateY(-50%);
+}
+
+/* Ícono dentro del input/select */
+.input-icon-group .zmdi {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6dabe4;
+  font-size: 1.3rem;
+  z-index: 2;
+}
+
+.input-icon-group .form-control {
+  padding-left: 44px;
+}

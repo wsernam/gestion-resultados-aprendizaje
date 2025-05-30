@@ -10,23 +10,23 @@
                 <div class="tarjeta1 card shadow p-4">
                     <h2 class="text-center mb-4">Iniciar sesión</h2>
                     <form>
-                        <div class="mb-3">
-                            <label for="tipoPersona">Tipo: </label>
+                        <div class="input-icon-group select-group">
+                            <i class="zmdi zmdi-account-box"></i>
                             <select class="form-control" id="tipoPersona" required [(ngModel)]="login.tipo"
                                 name="tipoPersona">
-                                <option value="" selected>Seleccione una opción</option>
-                                <option>DOCENTE</option>
-                                <option>EVALUADOR EXTERNO</option>
+                                <option value="" selected>Tipo</option>
+                                <option>Docente</option>
+                                <option>Evaluador</option>
                             </select>
                         </div>
-                        <div class="mb-3">
-                            <label for="inputEmail" class="form-label">Correo electrónico</label>
+                        <div class="input-icon-group">
+                            <i class="zmdi zmdi-email"></i>
                             <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"
-                                placeholder="Ingrese su correo electrónico institucional"
-                                [(ngModel)]="login.nombreUsuario" name="correo" required>
+                                placeholder="Correo electrónico" [(ngModel)]="login.nombreUsuario" name="correo"
+                                required>
                         </div>
-                        <div class="mb-3">
-                            <label for="inputPassword" class="form-label">Contraseña</label>
+                        <div class="input-icon-group">
+                            <i class="zmdi zmdi-lock"></i>
                             <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña"
                                 [(ngModel)]="login.contrasenia" name="contrasena" required>
                         </div>

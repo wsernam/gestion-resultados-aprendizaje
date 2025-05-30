@@ -1,6 +1,14 @@
 .btn-group .btn {
   border-radius: 20px;
   min-width: 120px;
+  padding: 10px 20px;
+}
+.btn-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+
 }
 
 .main {
