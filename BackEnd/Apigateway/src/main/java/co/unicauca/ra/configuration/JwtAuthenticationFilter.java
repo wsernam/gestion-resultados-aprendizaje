@@ -72,8 +72,7 @@ public class JwtAuthenticationFilter extends AbstractGatewayFilterFactory<JwtAut
                     return unauthorized(exchange, "Acceso denegado: requiere rol DOCENTE");
                 }
             } catch (Exception e) {
-                System.out.println("invalid access...!");
-                throw new RuntimeException("un authorized access to application");
+                return unauthorized(exchange, "Token inválido o expirado");
             }
 
             return chain.filter(exchange);
