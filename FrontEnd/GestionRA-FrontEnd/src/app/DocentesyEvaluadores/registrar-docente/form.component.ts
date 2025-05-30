@@ -18,12 +18,23 @@ import { MockDocenteService } from '../servicios/docente.service.mock';
 })
 
 export class FormComponent {
-  public docente: Docente = new Docente();
+  public docente: Docente;
   public titulo: String = 'Registrar docente';
   public repetirContrasenia: string = '';
   public contraseniasCoinciden: boolean = true;
 
-  constructor(private docenteService: DocenteService, private router: Router) { }
+  constructor(private docenteService: DocenteService, private router: Router) { 
+
+    // Inicializar el docente con valores por defecto si es necesario
+    this.docente = new Docente();
+    this.docente.nombres = '';
+    this.docente.apellidos = '';
+    this.docente.correo = '';
+    this.docente.titulo = '';
+    this.docente.tipo = '';
+    this.docente.contrasenia = '';
+
+  }
   //constructor(private docenteService: MockDocenteService, private router: Router) { }
   
   public validarContrasenias(){

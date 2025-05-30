@@ -2,78 +2,65 @@
     <div class="card-header">Registrar Docente</div>
     <div class="card-body">
         <form>
-            <div class="form-group row">
-                <label for="identificacion" class="col-form-label col-sm-2">Identificación</label>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="docente.cedula" name="identificacion">
+            <div class="form-group">
+                <span class="input-icon"><i class="zmdi zmdi-account-box"></i></span>
+                <input type="text" class="form-control" [(ngModel)]="docente.cedula" name="identificacion"
+                    placeholder="Identificación" required>
+            </div>
+
+            <div class="form-group">
+                <span class="input-icon"><i class="zmdi zmdi-account"></i></span>
+                <input type="text" class="form-control" [(ngModel)]="docente.nombres" name="nombres"
+                    placeholder="Nombres" required>
+            </div>
+
+            <div class="form-group">
+                <span class="input-icon"><i class="zmdi zmdi-account"></i></span>
+                <input type="text" class="form-control" [(ngModel)]="docente.apellidos" name="apellidos"
+                    placeholder="Apellidos" required>
+            </div>
+
+            <div class="form-group">
+                <span class="input-icon"><i class="zmdi zmdi-label"></i></span>
+                <select class="form-control" required [(ngModel)]="docente.tipo" name="tipo">
+                    <option value="" disabled>Tipo</option>
+                    <option>Cátedra</option>
+                    <option>Tiempo Completo</option>
+                    <option>Planta</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <span class="input-icon"><i class="zmdi zmdi-graduation-cap"></i></span>
+                <input type="text" class="form-control" [(ngModel)]="docente.titulo" name="titulo" placeholder="Titulo"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <span class="input-icon"><i class="zmdi zmdi-email"></i></span>
+                <input type="text" class="form-control" [(ngModel)]="docente.correo" name="correo" placeholder="Correo"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <span class="input-icon"><i class="zmdi zmdi-lock"></i></span>
+                <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña"
+                    [(ngModel)]="docente.contrasenia" (ngModelChange)="validarContrasenias()" name="contrasena"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <span class="input-icon"><i class="zmdi zmdi-lock-outline"></i></span>
+                <input type="password" class="form-control" id="repetirContrasenia" placeholder="Repetir Contraseña"
+                    [(ngModel)]="repetirContrasenia" (ngModelChange)="validarContrasenias()" name="repetirContrasenia"
+                    required>
+                <div *ngIf="!contraseniasCoinciden && repetirContrasenia" class="text-danger">
+                    Las contraseñas no coinciden.
                 </div>
             </div>
 
-            <div class="form-group row">
-                <label for="nombres" class="col-form-label col-sm-2">Nombres</label>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="docente.nombres" name="nombres">
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="apellidos" class="col-form-label col-sm-2">Apellidos</label>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="docente.apellidos" name="apellidos">
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="tipo" class="col-form-label col-sm-2">Tipo: </label>
-                <div class="col-sm-6">
-                    <select class="form-control" id="tipoPersona" required [(ngModel)]="docente.tipo" name="tipo">
-                        <option value="" disabled selected>Seleccione una opción</option>
-                        <option>Cátedra</option>
-                        <option>Tiempo Completo</option>
-                        <option>Planta</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="titulo" class="col-form-label col-sm-2">Titulo</label>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="docente.titulo" name="titulo" required>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="corre" class="col-form-label col-sm-2">Correo</label>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="docente.correo" name="correo" required>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="contrasenia" class="col-form-label col-sm-2">Contraseña</label>
-                <div class="col-sm-6">
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña"
-                        [(ngModel)]="docente.contrasenia" (ngModelChange)="validarContrasenias()" name="contrasena"
-                        required>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="contrasenia" class="col-form-label col-sm-2">Repetir contraseña</label>
-                <div class="col-sm-6">
-                    <input type="password" class="form-control" id="repetirContrasenia" placeholder="Repetir Contraseña"
-                        [(ngModel)]="repetirContrasenia" (ngModelChange)="validarContrasenias()"
-                        name="repetirContrasenia" required>
-                    <div *ngIf="!contraseniasCoinciden && repetirContrasenia" class="text-danger">
-                        Las contraseñas no coinciden.
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <div class="col-sm-6">
-                    <button class="btn btn-primary" role="button" (click)='registrarDocente()'>Registrar</button>
-                </div>
+            <div class="form-group">
+                <button class="btn btn-primary" role="button" (click)='registrarDocente()'>Registrar</button>
             </div>
         </form>
     </div>

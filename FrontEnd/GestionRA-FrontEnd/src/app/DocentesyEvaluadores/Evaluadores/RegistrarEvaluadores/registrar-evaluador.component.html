@@ -4,9 +4,8 @@
         <form #formEvaluador="ngForm" (ngSubmit)="registrarEvaluador()">
 
             <!-- Identificación -->
-            <div class="form-group row">
-                <label for="identificacion" class="col-form-label col-sm-2">Identificación</label>
-                <div class="col-sm-6">
+            <div class="form-group">
+                <label for="identificacion">Identificación</label>
                     <input type="text" class="form-control" id="identificacion" [(ngModel)]="evaluador.idEvaluador"
                         name="identificacion" required #identificacion="ngModel"
                         [class.is-invalid]="identificacion.invalid && (identificacion.touched || formEvaluador.submitted)">
@@ -14,13 +13,11 @@
                         class="invalid-feedback">
                         Este campo es obligatorio.
                     </div>
-                </div>
             </div>
 
             <!-- Nombres -->
-            <div class="form-group row">
-                <label for="nombres" class="col-form-label col-sm-2">Nombres</label>
-                <div class="col-sm-6">
+            <div class="form-group">
+                <label for="nombres">Nombres</label>
                     <input type="text" class="form-control" id="nombres" [(ngModel)]="evaluador.nombres" name="nombres"
                         required #nombres="ngModel"
                         [class.is-invalid]="nombres.invalid && (nombres.touched || formEvaluador.submitted)">
@@ -28,13 +25,11 @@
                         class="invalid-feedback">
                         Este campo es obligatorio.
                     </div>
-                </div>
             </div>
 
             <!-- Apellidos -->
-            <div class="form-group row">
-                <label for="apellidos" class="col-form-label col-sm-2">Apellidos</label>
-                <div class="col-sm-6">
+            <div class="form-group">
+                <label for="apellidos">Apellidos</label>
                     <input type="text" class="form-control" id="apellidos" [(ngModel)]="evaluador.apellidos"
                         name="apellidos" required #apellidos="ngModel"
                         [class.is-invalid]="apellidos.invalid && (apellidos.touched || formEvaluador.submitted)">
@@ -42,26 +37,22 @@
                         class="invalid-feedback">
                         Este campo es obligatorio.
                     </div>
-                </div>
             </div>
 
             <!-- Correo -->
-            <div class="form-group row">
-                <label for="correo" class="col-form-label col-sm-2">Correo</label>
-                <div class="col-sm-6">
+            <div class="form-group">
+                <label for="correo">Correo</label>
                     <input type="email" class="form-control" id="correo" [(ngModel)]="evaluador.correo" name="correo"
                         required #correo="ngModel"
                         [class.is-invalid]="correo.invalid && (correo.touched || formEvaluador.submitted)">
                     <div *ngIf="correo.invalid && (correo.touched || formEvaluador.submitted)" class="invalid-feedback">
                         Campo obligatorio y debe tener formato de correo.
                     </div>
-                </div>
             </div>
 
             <!-- Contraseña -->
-            <div class="form-group row">
-                <label for="contrasena" class="col-form-label col-sm-2">Contraseña</label>
-                <div class="col-sm-6">
+            <div class="form-group">
+                <label for="contrasena">Contraseña</label>
                     <input type="password" class="form-control" id="contrasena" [(ngModel)]="evaluador.contrasenia"
                         name="contrasena" required #contrasena="ngModel"
                         [class.is-invalid]="contrasena.invalid && (contrasena.touched || formEvaluador.submitted)">
@@ -69,13 +60,11 @@
                         class="invalid-feedback">
                         Este campo es obligatorio.
                     </div>
-                </div>
             </div>
 
             <!-- Confirmar contraseña -->
-            <div class="form-group row">
-                <label for="confirmContrasenia" class="col-form-label col-sm-2">Confirmar contraseña</label>
-                <div class="col-sm-6">
+            <div class="form-group">
+                <label for="confirmContrasenia">Confirmar contraseña</label>
                     <input type="password" class="form-control" id="confirmContrasenia"
                         [(ngModel)]="evaluador.confirmarContrasenia" name="confirmContrasenia" required
                         #confirmContrasenia="ngModel"
@@ -84,14 +73,12 @@
                         class="invalid-feedback">
                         Este campo es obligatorio.
                     </div>
-                </div>
             </div>
 
             <!-- Botones -->
             <div class="form-group row">
                 <div class="col-sm-6">
                     <button class="btn btn-primary" type="submit">Registrar</button>
-                    <button type="button" class="btn btn-danger" [routerLink]="['/Login']">Cancelar</button>
                 </div>
             </div>
         </form>
