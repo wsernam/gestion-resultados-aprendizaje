@@ -12,6 +12,7 @@ import lombok.*;
 public class CompetenciaPrograma {
     @Id
     private String id;
+    private String nombre;
     private String descripcion;
     private String programa;
     private String estado; // activo inactivo

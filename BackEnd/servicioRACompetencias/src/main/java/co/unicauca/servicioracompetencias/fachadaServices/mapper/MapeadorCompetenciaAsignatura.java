@@ -12,6 +12,7 @@ public class MapeadorCompetenciaAsignatura {
     public CompetenciaAsignatura convertirPeticionAEntity(CompetenciaAsignaturaDTOPeticion dto) {
         CompetenciaAsignatura entity = new CompetenciaAsignatura();
         entity.setCompetenciaProgramaId(dto.getCompetenciaProgramaId());
+        entity.setNombre(dto.getNombre());
         entity.setAsignaturaId(dto.getAsignaturaId());
         entity.setDescripcion(dto.getDescripcion());
         entity.setEstado(dto.getEstado());
@@ -22,6 +23,7 @@ public class MapeadorCompetenciaAsignatura {
         return new CompetenciaAsignaturaDTORespuesta(
             entity.getId(),
             entity.getCompetenciaProgramaId(),
+            entity.getNombre(),
             entity.getAsignaturaId(),
             entity.getDescripcion(),
             entity.getEstado()

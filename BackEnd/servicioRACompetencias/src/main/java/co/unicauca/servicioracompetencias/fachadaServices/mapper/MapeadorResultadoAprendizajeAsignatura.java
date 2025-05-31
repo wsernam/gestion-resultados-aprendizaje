@@ -11,6 +11,7 @@ public class MapeadorResultadoAprendizajeAsignatura {
 
     public ResultadoAprendizajeAsignatura convertirPeticionAEntity(ResultadoAprendizajeAsignaturaDTOPeticion dto) {
         ResultadoAprendizajeAsignatura entity = new ResultadoAprendizajeAsignatura();
+        entity.setNombre(dto.getNombre());
         entity.setCompetenciaAsignaturaId(dto.getCompetenciaAsignaturaId());
         entity.setDescripcion(dto.getDescripcion());
         return entity;
@@ -19,6 +20,7 @@ public class MapeadorResultadoAprendizajeAsignatura {
     public ResultadoAprendizajeAsignaturaDTORespuesta convertirEntityARespuesta(ResultadoAprendizajeAsignatura entity) {
         return new ResultadoAprendizajeAsignaturaDTORespuesta(
             entity.getId(),
+            entity.getNombre(),
             entity.getCompetenciaAsignaturaId(),
             entity.getDescripcion()
         );

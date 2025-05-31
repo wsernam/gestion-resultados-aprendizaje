@@ -13,5 +13,6 @@ public class ResultadoAprendizajeAsignatura {
     @Id
     private String id;
     private String competenciaAsignaturaId;
+    private String nombre;
     private String descripcion;
 }

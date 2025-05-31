@@ -11,6 +11,7 @@ public class MapeadorResultadoAprendizajePrograma {
 
     public ResultadoAprendizajePrograma convertirPeticionAEntity(ResultadoAprendizajeProgramaDTOPeticion dto) {
         ResultadoAprendizajePrograma entity = new ResultadoAprendizajePrograma();
+        entity.setNombre(dto.getNombre());
         entity.setCompetenciaProgramaId(dto.getCompetenciaProgramaId());
         entity.setDescripcion(dto.getDescripcion());
         entity.setPrograma(dto.getPrograma());
@@ -21,6 +22,7 @@ public class MapeadorResultadoAprendizajePrograma {
         return new ResultadoAprendizajeProgramaDTORespuesta(
             entity.getId(),
             entity.getCompetenciaProgramaId(),
+            entity.getNombre(),
             entity.getDescripcion(),
             entity.getPrograma()
         );

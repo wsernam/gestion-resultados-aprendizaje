@@ -9,6 +9,7 @@ public class CompetenciaAsignaturaDTORespuesta {
     private String id;
     private String competenciaProgramaId;
     private String asignaturaId;
+    private String nombre;
     private String descripcion;
     private String estado;
 }

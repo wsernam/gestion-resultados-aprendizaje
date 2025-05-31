@@ -8,6 +8,7 @@ import lombok.*;
 public class ResultadoAprendizajeProgramaDTORespuesta {
     private String id;
     private String competenciaProgramaId;
+    private String nombre;
     private String descripcion;
     private String programa;
 }
