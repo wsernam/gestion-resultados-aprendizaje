@@ -6,17 +6,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import co.unicauca.servicioracompetencias.fachadaServices.DTO.ResultadoAprendizajeAsignaturaDTOPeticion;
 import co.unicauca.servicioracompetencias.fachadaServices.DTO.ResultadoAprendizajeAsignaturaDTORespuesta;
-import co.unicauca.servicioracompetencias.fachadaServices.services.IResultadoAprendizajeAsignaturaService;
+import co.unicauca.servicioracompetencias.fachadaServices.services.IRAAsignaturaService;
 import jakarta.validation.Valid;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/RAAsignatura")
-public class ResultadoAprendizajeAsignaturaController {
+public class RAAsignaturaController {
     
     @Autowired
-    private IResultadoAprendizajeAsignaturaService service;
+    private IRAAsignaturaService service;
 
     @PostMapping("/guardar")
     public ResponseEntity<?> guardar(@Valid @RequestBody ResultadoAprendizajeAsignaturaDTOPeticion dto) {

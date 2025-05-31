@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Document(collection = "resultado_aprendizaje_asignatura")
-public class ResultadoAprendizajeAsignatura {
+public class RAAsignatura {
     @Id
     private String id;
     private String competenciaAsignaturaId;

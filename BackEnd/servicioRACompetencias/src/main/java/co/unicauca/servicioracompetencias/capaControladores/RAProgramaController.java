@@ -7,15 +7,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import co.unicauca.servicioracompetencias.fachadaServices.DTO.ResultadoAprendizajeProgramaDTOPeticion;
 import co.unicauca.servicioracompetencias.fachadaServices.DTO.ResultadoAprendizajeProgramaDTORespuesta;
-import co.unicauca.servicioracompetencias.fachadaServices.services.IResultadoAprendizajeProgramaService;
+import co.unicauca.servicioracompetencias.fachadaServices.services.IRAProgramaService;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/RAPrograma")
-public class ResultadoAprendizajeProgramaController {
+public class RAProgramaController {
     
     @Autowired
-    private IResultadoAprendizajeProgramaService service;
+    private IRAProgramaService service;
 
     // Guardar un nuevo resultado de aprendizaje del programa
     @PostMapping("/guardar")

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import co.unicauca.servicioracompetencias.capaAccesoAdatos.model.CompetenciaPrograma;
 import co.unicauca.servicioracompetencias.capaAccesoAdatos.repository.CompetenciaAsignaturaRepository;
 import co.unicauca.servicioracompetencias.capaAccesoAdatos.repository.CompetenciaProgramaRepository;
-import co.unicauca.servicioracompetencias.capaAccesoAdatos.repository.ResultadoAprendizajeProgramaRepository;
+import co.unicauca.servicioracompetencias.capaAccesoAdatos.repository.RAProgramaRepository;
 import co.unicauca.servicioracompetencias.capaControladores.controladorExcepciones.excepcionesPropias.EntidadNoExisteException;
 import co.unicauca.servicioracompetencias.capaControladores.controladorExcepciones.excepcionesPropias.ReglaNegocioExcepcion;
 import co.unicauca.servicioracompetencias.fachadaServices.DTO.CompetenciaProgramaDTOPeticion;
@@ -24,7 +24,7 @@ public class CompetenciaProgramaServiceImpl implements ICompetenciaProgramaServi
     @Autowired
     private CompetenciaAsignaturaRepository competenciaAsignaturaRepository;
     @Autowired
-    private ResultadoAprendizajeProgramaRepository resultadoAprendizajeProgramaRepository;
+    private RAProgramaRepository resultadoAprendizajeProgramaRepository;
     @Autowired
     private MapeadorCompetenciaPrograma mapeador;
 

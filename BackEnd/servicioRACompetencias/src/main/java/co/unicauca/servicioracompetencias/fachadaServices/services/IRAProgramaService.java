@@ -5,7 +5,7 @@ import java.util.List;
 import co.unicauca.servicioracompetencias.fachadaServices.DTO.ResultadoAprendizajeProgramaDTOPeticion;
 import co.unicauca.servicioracompetencias.fachadaServices.DTO.ResultadoAprendizajeProgramaDTORespuesta;
 
-public interface IResultadoAprendizajeProgramaService {
+public interface IRAProgramaService {
     ResultadoAprendizajeProgramaDTORespuesta crear(ResultadoAprendizajeProgramaDTOPeticion dto);
     List<ResultadoAprendizajeProgramaDTORespuesta> listarTodos();
     ResultadoAprendizajeProgramaDTORespuesta buscarPorId(String id);

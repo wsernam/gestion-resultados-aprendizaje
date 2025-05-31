@@ -5,24 +5,24 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import co.unicauca.servicioracompetencias.capaAccesoAdatos.model.ResultadoAprendizajePrograma;
-import co.unicauca.servicioracompetencias.capaAccesoAdatos.repository.ResultadoAprendizajeProgramaRepository;
+import co.unicauca.servicioracompetencias.capaAccesoAdatos.model.RAPrograma;
+import co.unicauca.servicioracompetencias.capaAccesoAdatos.repository.RAProgramaRepository;
 import co.unicauca.servicioracompetencias.capaControladores.controladorExcepciones.excepcionesPropias.ReglaNegocioExcepcion;
 import co.unicauca.servicioracompetencias.fachadaServices.DTO.ResultadoAprendizajeProgramaDTOPeticion;
 import co.unicauca.servicioracompetencias.fachadaServices.DTO.ResultadoAprendizajeProgramaDTORespuesta;
-import co.unicauca.servicioracompetencias.fachadaServices.mapper.MapeadorResultadoAprendizajePrograma;
+import co.unicauca.servicioracompetencias.fachadaServices.mapper.MapeadorRAPrograma;
 
 @Service
-public class ResultadoAprendizajeProgramaServiceImpl implements IResultadoAprendizajeProgramaService {
+public class RAProgramaServiceImpl implements IRAProgramaService {
 
     @Autowired
-    private ResultadoAprendizajeProgramaRepository repository;
+    private RAProgramaRepository repository;
     @Autowired
-    private MapeadorResultadoAprendizajePrograma mapeador;
+    private MapeadorRAPrograma mapeador;
 
     @Override
     public ResultadoAprendizajeProgramaDTORespuesta crear(ResultadoAprendizajeProgramaDTOPeticion dto) {
-        ResultadoAprendizajePrograma entity = mapeador.convertirPeticionAEntity(dto);
+        RAPrograma entity = mapeador.convertirPeticionAEntity(dto);
         return mapeador.convertirEntityARespuesta(repository.save(entity));
     }
 
@@ -51,10 +51,10 @@ public class ResultadoAprendizajeProgramaServiceImpl implements IResultadoAprend
             throw new ReglaNegocioExcepcion("El resultado de aprendizaje del programa a actualizar no existe.");
         }
 
-        ResultadoAprendizajePrograma entity = mapeador.convertirPeticionAEntity(dto);
+        RAPrograma entity = mapeador.convertirPeticionAEntity(dto);
         entity.setId(id); // asegurar que conserve el ID original
 
-        ResultadoAprendizajePrograma actualizado = repository.save(entity);
+        RAPrograma actualizado = repository.save(entity);
         return mapeador.convertirEntityARespuesta(actualizado);
     }
 }
