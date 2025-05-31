@@ -2,13 +2,13 @@ package co.unicauca.servicioracompetencias.fachadaServices.services;
 
 import java.util.List;
 
-import co.unicauca.servicioracompetencias.fachadaServices.DTO.ResultadoAprendizajeProgramaDTOPeticion;
-import co.unicauca.servicioracompetencias.fachadaServices.DTO.ResultadoAprendizajeProgramaDTORespuesta;
+import co.unicauca.servicioracompetencias.fachadaServices.DTO.RAProgramaDTOPeticion;
+import co.unicauca.servicioracompetencias.fachadaServices.DTO.RAProgramaDTORespuesta;
 
 public interface IRAProgramaService {
-    ResultadoAprendizajeProgramaDTORespuesta crear(ResultadoAprendizajeProgramaDTOPeticion dto);
-    List<ResultadoAprendizajeProgramaDTORespuesta> listarTodos();
-    ResultadoAprendizajeProgramaDTORespuesta buscarPorId(String id);
+    RAProgramaDTORespuesta crear(RAProgramaDTOPeticion dto);
+    List<RAProgramaDTORespuesta> listarTodos();
+    RAProgramaDTORespuesta buscarPorId(String id);
     void eliminar(String id);
-    ResultadoAprendizajeProgramaDTORespuesta actualizar(String id, ResultadoAprendizajeProgramaDTOPeticion dto);
+    RAProgramaDTORespuesta actualizar(String id, RAProgramaDTOPeticion dto);
 }

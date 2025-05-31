@@ -5,9 +5,10 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResultadoAprendizajeAsignaturaDTORespuesta {
+public class RAProgramaDTORespuesta {
     private String id;
-    private String competenciaAsignaturaId;
+    private String competenciaProgramaId;
     private String nombre;
     private String descripcion;
+    private String programa;
 }

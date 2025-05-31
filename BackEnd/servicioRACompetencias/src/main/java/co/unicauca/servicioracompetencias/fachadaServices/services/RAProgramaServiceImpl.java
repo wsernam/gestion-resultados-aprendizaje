@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import co.unicauca.servicioracompetencias.capaAccesoAdatos.model.RAPrograma;
 import co.unicauca.servicioracompetencias.capaAccesoAdatos.repository.RAProgramaRepository;
 import co.unicauca.servicioracompetencias.capaControladores.controladorExcepciones.excepcionesPropias.ReglaNegocioExcepcion;
-import co.unicauca.servicioracompetencias.fachadaServices.DTO.ResultadoAprendizajeProgramaDTOPeticion;
-import co.unicauca.servicioracompetencias.fachadaServices.DTO.ResultadoAprendizajeProgramaDTORespuesta;
+import co.unicauca.servicioracompetencias.fachadaServices.DTO.RAProgramaDTOPeticion;
+import co.unicauca.servicioracompetencias.fachadaServices.DTO.RAProgramaDTORespuesta;
 import co.unicauca.servicioracompetencias.fachadaServices.mapper.MapeadorRAPrograma;
 
 @Service
@@ -21,20 +21,20 @@ public class RAProgramaServiceImpl implements IRAProgramaService {
     private MapeadorRAPrograma mapeador;
 
     @Override
-    public ResultadoAprendizajeProgramaDTORespuesta crear(ResultadoAprendizajeProgramaDTOPeticion dto) {
+    public RAProgramaDTORespuesta crear(RAProgramaDTOPeticion dto) {
         RAPrograma entity = mapeador.convertirPeticionAEntity(dto);
         return mapeador.convertirEntityARespuesta(repository.save(entity));
     }
 
     @Override
-    public List<ResultadoAprendizajeProgramaDTORespuesta> listarTodos() {
+    public List<RAProgramaDTORespuesta> listarTodos() {
         return repository.findAll().stream()
             .map(mapeador::convertirEntityARespuesta)
             .collect(Collectors.toList());
     }
 
     @Override
-    public ResultadoAprendizajeProgramaDTORespuesta buscarPorId(String id) {
+    public RAProgramaDTORespuesta buscarPorId(String id) {
         return repository.findById(id)
             .map(mapeador::convertirEntityARespuesta)
             .orElse(null);
@@ -46,7 +46,7 @@ public class RAProgramaServiceImpl implements IRAProgramaService {
     }
 
     @Override
-    public ResultadoAprendizajeProgramaDTORespuesta actualizar(String id, ResultadoAprendizajeProgramaDTOPeticion dto) {
+    public RAProgramaDTORespuesta actualizar(String id, RAProgramaDTOPeticion dto) {
         if (!repository.existsById(id)) {
             throw new ReglaNegocioExcepcion("El resultado de aprendizaje del programa a actualizar no existe.");
         }

@@ -3,13 +3,13 @@ package co.unicauca.servicioracompetencias.fachadaServices.mapper;
 import org.springframework.context.annotation.Configuration;
 
 import co.unicauca.servicioracompetencias.capaAccesoAdatos.model.RAAsignatura;
-import co.unicauca.servicioracompetencias.fachadaServices.DTO.ResultadoAprendizajeAsignaturaDTOPeticion;
-import co.unicauca.servicioracompetencias.fachadaServices.DTO.ResultadoAprendizajeAsignaturaDTORespuesta;
+import co.unicauca.servicioracompetencias.fachadaServices.DTO.RAAsignaturaDTOPeticion;
+import co.unicauca.servicioracompetencias.fachadaServices.DTO.RAAsignaturaDTORespuesta;
 
 @Configuration
 public class MapeadorRAAsignatura {
 
-    public RAAsignatura convertirPeticionAEntity(ResultadoAprendizajeAsignaturaDTOPeticion dto) {
+    public RAAsignatura convertirPeticionAEntity(RAAsignaturaDTOPeticion dto) {
         RAAsignatura entity = new RAAsignatura();
         entity.setNombre(dto.getNombre());
         entity.setCompetenciaAsignaturaId(dto.getCompetenciaAsignaturaId());
@@ -17,8 +17,8 @@ public class MapeadorRAAsignatura {
         return entity;
     }
 
-    public ResultadoAprendizajeAsignaturaDTORespuesta convertirEntityARespuesta(RAAsignatura entity) {
-        return new ResultadoAprendizajeAsignaturaDTORespuesta(
+    public RAAsignaturaDTORespuesta convertirEntityARespuesta(RAAsignatura entity) {
+        return new RAAsignaturaDTORespuesta(
             entity.getId(),
             entity.getNombre(),
             entity.getCompetenciaAsignaturaId(),

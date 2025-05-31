@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 import co.unicauca.servicioracompetencias.capaAccesoAdatos.model.RAAsignatura;
 import co.unicauca.servicioracompetencias.capaAccesoAdatos.repository.RAAsignaturaRepository;
 import co.unicauca.servicioracompetencias.capaControladores.controladorExcepciones.excepcionesPropias.ReglaNegocioExcepcion;
-import co.unicauca.servicioracompetencias.fachadaServices.DTO.ResultadoAprendizajeAsignaturaDTOPeticion;
-import co.unicauca.servicioracompetencias.fachadaServices.DTO.ResultadoAprendizajeAsignaturaDTORespuesta;
+import co.unicauca.servicioracompetencias.fachadaServices.DTO.RAAsignaturaDTOPeticion;
+import co.unicauca.servicioracompetencias.fachadaServices.DTO.RAAsignaturaDTORespuesta;
 import co.unicauca.servicioracompetencias.fachadaServices.mapper.MapeadorRAAsignatura;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,27 +20,27 @@ public class RAAsignaturaServiceImpl implements IRAAsignaturaService {
     private MapeadorRAAsignatura mapeador;
 
     @Override
-    public ResultadoAprendizajeAsignaturaDTORespuesta crear(ResultadoAprendizajeAsignaturaDTOPeticion dto) {
+    public RAAsignaturaDTORespuesta crear(RAAsignaturaDTOPeticion dto) {
         RAAsignatura entity = mapeador.convertirPeticionAEntity(dto);
         return mapeador.convertirEntityARespuesta(repository.save(entity));
     }
 
     @Override
-    public List<ResultadoAprendizajeAsignaturaDTORespuesta> listarTodos() {
+    public List<RAAsignaturaDTORespuesta> listarTodos() {
         return repository.findAll().stream()
             .map(mapeador::convertirEntityARespuesta)
             .collect(Collectors.toList());
     }
 
     @Override
-    public List<ResultadoAprendizajeAsignaturaDTORespuesta> listarPorAsignatura(String asignaturaId) {
+    public List<RAAsignaturaDTORespuesta> listarPorAsignatura(String asignaturaId) {
         return repository.findByCompetenciaAsignaturaId(asignaturaId).stream()
             .map(mapeador::convertirEntityARespuesta)
             .collect(Collectors.toList());
     }
 
     @Override
-    public ResultadoAprendizajeAsignaturaDTORespuesta buscarPorId(String id) {
+    public RAAsignaturaDTORespuesta buscarPorId(String id) {
         return repository.findById(id)
             .map(mapeador::convertirEntityARespuesta)
             .orElse(null);
@@ -52,7 +52,7 @@ public class RAAsignaturaServiceImpl implements IRAAsignaturaService {
     }
 
     @Override
-    public ResultadoAprendizajeAsignaturaDTORespuesta actualizar(String id, ResultadoAprendizajeAsignaturaDTOPeticion dto) {
+    public RAAsignaturaDTORespuesta actualizar(String id, RAAsignaturaDTOPeticion dto) {
         if (!repository.existsById(id)) {
             throw new ReglaNegocioExcepcion("El resultado de aprendizaje a actualizar no existe.");
         }
