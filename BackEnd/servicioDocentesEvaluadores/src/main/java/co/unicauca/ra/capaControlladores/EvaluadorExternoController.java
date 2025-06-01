@@ -51,4 +51,15 @@ public class EvaluadorExternoController {
         service.eliminar(id);
         return ResponseEntity.ok("Evaluador externo eliminado correctamente.");
     }
+    
+    @GetMapping("/buscar-correo/{correo}")
+    public ResponseEntity<EvaluadorExternoDTORespuesta> buscarPorCorreo(@PathVariable String correo) {
+        return ResponseEntity.ok(service.buscarPorCorreo(correo));
+    }
+    
+    @GetMapping("/buscar-cursos/{correo}")
+    public ResponseEntity obtenerIdCursosPorCorreo(@PathVariable String correo) {
+        
+        return ResponseEntity.status(HttpStatus.OK).body(service.obtenerIdCursos(correo));
+    }
 }

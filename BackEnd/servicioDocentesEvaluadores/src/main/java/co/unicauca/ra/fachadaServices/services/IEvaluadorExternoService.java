@@ -9,5 +9,8 @@ public interface IEvaluadorExternoService {
     EvaluadorExternoDTORespuesta actualizar(String id, EvaluadorExternoDTOPeticion dto);
     List<EvaluadorExternoDTORespuesta> listarTodos();
     EvaluadorExternoDTORespuesta buscarPorId(String id);
+    EvaluadorExternoDTORespuesta buscarPorCorreo(String correo);
+    List<String> obtenerIdCursos(String correo); 
+    EvaluadorExternoDTORespuesta agregarIdCurso(String correo, String idCurso);
     void eliminar(String id);
 }

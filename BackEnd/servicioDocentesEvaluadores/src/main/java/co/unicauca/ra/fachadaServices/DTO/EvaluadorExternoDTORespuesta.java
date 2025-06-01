@@ -1,5 +1,6 @@
 package co.unicauca.ra.fachadaServices.DTO;
 
+import java.util.List;
 import lombok.*;
 
 @Data
@@ -10,5 +11,6 @@ public class EvaluadorExternoDTORespuesta {
     private String nombres;
     private String apellidos;
     private String correo;
+    private List<String> idCursos; 
 }
 

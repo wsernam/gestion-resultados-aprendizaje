@@ -12,6 +12,7 @@ import co.unicauca.ra.capaControlladores.controladorExcepciones.excepcionesPropi
 import co.unicauca.ra.fachadaServices.DTO.EvaluadorExternoDTOPeticion;
 import co.unicauca.ra.fachadaServices.DTO.EvaluadorExternoDTORespuesta;
 import co.unicauca.ra.fachadaServices.mapper.MapeadorEvaluadorExterno;
+import java.util.Optional;
 
 @Service
 public class EvaluadorExternoServiceImpl implements IEvaluadorExternoService{
@@ -25,6 +26,9 @@ public class EvaluadorExternoServiceImpl implements IEvaluadorExternoService{
     @Autowired
     private MapeadorEvaluadorExterno mapeador;
 
+    @Autowired 
+    private CursoService servicioCurso; 
+    
     @Override
     public EvaluadorExternoDTORespuesta crear(EvaluadorExternoDTOPeticion dto) {
         if (repository.findByCorreo(dto.getCorreo()).isPresent()) {
@@ -69,6 +73,42 @@ public class EvaluadorExternoServiceImpl implements IEvaluadorExternoService{
             throw new EntidadNoExisteException("Error: el evaluador externo a eliminar no existe.");
         }
         repository.deleteById(id);
+    }
+
+    @Override
+    public EvaluadorExternoDTORespuesta buscarPorCorreo(String correo) {
+        Optional<EvaluadorExterno> e = repository.findByCorreo(correo);
+       if(!e.isPresent()){
+           throw new EntidadNoExisteException("Error: no se encontro el evaluador con correo " + correo);
+       }
+       return mapeador.convertirEntityARespuesta(e.get()); 
+    }
+
+    @Override
+    public List<String> obtenerIdCursos(String correo) {
+        Optional<EvaluadorExterno> e = repository.findByCorreo(correo);
+       if(!e.isPresent()){
+           throw new EntidadNoExisteException("Error: no se encontro el evaluador con correo " + correo);
+       }
+       return e.get().getIdCursos();
+    }
+
+    @Override
+    public EvaluadorExternoDTORespuesta agregarIdCurso(String correo, String idCurso) {
+       Optional<EvaluadorExterno> e = repository.findByCorreo(correo);
+       if(!e.isPresent()){
+           throw new EntidadNoExisteException("Error: no se encontro el evaluador con correo " + correo);
+       }
+       if(e.get().getIdCursos().contains(idCurso)){
+           throw new ReglaNegocioExcepcion("Error, el evaluador ya fue invitado al curso con id" + idCurso); 
+       }
+       if(servicioCurso.existeCurso(idCurso)==null){
+            throw new EntidadNoExisteException("Error: no se encontro un curso con id " + idCurso );
+       }
+       EvaluadorExterno evaluador = e.get();
+       evaluador.agregarIdCurso(idCurso);
+       repository.save(evaluador);
+       return mapeador.convertirEntityARespuesta(evaluador); 
     }
 
 }

@@ -1,5 +1,6 @@
 package co.unicauca.ra.capaAcesoAdatos.model;
 
+import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.*;
@@ -17,4 +18,9 @@ public class EvaluadorExterno {
     private String apellidos;
     private String correo;
     private String contrasenia;
+    private List<String>  idCursos; 
+    
+    public void agregarIdCurso(String idCurso){
+        idCursos.add(idCurso); 
+    }
 }
