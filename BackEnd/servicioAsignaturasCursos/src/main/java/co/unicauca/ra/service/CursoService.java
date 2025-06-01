@@ -73,7 +73,7 @@ public class CursoService {
     public CursoRespuestaDTO findByPeriodoAndAsignaturaNombreAndDocenteCedula(Periodo periodo, String asignatura, int cedulaDocente) {
         Optional<Curso> c = cursoRepository.findByPeriodoAndAsignaturaNombreAndDocenteCedula(periodo, asignatura, cedulaDocente);
         if (c.isPresent()) {
-            return this.modelMapper.map(c,new TypeToken<CursoRespuestaDTO>() {}.getType());
+            return this.modelMapper.map(c.get(),new TypeToken<CursoRespuestaDTO>() {}.getType());
         }
         
         throw new CursoNotFoundException("No se encontró un curso que coincida con la informacion ingresada");        
@@ -99,6 +99,22 @@ public class CursoService {
         if(c.isPresent()){
             cursoRepository.deleteById(id);
             return ResponseEntity.status(HttpStatus.FOUND).body("El curso fue eliminado");
+        }
+        throw new CursoNotFoundException("No se encontró un curso con id = " + id);  
+    }
+    
+    public ResponseEntity findById(String id){
+        Optional<Curso> c = cursoRepository.findById(id);
+        if(c.isPresent()){
+            return ResponseEntity.status(HttpStatus.FOUND).body(c);
+        }
+        throw new CursoNotFoundException("No se encontró un curso con id = " + id);  
+    }
+    
+    public ResponseEntity CursoExist(String id){
+        Optional<Curso> c = cursoRepository.findById(id);
+        if(c.isPresent()){
+            return ResponseEntity.status(HttpStatus.OK).body(true);
         }
         throw new CursoNotFoundException("No se encontró un curso con id = " + id);  
     }

@@ -85,4 +85,14 @@ public class CursoController {
     public ResponseEntity eliminarCurso(@PathVariable String id){
         return cursoService.deteleById(id); 
     }
+    
+    @GetMapping("/buscar/{id}")
+    public ResponseEntity buscarCursoPorId(@PathVariable String id){
+        return cursoService.findById(id); 
+    }
+    
+    @GetMapping("/existe-curso/{id}")
+    public ResponseEntity existeCurso(@PathVariable String id){
+        return cursoService.CursoExist(id); 
+    }
 }
