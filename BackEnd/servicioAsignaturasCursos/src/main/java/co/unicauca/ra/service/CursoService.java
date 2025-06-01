@@ -4,11 +4,23 @@
  */
 package co.unicauca.ra.service;
 
+import co.unicauca.ra.controller.ExceptionController.Exceptions.AsignaturaNotFoundException;
+import co.unicauca.ra.controller.ExceptionController.Exceptions.CursoAlreadyCreatedException;
+import co.unicauca.ra.controller.ExceptionController.Exceptions.CursoNotFoundException;
+import co.unicauca.ra.controller.ExceptionController.Exceptions.DocenteNotFoundException;
 import co.unicauca.ra.model.Curso;
+import co.unicauca.ra.model.Asignatura;
+import co.unicauca.ra.model.AsignaturaCurso;
+import co.unicauca.ra.model.Docente;
 import co.unicauca.ra.model.Periodo;
+import co.unicauca.ra.repository.AsignaturaRepository;
 import co.unicauca.ra.repository.CursoRepository;
+import co.unicauca.ra.service.DTO.CursoPeticionDTO;
+import co.unicauca.ra.service.DTO.CursoRespuestaDTO;
 import java.util.List;
 import java.util.Optional;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,22 +35,48 @@ public class CursoService {
 
     @Autowired
     private CursoRepository cursoRepository;
+    
+    @Autowired
+    private AsignaturaRepository asignaturaRepository; 
+    
+    @Autowired
+    private ModelMapper modelMapper;
+    
+    @Autowired
+    private DocenteService servicioDocente; 
 
-    public ResponseEntity save(Curso curso) {
-        Optional<Curso> c = cursoRepository.findByPeriodoAndAsignaturaNombreAndDocenteCedula(curso.getPeriodo(), curso.getAsignatura().getNombre(), curso.getDocente().getCedula());
-        if (c.isPresent()) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("El curso ya esta registrado");
+    public CursoRespuestaDTO save(CursoPeticionDTO curso) {
+        Optional<Asignatura> a = asignaturaRepository.findById(curso.getIdAsignatura());
+        if(!a.isPresent()){
+            throw new AsignaturaNotFoundException("Error al crear curso, no se encontro una asignatura con id " + curso.getIdAsignatura());
         }
-        cursoRepository.save(curso);
-        return ResponseEntity.status(HttpStatus.CREATED).body("El curso fue registrado");
+        
+        Docente d = servicioDocente.findDocenteByCorreo(curso.getCorreoDocente()); 
+        
+        if(d==null){
+            throw new DocenteNotFoundException("Error al crear curso, no se encontro un docente con correo " + curso.getCorreoDocente());
+        }
+        Optional<Curso> c = cursoRepository.findByPeriodoAndAsignaturaNombreAndDocenteCedula(curso.getPeriodo(), a.get().getNombre(), d.getCedula());
+        if (c.isPresent()) {
+            throw new CursoAlreadyCreatedException("Error, un curso con el periodo, asignatura y docente ingresado ya ha sido registrado");
+        }
+        
+        Curso nuevoCurso = new Curso(); 
+        nuevoCurso.setDocente(d);
+        nuevoCurso.setAsignatura(this.modelMapper.map(a.get(),new TypeToken<AsignaturaCurso>() {}.getType()));
+        nuevoCurso.setPeriodo(curso.getPeriodo());
+        cursoRepository.save(nuevoCurso);
+        
+        return this.modelMapper.map(nuevoCurso,new TypeToken<CursoRespuestaDTO>() {}.getType());
     }
 
-    public ResponseEntity findByPeriodoAndAsignaturaNombreAndDocenteCedula(Periodo periodo, String asignatura, int cedulaDocente) {
+    public CursoRespuestaDTO findByPeriodoAndAsignaturaNombreAndDocenteCedula(Periodo periodo, String asignatura, int cedulaDocente) {
         Optional<Curso> c = cursoRepository.findByPeriodoAndAsignaturaNombreAndDocenteCedula(periodo, asignatura, cedulaDocente);
         if (c.isPresent()) {
-            return ResponseEntity.status(HttpStatus.FOUND).body(c);
+            return this.modelMapper.map(c,new TypeToken<CursoRespuestaDTO>() {}.getType());
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontro el curso");         
+        
+        throw new CursoNotFoundException("No se encontró un curso que coincida con la informacion ingresada");        
 
     }
     
@@ -62,7 +100,7 @@ public class CursoService {
             cursoRepository.deleteById(id);
             return ResponseEntity.status(HttpStatus.FOUND).body("El curso fue eliminado");
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El curso no fue eliminado");
+        throw new CursoNotFoundException("No se encontró un curso con id = " + id);  
     }
     
     public List<Curso> findByYear(int year){

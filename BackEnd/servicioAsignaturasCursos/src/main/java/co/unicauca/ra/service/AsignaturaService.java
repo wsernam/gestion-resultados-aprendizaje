@@ -3,9 +3,12 @@ package co.unicauca.ra.service;
 import co.unicauca.ra.model.Asignatura;
 import co.unicauca.ra.model.AsignaturaCurso;
 import co.unicauca.ra.repository.AsignaturaRepository;
+import co.unicauca.ra.service.DTO.AsignaturaRespuestaDTO;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,18 +19,19 @@ public class AsignaturaService {
 
     @Autowired
     private AsignaturaRepository asignaturaRepository;
+    
+    @Autowired
+    private ModelMapper mapper; 
 
     public ResponseEntity<?> save(Asignatura asignatura) {
         asignaturaRepository.save(asignatura);
         return ResponseEntity.status(HttpStatus.CREATED).body("Asignatura registrada correctamente.");
     }
 
-    public List<AsignaturaCurso> findAll() {
+    public List<AsignaturaRespuestaDTO> findAll() {
         List<Asignatura> asignaturas = asignaturaRepository.findAll();
 
-        return asignaturas.stream()
-                .map(this::convertToDTO)
-                .collect(Collectors.toList());
+        return this.mapper.map(asignaturas, new TypeToken<List<AsignaturaRespuestaDTO>>() {}.getType()); 
     }
 
     private AsignaturaCurso convertToDTO(Asignatura asignatura) {

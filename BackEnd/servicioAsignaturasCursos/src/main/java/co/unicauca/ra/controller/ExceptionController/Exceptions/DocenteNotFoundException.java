@@ -1,0 +1,32 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package co.unicauca.ra.controller.ExceptionController.Exceptions;
+
+import co.unicauca.ra.controller.ExceptionController.ExceptionStructure.CodigoError;
+import lombok.Getter;
+
+/**
+ *
+ * @author ashle
+ */
+@Getter
+public class DocenteNotFoundException extends RuntimeException {
+    private final String llaveMensaje;
+    private final String codigo;
+
+    public DocenteNotFoundException(CodigoError codigo) {
+       super(codigo.getCodigo());
+       
+       this.llaveMensaje = codigo.getLlaveMensaje();
+       this.codigo = codigo.getCodigo();
+    }
+    
+    public DocenteNotFoundException(String mensaje) {
+       super(mensaje);
+       
+       this.llaveMensaje = CodigoError.DOCENTE_NO_ENCONTRADO.getLlaveMensaje();
+       this.codigo = CodigoError.DOCENTE_NO_ENCONTRADO.getCodigo();
+    }
+}

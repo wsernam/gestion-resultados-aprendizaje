@@ -11,8 +11,11 @@ import co.unicauca.ra.model.ConsultaCurso;
 import co.unicauca.ra.model.Curso;
 import co.unicauca.ra.model.Periodo;
 import co.unicauca.ra.service.CursoService;
+import co.unicauca.ra.service.DTO.CursoPeticionDTO;
+import co.unicauca.ra.service.DTO.CursoRespuestaDTO;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,18 +38,20 @@ public class CursoController {
     private CursoService cursoService;
     
     @PostMapping("/guardar")
-    public ResponseEntity crearCurso(@RequestBody Curso curso){
-        AsignaturaCurso a = curso.getAsignatura();
-        a.setNombre(a.getNombre().toUpperCase());
-        return cursoService.save(curso); 
+    public ResponseEntity crearCurso(@RequestBody CursoPeticionDTO curso){
+
+        CursoRespuestaDTO respuesta =  cursoService.save(curso); 
+        
+        return ResponseEntity.status(HttpStatus.CREATED).body(respuesta); 
     }
     @GetMapping("/buscar-curso")
     public ResponseEntity buscarCurso(@RequestBody ConsultaCurso consulta){
     
-        return cursoService.findByPeriodoAndAsignaturaNombreAndDocenteCedula(
+        CursoRespuestaDTO curso =  cursoService.findByPeriodoAndAsignaturaNombreAndDocenteCedula(
                 consulta.getPeriodo(), 
                 consulta.getNombreAsignatura(), 
                 consulta.getDocenteCedula());
+         return ResponseEntity.status(HttpStatus.OK).body(curso); 
     }
     @GetMapping
     public List<Curso> buscarCursos(){
