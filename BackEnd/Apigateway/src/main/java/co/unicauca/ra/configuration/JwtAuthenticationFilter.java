@@ -68,6 +68,10 @@ public class JwtAuthenticationFilter extends AbstractGatewayFilterFactory<JwtAut
                 if (path.startsWith("/api/cursos/**") && !roles.contains("DOCENTE")) {
                     return unauthorized(exchange, "Acceso denegado: requiere rol DOCENTE");
                 }
+                if (path.startsWith("/api/asignaturas/**") && !roles.contains("DOCENTE")) {
+                    return unauthorized(exchange, "Acceso denegado: requiere rol DOCENTE");
+                }
+                
                 if (path.startsWith("/api/rubricas/**") && !roles.contains("DOCENTE")) {
                     return unauthorized(exchange, "Acceso denegado: requiere rol DOCENTE");
                 }

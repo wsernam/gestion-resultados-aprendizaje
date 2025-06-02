@@ -10,7 +10,8 @@ spring:
         - id: docentes-evaluadores-service
           uri: http://localhost:8080
           predicates:
-            - Path=/api/docentes/**, /api/evaluadores**
+            - Path = /api/docentes/**
+            - Path = /api/evaluadores**
           filters:
             - name: JwtAuthenticationFilter
         - id: login-service
@@ -20,7 +21,10 @@ spring:
         - id: rac-programa-asignatura-service
           uri: http://localhost:8083
           predicates:
-            - Path=/api/competenciasAsignatura/**, /api/competenciasPrograma/**, /api/RAAsignatura/**, /api/RAPrograma/**
+            - Path=/api/competenciasAsignatura/**
+            - Path = /api/competenciasPrograma/**
+            - Path = /api/RAAsignatura/**
+            - Path = /api/RAPrograma/**
           filters:
             - name: JwtAuthenticationFilter
         - id: rubrica-service
@@ -32,7 +36,8 @@ spring:
         - id: curso-service
           uri: http://localhost:8085
           predicates:
-            - Path=/api/cursos/**,/api/asignatura/**
+            - Path=/api/cursos/**
+            - Path = /api/asignatura/**
           filters:
             - name: JwtAuthenticationFilter
   
