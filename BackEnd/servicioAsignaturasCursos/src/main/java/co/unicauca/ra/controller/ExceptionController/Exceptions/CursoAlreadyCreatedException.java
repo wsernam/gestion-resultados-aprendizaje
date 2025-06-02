@@ -4,7 +4,7 @@
  */
 package co.unicauca.ra.controller.ExceptionController.Exceptions;
 
-import co.unicauca.ra.controller.ExceptionController.ExceptionStructure.CodigoError;
+import co.unicauca.ra.controller.ExceptionController.Structure.CodigoError;
 import lombok.Getter;
 
 /**

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Enum.java to edit this template
  */
-package co.unicauca.ra.controller.ExceptionController.ExceptionStructure;
+package co.unicauca.ra.controller.ExceptionController.Structure;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
