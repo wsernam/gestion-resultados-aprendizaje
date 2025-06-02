@@ -20,6 +20,7 @@ import { CrearRAAComponent } from './CAyRA/ResultadosAprendizaje/Asignatura/crea
 import { FormComponent as CrearRAPFormComponent} from './CAyRA/ResultadosAprendizaje/Programa/crearRAP/crearRAPform.component';
 import { ListarRAAComponent } from './CAyRA/ResultadosAprendizaje/Asignatura/listarRAA/listar-raa.component';
 import { ResultadosPComponent } from './CAyRA/ResultadosAprendizaje/Programa/ListarRAP/resultados-p.component';
+import { ListarRubricaComponent } from './Rubricas/ListarRubricas/listar-rubrica.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'Login', pathMatch: 'full'},
@@ -41,5 +42,6 @@ export const routes: Routes = [
     {path: 'cursos/crearCursos', component: CrearCursosComponent, canActivate: [authGuard]},
     {path: 'Login', component: LoginComponent},
     {path: 'rubricas/crearRubricas', component: CrearRubricaComponent, canActivate: [authGuard]},
+    {path: 'rubricas', component: ListarRubricaComponent, canActivate: [authGuard]},
     {path: 'competencias-ra', component: CompetenciasRaComponent, canActivate: [authGuard]}
 ];
