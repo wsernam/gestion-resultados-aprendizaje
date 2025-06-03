@@ -14,6 +14,7 @@ import { DocenteService } from '../../../DocentesyEvaluadores/servicios/docente.
 import { PeriodoService } from '../services/periodo.service';
 import { Curso } from '../../modelos/curso';
 import { Asignatura } from '../../modelos/asignatura';
+import { CrearCurso } from '../../modelos/crear-curso';
 
 @Component({
   selector: 'app-crear-cursos',
@@ -24,16 +25,16 @@ import { Asignatura } from '../../modelos/asignatura';
 })
 export class CrearCursosComponent implements OnInit {
 
-  public curso: Curso = new Curso();
+  public curso: CrearCurso = new CrearCurso();
   public title: String = 'Crear curso';
   asignaturas: Asignatura[] = [];
   docentes: Docente[] = [];
   periodos: Periodo[] = [];
   anios: number[] = [];
-  cedula:number = 0;
+  cedula: number = 0;
 
   constructor(private cursoService: CursoService, private asignaturaService: AsignaturaService, private docenteService: DocenteService, private periodoService: PeriodoService, private router: Router) {
-  
+
     const anioActual = new Date().getFullYear();
     const rango = 10; // Cambia este valor para aumentar los años futuros
     for (let i = 0; i <= rango; i++) {
@@ -42,8 +43,7 @@ export class CrearCursosComponent implements OnInit {
 
   }
 
-  ngOnInit(): void
-  {
+  ngOnInit(): void {
     /*
      * Cargar asignaturas
      */
@@ -71,6 +71,9 @@ export class CrearCursosComponent implements OnInit {
     );
   }
 
+  /**
+   * Crear curso
+   */
   public crearCurso(form: NgForm) {
 
     if (form.invalid) {
@@ -79,24 +82,22 @@ export class CrearCursosComponent implements OnInit {
     }
 
     console.log("Creando curso...");
-
-    this.cursoService.create(this.curso).subscribe
-      (
-        response => {
-          console.log("Resultado de aprendizaje creado exitosamente");
-          console.log(this.curso);
-          this.router.navigate(['cursos/listarCursos']);
-          Swal.fire('Nuevo curso', `Curso ${response.id} creado con éxito`, 'success')
-            .then(() => {
-              this.router.navigate(['/cursos/listarCursos']);
-            });
-        },
-        error => {
-          console.log("Error al crear curso");
-          Swal.fire('Error al crear Curso', `Ha ocurrido un error al crear el curso`, 'error');
-        }
-      );
-
+    this.curso.correoDocente = sessionStorage.getItem('correo') || '';
+    this.cursoService.create(this.curso).subscribe(
+      response => {
+        console.log("Curso creado exitosamente");
+        console.log(this.curso);
+        this.cursoService.notifyCursoCreado(); // Notificar que se ha creado un curso
+        Swal.fire('Nuevo curso', `Curso creado con éxito`, 'success')
+          .then(() => {
+            this.router.navigate(['/cursos/listarCursos']);
+          });
+      },
+      error => {
+        console.log("Error al crear curso");
+        Swal.fire('Error al crear Curso', `Ha ocurrido un error al crear el curso`, 'error');
+      }
+    );
   }
 
 }

@@ -4,15 +4,21 @@ import { Periodo } from "./periodo";
 
 export class Curso {
 
-    id! : number;
-    objAsignatura! : Asignatura;
-    objDocente! : Docente;
-    objPeriodo! : Periodo;
+    /*
+    idAsignatura!: string;
+    correoDocente!: string;
+    periodo!: Periodo;
+
 
     constructor () {
-        this.objAsignatura = new Asignatura();
-        this.objDocente = new Docente();
-        this.objPeriodo = new Periodo();
+        this.idAsignatura = "";
+        this.correoDocente = "";
+        this.periodo = new Periodo();
     }
+        */
+
+    asignatura!: Asignatura;
+    docente!: Docente;
+    periodo!: Periodo;
 
 }

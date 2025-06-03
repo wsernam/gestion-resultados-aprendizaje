@@ -31,7 +31,6 @@
     <table class="table table-bordered table-striped" *ngIf="cursos.length>0">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Asignatura</th>
                 <th>Docente</th>
                 <th>Semestre</th>
@@ -40,11 +39,10 @@
         </thead>
         <tbody>
             <tr *ngFor="let curso of cursos">
-                <td>{{curso.id}}</td>
-                <td>{{curso.objAsignatura.nombre}}</td>
-                <td>{{curso.objDocente.nombres}}</td>
-                <td>{{curso.objPeriodo.semestre}}</td>
-                <td>{{curso.objPeriodo.anio}}</td>
+                <td>{{curso.asignatura.nombre}}</td>
+                <td>{{curso.docente.nombres}} {{curso.docente.apellidos}}</td>
+                <td>{{curso.periodo.semestre}}</td>
+                <td>{{curso.periodo.anio}}</td>
             </tr>
         </tbody>
     </table>

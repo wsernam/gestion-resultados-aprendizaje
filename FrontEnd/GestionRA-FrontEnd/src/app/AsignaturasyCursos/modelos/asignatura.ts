@@ -1,8 +1,6 @@
 export class Asignatura {
 
-    nombre!  : string;
-    creditos! : number;
-    objetivos! : string;
-    semestre! : number;    
+    id! : string;
+    nombre!  : string;   
 
 }

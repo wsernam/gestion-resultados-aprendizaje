@@ -25,7 +25,8 @@ export class ListarCompentenciaAComponent {
         this.competenciasA = competenciasA;
       },
       error => {
-        console.log("Ha ocurrido un error", error);
+        console.log("Ha ocurrido un error");
+        console.error(error);
       }
     );
   }

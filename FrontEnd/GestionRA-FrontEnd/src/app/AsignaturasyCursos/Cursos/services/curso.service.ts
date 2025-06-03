@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Curso } from '../../modelos/curso';
+import { CrearCurso } from '../../modelos/crear-curso';
 
 
 @Injectable({
@@ -11,19 +12,21 @@ export class CursoService {
 
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   private urlEndPoint: string = 'http://localhost:8079/api/cursos';
+  private cursoCreadoSource = new Subject<void>();
+  cursoCreado$ = this.cursoCreadoSource.asObservable();
 
   constructor(private http: HttpClient) { }
 
   getCursosDocente(cedula: number): Observable<Curso[]>
   {
-    console.log("Listando cursos del docente con cédula" + cedula + "desde el servicio...");
+    console.log("Listando cursos del docente con cédula: " + cedula + " desde el servicio...");
     return this.http.get<Curso[]>(`${this.urlEndPoint}/buscar-cursos/cedula/${cedula}`);
   }
 
-  create(curso: Curso): Observable<Curso>
+  create(curso: CrearCurso): Observable<CrearCurso>
   {
     console.log("Creando curso desde el servicio...");
-    return this.http.post<Curso>(this.urlEndPoint, curso, {headers: this.httpHeaders});
+    return this.http.post<CrearCurso>(`${this.urlEndPoint}/guardar`, curso, {headers: this.httpHeaders});
   }
 
   getAllCursos(): Observable<Curso[]>
@@ -31,4 +34,9 @@ export class CursoService {
     console.log("Listando cursos desde el servicio...");
     return this.http.get<Curso[]>(this.urlEndPoint)
   }
+
+  notifyCursoCreado(): void {
+    this.cursoCreadoSource.next();
+  }
+
 }

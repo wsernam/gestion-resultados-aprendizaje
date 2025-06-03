@@ -8,11 +8,12 @@ import { ResultadoP } from '../../../Modelos/resultado-p';
 import { CompetenciasAprendizajeP } from '../../../Modelos/competencias-aprendizaje-p';
 import { CompetenciasAprendizajePService } from '../../../CompetenciasAprendizaje/serviciosCAP/competencias-aprendizaje-p.service';
 import { ResultadoPService } from '../../service/resultados-p.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [FormsModule, SweetAlert2Module, HttpClientModule, RouterLink],
+  imports: [CommonModule, FormsModule, SweetAlert2Module, HttpClientModule, RouterLink],
   templateUrl: './crearRAPform.component.html',
   styleUrl: './crearRAPform.component.css'
 })

@@ -1,87 +1,56 @@
-<div class="card text-black">
-  <div class="card-header">{{ title }}</div>
+<div class="card shadow-sm rounded-4">
+  <div class="card-header bg-primary text-white fw-bold">{{ title }}</div>
   <div class="card-body">
-    <form #formCurso="ngForm">
-
-      <!-- Select asignatura -->
-      <div class="form-group row">
-        <label for="asignatura" class="col-form-label col-sm-2">Asignatura</label>
-        <div class="col-sm-6">
-          <select class="form-control" [(ngModel)]="curso.objAsignatura" name="asignatura" id="asignatura"
-            [class.is-invalid]="formCurso.submitted && !curso.objAsignatura">
+    <form #formCurso="ngForm" autocomplete="off">
+      <!-- Asignatura -->
+      <div class="row mb-3 align-items-center">
+        <label for="asignatura" class="col-sm-3 col-form-label">Asignatura</label>
+        <div class="col-sm-9">
+          <select class="form-select" [(ngModel)]="curso.idAsignatura" name="asignatura" id="asignatura"
+            [class.is-invalid]="formCurso.submitted && !curso.idAsignatura">
             <option [ngValue]="null" disabled selected>Seleccione una asignatura</option>
-            <option *ngFor="let asignatura of asignaturas" [ngValue]="asignatura">{{ asignatura.nombre }}</option>
+            <option *ngFor="let asignatura of asignaturas" [ngValue]="asignatura.id">{{ asignatura.nombre }}</option>
           </select>
-          <div *ngIf="formCurso.submitted && !curso.objAsignatura" class="invalid-feedback">
+          <div *ngIf="formCurso.submitted && !curso.idAsignatura" class="invalid-feedback">
             Este campo es obligatorio.
           </div>
         </div>
       </div>
 
-      <!-- Select docente -->
-      <div class="form-group row">
-        <label for="docente" class="col-form-label col-sm-2">Docente</label>
-        <div class="col-sm-6">
-          <select class="form-control" [(ngModel)]="curso.objDocente.id" name="docente" id="docente"
-            [class.is-invalid]="formCurso.submitted && !curso.objDocente.id">
-            <option [ngValue]="null" disabled selected>Seleccione un docente</option>
-            <option *ngFor="let docente of docentes" [value]="docente.id">{{ docente.nombres }}</option>
-          </select>
-          <div *ngIf="formCurso.submitted && !curso.objDocente.id" class="invalid-feedback">
-            Este campo es obligatorio.
-          </div>
-        </div>
-      </div>
-
-      <!-- Select año -->
-      <div class="form-group row">
-        <label for="periodoAnio" class="col-form-label col-sm-2">Año</label>
-        <div class="col-sm-6">
-          <select class="form-control" id="anio">
+      <!-- Año -->
+      <div class="row mb-3 align-items-center">
+        <label for="anio" class="col-sm-3 col-form-label">Año</label>
+        <div class="col-sm-9">
+          <select class="form-select" id="anio" [(ngModel)]="curso.periodo.anio" name="anio"
+            [class.is-invalid]="formCurso.submitted && !curso.periodo.anio">
             <option [ngValue]="null" disabled selected>Seleccione un año</option>
             <option *ngFor="let anio of anios" [value]="anio">{{ anio }}</option>
           </select>
-          <div *ngIf="formCurso.submitted && !curso.objPeriodo.anio" class="invalid-feedback">
+          <div *ngIf="formCurso.submitted && !curso.periodo.anio" class="invalid-feedback">
             Este campo es obligatorio.
           </div>
         </div>
       </div>
 
-      <!-- Select semestre -->
-      <div class="form-group row">
-        <label for="periodoSemestre" class="col-form-label col-sm-2">Semestre</label>
-        <div class="col-sm-6">
-          <select class="form-control" [(ngModel)]="curso.objPeriodo.semestre" name="periodoSemestre"
-            id="periodoSemestre" [class.is-invalid]="formCurso.submitted && !curso.objPeriodo.semestre">
-            <option [ngValue]="null" disabled selected>Seleccione una asignatura</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option>
+      <!-- Semestre -->
+      <div class="row mb-4 align-items-center">
+        <label for="periodoSemestre" class="col-sm-3 col-form-label">Semestre</label>
+        <div class="col-sm-9">
+          <select class="form-select" [(ngModel)]="curso.periodo.semestre" name="periodoSemestre" id="periodoSemestre"
+            [class.is-invalid]="formCurso.submitted && !curso.periodo.semestre">
+            <option [ngValue]="null" disabled selected>Seleccione un semestre</option>
+            <option *ngFor="let s of [1,2,3,4,5,6,7,8,9,10]" [value]="s">{{ s }}</option>
           </select>
-          <div *ngIf="formCurso.submitted && !curso.objPeriodo.semestre" class="invalid-feedback">
+          <div *ngIf="formCurso.submitted && !curso.periodo.semestre" class="invalid-feedback">
             Este campo es obligatorio.
           </div>
         </div>
       </div>
 
       <!-- Botón de crear -->
-      <div class="form-group row">
-        <div class="col-sm-6">
-          <button class="btn btn-primary" role="button" (click)="crearCurso(formCurso)">Crear</button>
-        </div>
-      </div>
-
-      <!-- Botón de cancelar -->
-      <div class="form-group row">
-        <div class="col-sm-6">
-          <button class="btn btn-danger" role="button" [routerLink]="['/cursos/listarCursos']">Cancelar</button>
+      <div class="row">
+        <div class="col-sm-12 text-end">
+          <button class="btn btn-primary px-4" type="button" (click)="crearCurso(formCurso)">Crear</button>
         </div>
       </div>
     </form>
