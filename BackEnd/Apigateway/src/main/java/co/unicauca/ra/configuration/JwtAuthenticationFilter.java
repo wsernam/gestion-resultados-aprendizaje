@@ -42,7 +42,7 @@ public class JwtAuthenticationFilter extends AbstractGatewayFilterFactory<JwtAut
             String method = request.getMethod().name();
 
             // rutas públicas
-            if (path.startsWith("/api/login") || (path.startsWith("/api/docentes/guardar") && method.equalsIgnoreCase("POST"))) {
+            if ((path.startsWith("/api/login") || path.startsWith("/api/docentes/guardar") || path.startsWith("/api/evaluadores/guardar")) && method.equalsIgnoreCase("POST")) {
                 return chain.filter(exchange);
             }
             //header contains token or not
@@ -61,20 +61,33 @@ public class JwtAuthenticationFilter extends AbstractGatewayFilterFactory<JwtAut
 
                 List<String> roles = jwtUtil.extractRoles(authHeader);
 
-                if (path.startsWith("/api/docentes/**") && !roles.contains("COORDINADOR")) {
+                if ((path.startsWith("/api/docentes/listar") || path.startsWith("/api/evaluadores/listar")) && !roles.contains("COORDINADOR")) {
                     return unauthorized(exchange, "Acceso denegado: requiere rol COORDINADOR");
                 }
+                if (  path.startsWith("/api/docentes/**") && !roles.contains("DOCENTE")) {
+                    return unauthorized(exchange, "Acceso denegado: requiere rol DOCENTE");
+                }
                 
+                if (  path.startsWith("/api/evaluadores/**") && !roles.contains("EVALUADOR")) {
+                    return unauthorized(exchange, "Acceso denegado: requiere rol EVALUADOR");
+                }
                 if (path.startsWith("/api/cursos/**") && !roles.contains("DOCENTE")) {
                     return unauthorized(exchange, "Acceso denegado: requiere rol DOCENTE");
                 }
                 if (path.startsWith("/api/asignaturas/**") && !roles.contains("DOCENTE")) {
                     return unauthorized(exchange, "Acceso denegado: requiere rol DOCENTE");
                 }
-                
                 if (path.startsWith("/api/rubricas/**") && !roles.contains("DOCENTE")) {
                     return unauthorized(exchange, "Acceso denegado: requiere rol DOCENTE");
                 }
+                if ((path.startsWith("/api/RAAsignatura/**") || path.startsWith("/api/competenciasAsignatura/**") ) && !roles.contains("DOCENTE")) {
+                    return unauthorized(exchange, "Acceso denegado: requiere rol DOCENTE");
+                }
+                
+                if ((path.startsWith("/api/RAPrograma/**") || path.startsWith("/api/competenciasPrograma/**") ) && !roles.contains("COORDINADOR")) {
+                    return unauthorized(exchange, "Acceso denegado: requiere rol COORDINADOR");
+                }
+                
             } catch (Exception e) {
                 return unauthorized(exchange, "Token inválido o expirado");
             }
