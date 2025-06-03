@@ -56,7 +56,7 @@ spring:
         - id: rubrica-service
           uri: http://localhost:8084
           predicates:
-            - Path=/api/rubrica/**
+            - Path=/api/rubricas/**
           filters:
             - name: JwtAuthenticationFilter  
         - id: curso-service
