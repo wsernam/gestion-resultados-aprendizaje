@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class CriterioService {
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
-  private urlEndPoint: string = 'http://localhost:8084/api/rubricas';
+  private urlEndPoint: string = 'http://localhost:8079/api/rubricas';
 
   constructor(private http: HttpClient) { }
 

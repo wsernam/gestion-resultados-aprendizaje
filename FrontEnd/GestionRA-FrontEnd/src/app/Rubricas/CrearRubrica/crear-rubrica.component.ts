@@ -53,7 +53,9 @@ export class CrearRubricaComponent {
       response => {
         console.log("Creando Rúbrica...");
         console.log(this.rubrica);
-        this.router.navigate(['/']);
+        this.rubricaService.noficarRubricaCreada(response); //Notificar a otros componentes que se ha creado una rúbrica
+        console.log("Rúbrica creada con éxito");
+        this.router.navigate(['/rubricas/listarRubricas']);
         Swal.fire('Rúbrica creada', `Rubrica creada con éxito`, 'success');
       },
       error => {

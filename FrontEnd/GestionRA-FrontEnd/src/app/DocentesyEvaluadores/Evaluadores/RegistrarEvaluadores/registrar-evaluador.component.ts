@@ -20,7 +20,8 @@ export class RegistrarEvaluadorComponent {
   public title: string = 'Registrar evaluador';
   @ViewChild('formEvaluador') formEvaluador!: NgForm;
 
-  constructor(private evaluadorService: EvaluadorService, private router: Router) { }
+  constructor(private evaluadorService: EvaluadorService, private router: Router) { 
+  }
 
   public registrarEvaluador() {
     console.log("Registrando evaluador...");

@@ -9,7 +9,7 @@ import { Nivel } from '../Modelos/nivel';
 export class NivelService {
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
-  private urlEndPoint: string = 'http://localhost:5000/api/rubricas';
+  private urlEndPoint: string = 'http://localhost:8079/api/rubricas';
 
   constructor(private http: HttpClient) { }
 

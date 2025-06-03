@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs'
+import { Observable, Subject } from 'rxjs'
 import { Rubrica } from '../Modelos/rubrica';
 
 @Injectable({
@@ -9,7 +9,9 @@ import { Rubrica } from '../Modelos/rubrica';
 export class RubricaService {
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
-  private urlEndPoint: string = 'http://localhost:8084/api/rubricas';
+  private urlEndPoint: string = 'http://localhost:8079/api/rubricas';
+  private rubricaCreadaSource = new Subject<Rubrica>();
+  rubricaCreada$ = this.rubricaCreadaSource.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -23,5 +25,10 @@ export class RubricaService {
   {
     console.log("Creando rúbrica desde el servicio...");
     return this.http.post<Rubrica>(this.urlEndPoint, rubrica, {headers: this.httpHeaders});
+  }
+
+  noficarRubricaCreada(rubrica: Rubrica): void {
+    console.log("Notificando creación de rúbrica...");
+    this.rubricaCreadaSource.next(rubrica);
   }
 }

@@ -25,4 +25,9 @@ export class DocenteService {
     return this.http.post<Docente>(`${this.urlEndPoint}/guardar`, docente, {headers: this.httpHeaders});
     //return this.http.post<Docente>(this.urlEndPoint, docente, {headers: this.httpHeaders});
   }
+
+  getDocenteByEmail(correo: string): Observable<Docente> {
+    console.log("Obteniendo docente por correo desde servicio");
+    return this.http.get<Docente>(`${this.urlEndPoint}/buscar-correo/${correo}`);
+  }
 }

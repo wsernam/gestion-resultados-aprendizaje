@@ -29,6 +29,11 @@ export class EvaluadorService {
     return this.http.post<Evaluador>(`${this.urlEndPoint}/guardar`, evaluador, { headers: this.httpHeaders });
   }
 
+  invitarEvaluador(correo: string): Observable<any> {
+    console.log("Invitando evaluador con correo: ", correo);
+    return this.http.post<any>(`${this.urlEndPoint}/invitar`, { correo }, { headers: this.httpHeaders })
+  }
+
   private handlerError(error: HttpErrorResponse) {
     if (error.status === 400 || error.status === 404) {
       const codigoError = error.error.codigoError;

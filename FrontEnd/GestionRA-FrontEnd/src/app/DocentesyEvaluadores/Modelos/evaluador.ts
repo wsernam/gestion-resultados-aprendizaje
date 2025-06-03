@@ -6,5 +6,6 @@ export class Evaluador {
     correo!: string;
     contrasenia!: string;
     confirmarContrasenia!: string;
+    cursos!: string[];
 
 }
