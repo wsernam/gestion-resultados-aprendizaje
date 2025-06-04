@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Rubrica } from '../Modelos/rubrica';
 import { RubricaService } from '../Service/rubrica.service';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { InvitarEvaluadorComponent } from "../../DocentesyEvaluadores/Evaluadores/InvitarEvaluador/invitar-evaluador.component";
@@ -15,12 +15,17 @@ import { InvitarEvaluadorComponent } from "../../DocentesyEvaluadores/Evaluadore
 })
 export class ListarRubricaComponent {
 
+  idCurso: string = '';
   rubricas: Rubrica[] = [];
+  rubrica: Rubrica = new Rubrica();
 
-  constructor(private rubricaService: RubricaService, private router: Router) { }
+  constructor(private rubricaService: RubricaService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.rubricaService.getRubricas().subscribe(
+    this.idCurso = this.route.snapshot.paramMap.get('idCurso') || '';
+    console.log("ID del curso recibido: ", this.idCurso);
+    
+    this.rubricaService.getRubricas(this.idCurso).subscribe(
       rubrica => {
         console.log("Listando rúbricas desde el componente...");
         this.rubricas = rubrica;
@@ -39,18 +44,11 @@ export class ListarRubricaComponent {
     )
   }
 
-  mostrarModalInvitar = false;
+  @ViewChild('invitarEvaluador') invitarEvaluadorComponent!: InvitarEvaluadorComponent;
 
-  abrirModalInvitarEvaluador() {
-    this.mostrarModalInvitar = true;
+  abrirModalInvitar(cursoId: string) {
+    this.invitarEvaluadorComponent.abrirModalInvitar(cursoId);
+    console.log("Abriendo modal para invitar evaluador en curso ID: ", cursoId);
   }
-
-  /*
-  invitarEvaluador(correo: string) {
-    // Aquí llamas a tu servicio para invitar evaluador
-    this.rubricaService.invitarEvaluador(correo, idCurso).subscribe(...);
-    this.mostrarModalInvitar = false;
-  }
-    */
 
 }

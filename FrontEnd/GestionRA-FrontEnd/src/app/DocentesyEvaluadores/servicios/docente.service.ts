@@ -30,4 +30,9 @@ export class DocenteService {
     console.log("Obteniendo docente por correo desde servicio");
     return this.http.get<Docente>(`${this.urlEndPoint}/buscar-correo/${correo}`);
   }
+
+  invitarEvaluador(correo: string, cursoId: string): Observable<any> {
+    console.log("Invitando evaluador con correo: ", correo);
+    return this.http.put<any>(`${this.urlEndPoint}/invitar-evaluador/${correo}`, cursoId, {headers: {'Content-Type': 'text/plain'}});
+  }
 }

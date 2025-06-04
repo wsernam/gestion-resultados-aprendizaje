@@ -3,11 +3,11 @@ import { Nivel } from "./nivel";
 export class Criterio {
 
     descripcion!: String;
-    listaNiveles!: Nivel[]
+    niveles!: Nivel[]
 
     constructor() {
         this.descripcion = '';
-        this.listaNiveles = [];
+        this.niveles = [];
     }
 
 }

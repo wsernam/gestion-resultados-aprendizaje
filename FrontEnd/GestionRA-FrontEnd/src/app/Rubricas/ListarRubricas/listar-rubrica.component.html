@@ -1,15 +1,13 @@
 <main class="contenido bg-light py-4">
   <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
     <h2 class="fw-bold mb-0">Nombre asignatura - período</h2>
-    <div>
-      <button class="btn btn-outline-primary me-2 mb-2 mb-md-0">Invitar evaluador</button>
-      <app-iniviar-evaluador>
-        *ngInf="mostrarModalInvitar";
-        (cerrarModal)="mostrarModalInvitar = false"
-        (enviarInvitacion)="invitarEvaluador($event)">
-      </app-iniviar-evaluador>
-
-      <button class="btn btn-primary" routerLink="/rubricas/crearRubricas">Crear rúbrica</button>
+    <div class="d-flex gap-2">
+      <button class="btn btn-primary" [routerLink]="['/rubricas/crearRubricas', idCurso]">
+        Crear rúbrica
+      </button>
+      <button class="btn btn-outline-primary" (click)="abrirModalInvitar(idCurso)">
+        Invitar Evaluador
+      </button>
     </div>
   </div>
 
@@ -19,20 +17,22 @@
         No hay rúbricas disponibles para esta asignatura.
       </div>
     </div>
-    
+
     <div class="col-md-4" *ngFor="let rubrica of rubricas">
       <div class="card shadow-sm rounded-4 p-3 h-100">
         <h3 class="fw-semibold mb-3">{{ rubrica.descripcion }}</h3>
-        <div class="criterio mb-3" *ngFor="let criterio of rubrica.listaCriterios">
-          <span class="fw-bold text-primary">{{ criterio }}</span>
-          <div class="d-flex gap-2 mt-2">
-            <span class="nivel bg-light border"></span>
-            <span class="nivel bg-light border"></span>
-            <span class="nivel bg-light border"></span>
-            <span class="nivel bg-light border"></span>
-          </div>
+        <div class="criterio mb-3" *ngFor="let criterio of rubrica.criterios">
+          <span class="fw-bold text-primary">{{ criterio.descripcion }}</span>
+          <!-- Mostrar niveles de este criterio -->
+          <ul class="list-group list-group-flush mt-2">
+            <li class="list-group-item px-2 py-1" *ngFor="let nivel of criterio.niveles">
+              <span class="badge bg-secondary me-2">Puntos: {{ nivel.nota }}</span>
+              {{ nivel.descripcion }}
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
+  <app-iniviar-evaluador #invitarEvaluador></app-iniviar-evaluador>
 </main>

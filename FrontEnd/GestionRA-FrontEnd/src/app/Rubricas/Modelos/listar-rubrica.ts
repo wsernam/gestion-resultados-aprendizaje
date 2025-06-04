@@ -1,7 +1,8 @@
 import { Criterio } from "./criterio";
 
-export class Rubrica {
+export class ListarRubrica {
 
+    id!: string;
    idCurso!: string;
    descripcion!: string;   
    ponderado!: number;
@@ -9,6 +10,7 @@ export class Rubrica {
    criterios!: Criterio[];
 
    public constructor() {
+    this.id = '';
       this.descripcion = '';
       this.ponderado = 0;
       this.idCurso = '';
