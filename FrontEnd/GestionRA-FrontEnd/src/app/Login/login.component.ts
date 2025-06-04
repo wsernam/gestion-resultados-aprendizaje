@@ -26,7 +26,7 @@ export class LoginComponent {
   public ingresar() {
     this.loginService.login(this.login).subscribe(
       (response) => {
-        console.log('Login successful:', response);
+        console.log('Login successful');
         sessionStorage.setItem('token', response.toString());
         sessionStorage.setItem('correo', this.login.nombreUsuario);
         sessionStorage.setItem('tipo', this.login.tipo);
