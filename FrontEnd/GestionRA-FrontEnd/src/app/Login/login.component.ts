@@ -24,23 +24,22 @@ export class LoginComponent {
   }
 
   public ingresar() {
-
     this.loginService.login(this.login).subscribe(
       (response) => {
         console.log('Login successful:', response);
         sessionStorage.setItem('token', response.toString());
         sessionStorage.setItem('correo', this.login.nombreUsuario);
         sessionStorage.setItem('tipo', this.login.tipo);
-        
+
         this.docenteService.getDocenteByEmail(this.login.nombreUsuario).subscribe(
           docente => {
             sessionStorage.setItem('cedula', docente.cedula.toString());
+            this.router.navigate(['cursos/listarCursos']);
           },
           error => {
             console.error('Error fetching docente by email:', error);
           }
         )
-        this.router.navigate(['cursos/listarCursos']);
       },
       (error) => {
         console.error('Login failed:', error);

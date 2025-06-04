@@ -18,11 +18,11 @@ export class PerfilService {
     console.log('Correo del usuario:', correo);
 
     if (tipo === 'DOCENTE') {
-      return this.docenteService.getDocentes().pipe(
-        map(docentes => {
-          console.log('Docentes:', docentes);
-          console.log('Buscando correo:', correo);
-          return docentes.find(d => d.correo.trim().toLowerCase() === correo!.trim().toLowerCase());
+      // Cambiado: ahora se usa getDocenteByEmail
+      return this.docenteService.getDocenteByEmail(correo!).pipe(
+        map(docente => {
+          console.log('Docente encontrado:', docente);
+          return docente;
         })
       );
     } else if (tipo === 'EVALUADOR') {
