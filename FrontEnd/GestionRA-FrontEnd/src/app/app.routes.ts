@@ -42,6 +42,6 @@ export const routes: Routes = [
     {path: 'cursos/crearCursos', component: CrearCursosComponent, canActivate: [authGuard]},
     {path: 'Login', component: LoginComponent},
     {path: 'rubricas/crearRubricas', component: CrearRubricaComponent, canActivate: [authGuard]},
-    {path: 'rubricas', component: ListarRubricaComponent, canActivate: [authGuard]},
+    {path: 'rubricas/:idCurso', component: ListarRubricaComponent, canActivate: [authGuard]},
     {path: 'competencias-ra', component: CompetenciasRaComponent, canActivate: [authGuard]}
 ];

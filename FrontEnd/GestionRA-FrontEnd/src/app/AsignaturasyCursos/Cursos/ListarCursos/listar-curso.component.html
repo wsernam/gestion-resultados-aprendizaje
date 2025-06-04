@@ -32,17 +32,21 @@
         <thead>
             <tr>
                 <th>Asignatura</th>
-                <th>Docente</th>
                 <th>Semestre</th>
                 <th>Año</th>
+                <th>Rúbricas</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let curso of cursos">
                 <td>{{curso.asignatura.nombre}}</td>
-                <td>{{curso.docente.nombres}} {{curso.docente.apellidos}}</td>
                 <td>{{curso.periodo.semestre}}</td>
                 <td>{{curso.periodo.anio}}</td>
+                <td>
+                    <button class="btn btn-primary" [routerLink]="['/rubricas', curso.id]">
+                        Ver Rúbricas
+                    </button>
+                </td>
             </tr>
         </tbody>
     </table>

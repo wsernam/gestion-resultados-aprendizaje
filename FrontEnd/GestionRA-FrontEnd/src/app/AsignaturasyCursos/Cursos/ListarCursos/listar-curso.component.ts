@@ -4,6 +4,7 @@ import { Router, RouterLink } from '@angular/router';
 import { Curso } from '../../modelos/curso';
 import { CursoService } from '../services/curso.service';
 import { CrearCursosComponent } from '../crear-cursos/crear-cursos.component';
+import { ConsultarCurso } from '../../modelos/consultar-curso';
 
 @Component({
   selector: 'app-listar-curso',
@@ -14,7 +15,7 @@ import { CrearCursosComponent } from '../crear-cursos/crear-cursos.component';
 })
 export class ListarCursoComponent {
 
-  cursos: Curso[] = [];
+  cursos: ConsultarCurso[] = [];
   cedula: number = 0;
   mostrarCrear = false;
 

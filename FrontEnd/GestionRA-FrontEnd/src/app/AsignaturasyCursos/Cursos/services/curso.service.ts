@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Curso } from '../../modelos/curso';
 import { CrearCurso } from '../../modelos/crear-curso';
+import { ConsultarCurso } from '../../modelos/consultar-curso';
 
 
 @Injectable({
@@ -17,10 +18,10 @@ export class CursoService {
 
   constructor(private http: HttpClient) { }
 
-  getCursosDocente(cedula: number): Observable<Curso[]>
+  getCursosDocente(cedula: number): Observable<ConsultarCurso[]>
   {
     console.log("Listando cursos del docente con cédula: " + cedula + " desde el servicio...");
-    return this.http.get<Curso[]>(`${this.urlEndPoint}/buscar-cursos/cedula/${cedula}`);
+    return this.http.get<ConsultarCurso[]>(`${this.urlEndPoint}/buscar-cursos/cedula/${cedula}`);
   }
 
   create(curso: CrearCurso): Observable<CrearCurso>
