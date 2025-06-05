@@ -12,13 +12,13 @@
             <div class="form-group row">
                
                 <div class="col-sm-6">
-                    <select class="form-control" [(ngModel)]="resultadoA.competenciaAsignaturaId" name="competencia"
-                        id="competencia" [class.is-invalid]="FormRAA.submitted && !resultadoA.competenciaAsignaturaId">
+                    <select class="form-control" [(ngModel)]="resultadoA.competenciaAsignatura" name="competencia"
+                        id="competencia" [class.is-invalid]="FormRAA.submitted && !resultadoA.competenciaAsignatura">
                         <option [ngValue]="null" disabled selected>Seleccione una competencia de asignatura</option>
-                        <option *ngFor="let competencia of competencias" [value]="competencia.id">{{
+                        <option *ngFor="let competencia of competencias" [ngValue]="competencia">{{
                             competencia.nombre }}</option>
                     </select>
-                    <div *ngIf="FormRAA.submitted && !resultadoA.competenciaAsignaturaId" class="invalid-feedback">
+                    <div *ngIf="FormRAA.submitted && !resultadoA.competenciaAsignatura" class="invalid-feedback">
                         Este campo es obligatorio.
                     </div>
                 </div>

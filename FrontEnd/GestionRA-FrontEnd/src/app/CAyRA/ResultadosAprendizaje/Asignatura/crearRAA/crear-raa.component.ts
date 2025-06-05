@@ -30,7 +30,7 @@ export class CrearRAAComponent {
         console.log("Resultado de Aprendizaje Asignatura creado exitosamente");
         console.log(this.resultadoA);
         this.router.navigate(['/competencias-ra'])
-        Swal.fire('Nuevo Resultado de Aprendizaje Asignatura', `Resultado de Aprendizaje Asignatura ${response.competenciaAsignaturaId} creado con éxito`, 'success');
+        Swal.fire('Nuevo Resultado de Aprendizaje Asignatura', `Resultado de Aprendizaje Asignatura ${response.nombre} creado con éxito`, 'success');
       },
       error: error => {
         console.error("Error al registrar Resultado de Aprendizaje Asignatura: ", error.mesage);
