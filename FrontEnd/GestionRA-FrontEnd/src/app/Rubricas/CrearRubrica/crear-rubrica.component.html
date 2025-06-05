@@ -11,7 +11,7 @@
 
         <select class="form-select" id="resultadoAprendizaje" [(ngModel)]="rubrica.idRaAsignatura">
           <option [ngValue]="null" disabled selected>Seleccione un resultado de aprendizaje</option>
-          <option *ngFor="let ra of resultadosAprendizaje" [value]="ra.id">{{ ra.descripcion }}</option>
+          <option *ngFor="let ra of resultadosAprendizaje" [value]="ra.id">{{ ra.nombre }}</option>
         </select>
 
         <!-- Provisional para pruebas -->

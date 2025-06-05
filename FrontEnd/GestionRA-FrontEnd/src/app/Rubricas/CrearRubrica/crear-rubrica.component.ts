@@ -39,10 +39,12 @@ export class CrearRubricaComponent {
     this.cursoService.getCursoById(this.idCurso).subscribe(
       curso => {
         const nombreAsignatura = curso.asignatura.nombre;
+        console.log("Nombre de la asignatura obtenida del curso: ", nombreAsignatura);
         // Busca la asignatura por nombre para obtener el id
         this.asignaturaService.getAsignaturaByName(nombreAsignatura).subscribe(
           asignatura => {
             this.idAsignatura = asignatura.id;
+            console.log("ID de la asignatura obtenida: ", this.idAsignatura);
             this.cargarResultadosAprendizaje();
           },
           error => {
@@ -55,8 +57,6 @@ export class CrearRubricaComponent {
       }
     );
 
-    this.cargarResultadosAprendizaje();
-    
   }
 
   cargarResultadosAprendizaje() {
