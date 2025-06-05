@@ -1,44 +1,48 @@
-<div class="card bg-dark text-white">
+<div class="card bg-light">
     <div class="card-header">{{ title }}</div>
     <div class="card-body">
 
-        <form #formCurso="ngForm" autocomplete="off">
+        <form id="formCompetenciaA" #formCompetenciaA="ngForm" autocomplete="off" class="form-flex">
+           <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
             <div class="form-group row">
-                <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
+                
                 <div class="col-sm-6">
                     <input type="text" class="form-control" [(ngModel)]="competenciaA.nombre" name="nombre">
                 </div>
             </div>
+             <label for="asignatura" class="col-sm-3 col-form-label">Asignatura</label>
             <div class="row mb-3 align-items-center">
-                <label for="asignatura" class="col-sm-3 col-form-label">Asignatura</label>
+               
                 <div class="col-sm-9">
                     <select class="form-select" [(ngModel)]="competenciaA.asignaturaId" name="asignatura" id="asignatura"
-                        [class.is-invalid]="formCurso.submitted && !competenciaA.asignaturaId">
+                        [class.is-invalid]="formCompetenciaA.submitted && !competenciaA.asignaturaId">
                         <option [ngValue]="null" disabled selected>Seleccione una asignatura</option>
                         <option *ngFor="let asignatura of asignaturas" [ngValue]="asignatura.id">{{ asignatura.nombre }}
                         </option>
                     </select>
-                    <div *ngIf="formCurso.submitted && !competenciaA.asignaturaId" class="invalid-feedback">
+                    <div *ngIf="formCompetenciaA.submitted && !competenciaA.asignaturaId" class="invalid-feedback">
                         Este campo es obligatorio.
                     </div>
                 </div>
             </div>
+            <label for="competencia_programa" class="col-sm-3 col-form-label">Competencia de programa</label>
             <div class="row mb-3 align-items-center">
-                <label for="competencia_programa" class="col-sm-3 col-form-label">Competencia de programa</label>
+              
                 <div class="col-sm-9">
                     <select class="form-select" [(ngModel)]="competenciaA.competenciaProgramaId" name="competencia_programa" id="competencia_programa"
-                        [class.is-invalid]="formCurso.submitted && !competenciaA.competenciaProgramaId">
+                        [class.is-invalid]="formCompetenciaA.submitted && !competenciaA.competenciaProgramaId">
                         <option [ngValue]="null" disabled selected>Seleccione una competencia de programa</option>
                         <option *ngFor="let competenciaP of competenciasPrograma" [ngValue]="competenciaP.id">{{ competenciaP.nombre }}
                         </option>
                     </select>
-                    <div *ngIf="formCurso.submitted && !competenciaA.competenciaProgramaId" class="invalid-feedback">
+                    <div *ngIf="formCompetenciaA.submitted && !competenciaA.competenciaProgramaId" class="invalid-feedback">
                         Este campo es obligatorio.
                     </div>
                 </div>
             </div>
+             <label for="descripcion" class="col-form-label col-sm-2">Descripción</label>
             <div class="form-group row">
-                <label for="descripcion" class="col-form-label col-sm-2">Descripción</label>
+               
                 <div class="col-sm-6">
                     <input type="text" class="form-control" [(ngModel)]="competenciaA.descripcion" name="descripcion">
                 </div>

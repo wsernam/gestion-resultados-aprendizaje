@@ -1,0 +1,11 @@
+#formCompetenciaA{
+    background-color: #F8F9FA;
+    color: black;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
