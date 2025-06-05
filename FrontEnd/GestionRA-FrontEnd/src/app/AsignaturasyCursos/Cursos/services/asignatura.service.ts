@@ -19,4 +19,9 @@ export class AsignaturaService {
     return this.http.get<Asignatura[]>(`${this.urlEndPoint}/listar`);
   }
 
+  getAsignaturaByName(nombre: string): Observable<Asignatura> {
+    console.log("Buscando asignatura por nombre desde el servicio: ", nombre);
+    return this.http.get<Asignatura>(`${this.urlEndPoint}/${nombre}`);
+  }
+
 }

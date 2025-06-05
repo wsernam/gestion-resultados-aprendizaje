@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class ResultadosAService {
 
   private httpHeader = new HttpHeaders({'Content-Type': 'application/json'});
-  private urlEndPoint: string = "http://localhost:8079/api/resultados-asignatura";
+  private urlEndPoint: string = "http://localhost:8079/api/RAAsignatura";
 
   constructor(private http: HttpClient) { }
 
@@ -24,7 +24,7 @@ export class ResultadosAService {
   }
 
   getResultadosAPorAsignatura(asignaturaId: string): Observable<ResultadoA[]> {
-    console.log("Listando resultados de aprendizaje de asignatura por asignatura desde el servicio");
+    console.log("Listando resultados de aprendizaje de asignatura por asignatura desde el servicio con ID: ", asignaturaId);
     return this.http.get<ResultadoA[]>(`${this.urlEndPoint}/buscar/asignatura/${asignaturaId}`);
   }
 }

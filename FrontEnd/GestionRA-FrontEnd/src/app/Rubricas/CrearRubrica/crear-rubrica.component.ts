@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { ResultadosAService } from '../../CAyRA/ResultadosAprendizaje/service/resultados-a.service';
 import { ResultadoA } from '../../CAyRA/Modelos/resultado-a';
 import { CursoService } from '../../AsignaturasyCursos/Cursos/services/curso.service';
+import { AsignaturaService } from '../../AsignaturasyCursos/Cursos/services/asignatura.service';
 
 @Component({
   selector: 'app-crear-rubrica',
@@ -27,55 +28,63 @@ export class CrearRubricaComponent {
   resultadosAprendizaje: ResultadoA[] = [];
   idAsignatura: string = '';
   idCurso: string = '';
-  
-  constructor(private raaService: ResultadosAService, private cursoService: CursoService, private rubricaService: RubricaService, private route: ActivatedRoute, private router: Router) { }
 
-  ngOnInit():void {
+  constructor(private raaService: ResultadosAService, private cursoService: CursoService, private asignaturaService: AsignaturaService, private rubricaService: RubricaService, private route: ActivatedRoute, private router: Router) { }
+
+  ngOnInit(): void {
     this.idCurso = this.route.snapshot.paramMap.get('idCurso') || '';
     console.log("ID del curso recibido: ", this.idCurso);
 
-    /*
+    // Obtén el curso y luego la asignatura asociada
     this.cursoService.getCursoById(this.idCurso).subscribe(
-      curso =>
-      {
-        this.idAsignatura = curso.asignatura?.id || '';
-        this.cargarResultadosAprendizaje();
+      curso => {
+        const nombreAsignatura = curso.asignatura.nombre;
+        // Busca la asignatura por nombre para obtener el id
+        this.asignaturaService.getAsignaturaByName(nombreAsignatura).subscribe(
+          asignatura => {
+            this.idAsignatura = asignatura.id;
+            this.cargarResultadosAprendizaje();
+          },
+          error => {
+            console.log("No se pudo obtener la asignatura por nombre.");
+          }
+        );
+      },
+      error => {
+        console.log("No se pudo obtener el curso para extraer la asignatura.");
       }
-    )
-      */
+    );
   }
 
-  /*
   cargarResultadosAprendizaje() {
-    this.raaService.getResultadosAPorAsignatura(this.idAsignatura).subscribe()
+    this.raaService.getResultadosAPorAsignatura(this.idAsignatura).subscribe(
+      resultados => {
+        this.resultadosAprendizaje = resultados;
+        console.log("Resultados de Aprendizaje cargados: ", resultados);
+      }
+    );
   }
-    */
 
-  public agregarCriterio()
-  {
+  public agregarCriterio() {
     const nuevoCriterio = new Criterio();
     this.rubrica.criterios.push(nuevoCriterio);
   }
 
-  public eliminarCriterio(index: number)
-  {
+  public eliminarCriterio(index: number) {
     this.rubrica.criterios.splice(index, 1);
   }
 
-  public agregarNivel(index: number)
-  {
+  public agregarNivel(index: number) {
     const nuevoNivel = new Nivel();
     this.rubrica.criterios[index].niveles.push(nuevoNivel);
   }
 
-  public eliminarNivel(criterioIndex: number, nivelIndex: number)
-  {
+  public eliminarNivel(criterioIndex: number, nivelIndex: number) {
     this.rubrica.criterios[criterioIndex].niveles.splice(nivelIndex, 1);
   }
 
 
-  public guardarRubrica()
-  {
+  public guardarRubrica() {
     this.rubricaService.createRubrica(this.rubrica).subscribe(
       response => {
         console.log("Creando Rúbrica...");
