@@ -46,9 +46,9 @@ export class EvaluadorService {
     );
   }
 
-  getCursosEvaluador(correo: string): Observable<ConsultarCurso[]> {
+  getCursosEvaluador(correo: string): Observable<string[]> {
     console.log("Listando cursos del evaluador con correo: ", correo);
-    return this.http.get<ConsultarCurso[]>(`${this.urlEndPoint}/buscar-cursos/${correo}`).pipe(
+    return this.http.get<string[]>(`${this.urlEndPoint}/buscar-cursos/${correo}`).pipe(
       catchError(this.handlerError)
     );
   }

@@ -19,7 +19,8 @@
             "mainClass": "co.unicauca.ra.BackendApplication",
             "projectName": "servicioDocentesEvaluadores",
             "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote"
         },
         {
             "type": "java",
@@ -59,6 +60,46 @@
             "cwd": "${workspaceFolder}",
             "mainClass": "co.unicauca.ra.ApigatewayApplication",
             "projectName": "co.unicauca.ra-Apigateway",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ApigatewayApplication<Apigateway>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "co.unicauca.ra.ApigatewayApplication",
+            "projectName": "Apigateway",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-AsignaturasCursosApplication<servicioAsignaturaCurso>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "co.unicauca.ra.AsignaturasCursosApplication",
+            "projectName": "servicioAsignaturaCurso",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ServicioLoginApplication<servicioLogin>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "co.unicauca.ra.ServicioLoginApplication",
+            "projectName": "servicioLogin",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ServicioracompetenciasApplication<servicioracompetencias>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "co.unicauca.servicioracompetencias.ServicioracompetenciasApplication",
+            "projectName": "servicioracompetencias",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }

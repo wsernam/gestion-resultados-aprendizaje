@@ -18,6 +18,7 @@ import { EvaluadorService } from '../../../DocentesyEvaluadores/Evaluadores/Serv
 export class ListarCursoComponent {
 
   cursos: ConsultarCurso[] = [];
+  cursosid: string[] = [];
   cedula: number = 0;
   mostrarCrear = false;
   isEvaluador = false;
@@ -54,12 +55,23 @@ export class ListarCursoComponent {
       if (correo) {
         this.evaluadorService.getCursosEvaluador(correo).subscribe(
           cursos => {
-            this.cursos = cursos;
+            this.cursosid = cursos;
+            for (const cursoId of this.cursosid) {
+              this.objCursoService.getCursoById(cursoId).subscribe(
+                curso => {
+                  this.cursos.push(curso);
+                },
+                error => {
+                  console.error("Error al obtener el curso con ID:", cursoId, error);
+                }
+              );
+            }
           }
         );
         // Si tienes un observable para actualización, agrégalo aquí también
       }
     }
+   
   }
 
   toggleCrear() {

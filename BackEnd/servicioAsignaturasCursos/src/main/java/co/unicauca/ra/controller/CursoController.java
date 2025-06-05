@@ -67,6 +67,7 @@ public class CursoController {
         if(semestre==null){
             return cursoService.findByYear(anio);
         }
+        
         Periodo periodo = new Periodo(anio,semestre);
         return cursoService.findByPeriodo(periodo);
     }
