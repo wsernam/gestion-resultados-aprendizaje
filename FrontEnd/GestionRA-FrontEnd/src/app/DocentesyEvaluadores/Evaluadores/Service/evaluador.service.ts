@@ -38,6 +38,13 @@ export class EvaluadorService {
     );
   }
 
+  getEvaluadorByEmail(correo: string): Observable<Evaluador> {
+    console.log("Buscando evaluador por correo: ", correo);
+    return this.http.get<Evaluador>(`${this.urlEndPoint}/buscar-correo/${correo}`).pipe(
+      catchError(this.handlerError)
+    );
+  }
+
   private handlerError(error: HttpErrorResponse) {
     if (error.status === 400 || error.status === 404) {
       const codigoError = error.error.codigoError;

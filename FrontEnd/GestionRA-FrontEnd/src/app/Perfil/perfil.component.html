@@ -3,6 +3,10 @@
     <h2 class="text-center mb-4">Perfil de {{ perfil.nombres || perfil.nombre }}</h2>
     <div *ngIf="perfil">
       <div class="perfil-item mb-3">
+        <span class="perfil-label"><i class="zmdi zmdi-account"></i> Rol:</span>
+        <span>{{ roles.length > 0 ? roles.join(', ') : 'Sin roles' }}</span>
+      </div>
+      <div class="perfil-item mb-3">
         <span class="perfil-label"><i class="zmdi zmdi-account"></i> Nombre:</span>
         <span>{{ perfil.nombres || perfil.nombre }} {{ perfil.apellidos || perfil.apellido }}</span>
       </div>
@@ -10,15 +14,14 @@
         <span class="perfil-label"><i class="zmdi zmdi-email"></i> Correo:</span>
         <span>{{ perfil.correo }}</span>
       </div>
-      <div class="perfil-item mb-3">
+      <div class="perfil-item mb-3" *ngIf="perfil.tipo">
         <span class="perfil-label"><i class="zmdi zmdi-label"></i> Tipo:</span>
         <span>{{ perfil.tipo }}</span>
       </div>
-      <div class="perfil-item mb-3">
+      <div class="perfil-item mb-3" *ngIf="perfil.titulo">
         <span class="perfil-label"><i class="zmdi zmdi-graduation-cap"></i> Título:</span>
         <span>{{ perfil.titulo }}</span>
       </div>
-      <!-- Otros campos si deseas -->
     </div>
     <div *ngIf="!perfil" class="text-center text-danger mt-4">
       <p>No se encontró información de perfil.</p>

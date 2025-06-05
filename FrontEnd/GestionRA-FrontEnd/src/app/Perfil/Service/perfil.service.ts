@@ -27,8 +27,11 @@ export class PerfilService {
       );
     } else if (tipo === 'EVALUADOR') {
       console.log('Buscando evaluador con correo:', correo);
-      return this.evaluadorService.getEvaluadores().pipe(
-        map(evaluadores => evaluadores.find(e => e.correo === correo))
+      return this.evaluadorService.getEvaluadorByEmail(correo!).pipe(
+        map(evaluador => {
+          console.log('Evaluador encontrado:', evaluador);
+          return evaluador;
+        })
       );
     } else {
       console.error('Tipo de usuario no reconocido:', tipo);
