@@ -12,7 +12,7 @@ import { ResultadoP } from '../../Modelos/resultado-p';
 export class ResultadoPService {
 
   private httpHeader = new HttpHeaders({'Content-Type': 'application/json'});
-  private urlEndPoint: string = "http://localhost_5000/api/resultados-programa";
+  private urlEndPoint: string = "http://localhost_5000/api/RAPrograma";
 
   constructor(private http: HttpClient) { }
 

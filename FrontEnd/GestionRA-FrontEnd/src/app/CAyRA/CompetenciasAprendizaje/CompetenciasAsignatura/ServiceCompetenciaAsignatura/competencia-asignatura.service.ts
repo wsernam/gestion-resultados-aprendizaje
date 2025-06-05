@@ -9,7 +9,7 @@ import { CompetenciaAprendizajeA } from '../../../Modelos/competencia-aprendizaj
 export class CompetenciaAsignaturaService {
 
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-  private urlEndPoint: string = 'http://localhost:8081/api/competenciasAsignatura';
+  private urlEndPoint: string = 'http://localhost:8079/api/competenciasAsignatura';
 
   constructor(private http: HttpClient) { }
 

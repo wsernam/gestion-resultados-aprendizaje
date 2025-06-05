@@ -14,8 +14,8 @@ export class CompetenciasAprendizajePService {
   constructor(private http: HttpClient) { }
 
   getCompetenciasAprendizajeP(): Observable<CompetenciasAprendizajeP[]> {
-    //return this.http.get<CompetenciasAprendizajeP[]>(`${this.urlEndPoint}/listar`);
-    return this.http.get<CompetenciasAprendizajeP[]>(`${this.urlEndPoint}`);
+    return this.http.get<CompetenciasAprendizajeP[]>(`${this.urlEndPoint}/listar`);
+    //return this.http.get<CompetenciasAprendizajeP[]>(`${this.urlEndPoint}`);
   }
 
   create(competenciasAprendizajeP: CompetenciasAprendizajeP): Observable<CompetenciasAprendizajeP> {

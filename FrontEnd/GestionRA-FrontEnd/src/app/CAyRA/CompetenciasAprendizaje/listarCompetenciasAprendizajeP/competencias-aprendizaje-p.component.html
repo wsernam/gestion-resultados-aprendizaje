@@ -10,7 +10,7 @@
 <table class="table table-bordered table-striped" *ngIf="competenciasAprendizajeP.length>0">
     <thead>
         <tr>
-            <th>Id</th>
+            <th>Nombre</th>
             <th>Programa</th>
             <th>Descripción</th>
             <th>Estado</th>
@@ -19,7 +19,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let competenciasAprendizajeP of competenciasAprendizajeP">
-            <td>{{competenciasAprendizajeP.id}}</td>
+            <td>{{competenciasAprendizajeP.nombre}}</td>
             <td>{{competenciasAprendizajeP.programa}}</td>
             <td>{{competenciasAprendizajeP.descripcion}}</td>
             <td>{{competenciasAprendizajeP.estado}}</td>

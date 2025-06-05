@@ -22,7 +22,7 @@ export class CrearCompetenciasAComponent {
   public competenciaA: CompetenciaAprendizajeA = new CompetenciaAprendizajeA();
   public competenciasPrograma: CompetenciasAprendizajeP[] = [];
   public asignaturas: Asignatura[] = [];
-  public title: string = "Crear Competencia de Aprendizaje de Asignatura";
+  public title: string = "Crear Competencia de Asignatura";
 
   constructor (private asignaturaService:AsignaturaService, private competenciaPService: CompetenciasAprendizajePService, private competenciaAService: CompetenciaAsignaturaService, private router: Router) {}
 
@@ -30,10 +30,10 @@ export class CrearCompetenciasAComponent {
   {    
     this.competenciaAService.create(this.competenciaA).subscribe(
       response => {
-        console.log("Creando compentencia de aprendizaje de asignatura");
+        console.log("Creando compentencia de asignatura");
         console.log(this.competenciaA);
-        this.router.navigate(['/compentenciasAprendizaje/listarCompetenciasAprendizajeA']);
-        Swal.fire('Nueva competencia de aprendizaje de programa', `Competencia de aprendizaje de programa ${this.competenciaA.id} creada con éxito`, 'success');
+       // this.router.navigate(['/compentenciasAprendizaje/listarCompetenciasAprendizajeA']);
+        Swal.fire('Nueva competencia de aprendizaje de programa', `Competencia de asignatura creada con éxito`, 'success');
       },
       error => {
         console.log("Ha ocurrido un error", error);
