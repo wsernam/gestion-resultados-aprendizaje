@@ -13,23 +13,24 @@ import Swal from 'sweetalert2';
 export class ResultadoPService {
 
   private httpHeader = new HttpHeaders({'Content-Type': 'application/json'});
-  private urlEndPoint: string = "http://localhost_5000/api/RAPrograma";
+  private urlEndPoint: string = "http://localhost:8079/api/RAPrograma";
 
   constructor(private http: HttpClient) { }
 
   getResultadoP(): Observable<ResultadoP[]> {
 
     console.log("Listando resultados de aprendizaje de programa desde el servicio");
-    return this.http.get<ResultadoP[]>(this.urlEndPoint);
+    return this.http.get<ResultadoP[]>(`${this.urlEndPoint}/listar`);
 
   }
 
   create(resultadoP: ResultadoP): Observable<ResultadoP> {
 
     console.log("Creando resultados de aprendizaje de programa desde el servicio");
-    return this.http.post<ResultadoP>(this.urlEndPoint, resultadoP, { headers: this.httpHeader }).pipe(
+    return this.http.post<ResultadoP>(`${this.urlEndPoint}/guardar`, resultadoP, { headers: this.httpHeader }).pipe(
       catchError(this.handleError)
     );
+
 
   }
 

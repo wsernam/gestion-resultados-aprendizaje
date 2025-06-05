@@ -4,16 +4,17 @@
 <table class="table table-bordered table-striped" *ngIf="resultadop.length>0">
     <thead>
         <tr>
+             <th>Nombre</th>
             <th>Descripción</th>
             <th>Programa</th>
-            <th>Competencia</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let resultado of resultadop">
+            <td>{{resultado.nombre}}</td>
             <td>{{resultado.descripcion}}</td>
             <td>{{resultado.programa}}</td>
-            <td>{{resultado.objCompetencia.descripcion}}</td>
+          
         </tr>
     </tbody>
 </table>

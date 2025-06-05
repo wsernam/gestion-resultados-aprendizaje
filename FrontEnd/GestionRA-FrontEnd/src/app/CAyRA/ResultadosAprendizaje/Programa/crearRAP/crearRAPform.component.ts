@@ -20,7 +20,8 @@ import { CommonModule } from '@angular/common';
 
 export class FormComponent {
   public resultadoP: ResultadoP = new ResultadoP();
-  public title: String = 'Crear resultado de aprendizaje';
+  public title: String = 'Crear resultado de aprendizaje de Programa';
+  public competencia: CompetenciasAprendizajeP = new CompetenciasAprendizajeP();
   public competencias: CompetenciasAprendizajeP[] = []
 
   constructor(private resultadoPService: ResultadoPService, private competenciaService: CompetenciasAprendizajePService, private router: Router) { }
@@ -44,18 +45,22 @@ export class FormComponent {
     }
 
     console.log("Creando resultado de aprendizaje de programa");
-    this.resultadoPService.create(this.resultadoP).subscribe({
-      next: response => {
+    console.log(this.competencia);
+    this.resultadoP.programa = this.competencia.programa;
+    this.resultadoP.competenciaProgramaId = this.competencia.id;
+    console.log(this.resultadoP);
+    this.resultadoPService.create(this.resultadoP).subscribe(
+      response => {
         console.log("Resultado de aprendizaje creado exitosamente");
         console.log(this.resultadoP);
-        this.router.navigate(['CAyRA/listarCa']),
-          Swal.fire('Nuevo resultado de aprendizaje', `Resultado: ${this.resultadoP.descripcion} creado con éxito`, 'success');
+        //this.router.navigate(['CAyRA/listarCa']),
+          Swal.fire('Nuevo resultado de aprendizaje', `Resultado: ${this.resultadoP.nombre} creado con éxito`, 'success');
       },
-      error: error => {
+      error => {
         console.error("Error al registrar el resultado de aprendizaje", error.message);
         //Swal.fire('Error', 'Hubo un problema al registrar el resultado de aprendizaje', 'error');
       }
-    });
+    );
   }
 
 }

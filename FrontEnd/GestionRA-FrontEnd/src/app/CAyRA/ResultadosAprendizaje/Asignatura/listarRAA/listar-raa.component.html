@@ -1,16 +1,16 @@
 <div *ngIf="resultadosA?.length==0" class="alert alert-info">
     No hay resultados de aprendizaje asignatura registrados en la base de datos
 </div>
-<table class="table table-bordered table-hover shadow-sm" *ngIf="resultadosA.length>0">
+<table class="table table-bordered table-striped shadow-sm" *ngIf="resultadosA.length>0">
     <thead class="table-light text-center">
         <tr>
-            <th>Id Asignatura</th>
+            <th>Nombre</th>
             <th>Descripción</th>
         </tr>
     </thead>
     <tbody class="text-center align-middle">
         <tr *ngFor="let resultadoA of resultadosA">
-            <td>{{ resultadoA.competenciaAsignaturaId }}</td>
+            <td>{{ resultadoA.nombre }}</td>
             <td>{{ resultadoA.descripcion }}</td>
         </tr>
     </tbody>

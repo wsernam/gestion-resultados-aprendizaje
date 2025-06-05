@@ -20,8 +20,8 @@ public class MapeadorRAAsignatura {
     public RAAsignaturaDTORespuesta convertirEntityARespuesta(RAAsignatura entity) {
         return new RAAsignaturaDTORespuesta(
             entity.getId(),
-            entity.getNombre(),
             entity.getCompetenciaAsignaturaId(),
+            entity.getNombre(),
             entity.getDescripcion()
         );
     }

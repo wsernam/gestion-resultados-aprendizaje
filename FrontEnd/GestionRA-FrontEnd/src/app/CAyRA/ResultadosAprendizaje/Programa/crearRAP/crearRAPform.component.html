@@ -1,8 +1,14 @@
-<div class="card bg-dark text-white">
+<div class="card bg-light">
     <div class="card-header">{{ title }}</div>
     <div class="card-body">
         <form #formRAP="ngForm">
-
+            <!--Input Nombre-->
+            <div class="form-group row">
+                <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="resultadoP.nombre" name="nombre">
+                </div>
+            </div>
             <!--Input descripción-->
             <div class="form-group row">
                 <label for="descripcion" class="col-form-label col-sm-2">Descripción</label>
@@ -14,25 +20,17 @@
                     </div>
                 </div>
             </div>
-
-            <!--Input Programa-->
-            <div class="form-group row">
-                <label for="programa" class="col-form-label col-sm-2">Programa</label>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="resultadoP.programa" name="programa">
-                </div>
-            </div>
-
             <!--Select Compentencia-->
             <div class="form-group row">
-                <label for="competencia" class="col-form-label col-sm-2">Competencia</label>
+                <label for="competencia" class="col-form-label col-sm-2">Competencia de Programa</label>
                 <div class="col-sm-6">
-                    <select class="form-control" [(ngModel)]="resultadoP.objCompetencia.id" name="competencia"
-                        id="competencia" [class.is-invalid]="formRAP.submitted && !resultadoP.objCompetencia.id">
-                        <option *ngFor="let competencia of competencias" [value]="competencia.id">{{
-                            competencia.descripcion }}</option>
+                    <select class="form-control" [(ngModel)]="competencia" name="competencia"
+                        id="competencia" [class.is-invalid]="formRAP.submitted && !competencia">
+                        <option [ngValue]="null" disabled selected>Seleccione una competencia de programa</option>
+                        <option *ngFor="let competencia of competencias" [ngValue]="competencia">{{
+                            competencia.nombre }}</option>
                     </select>
-                    <div *ngIf="formRAP.submitted && !resultadoP.objCompetencia.id" class="invalid-feedback">
+                    <div *ngIf="formRAP.submitted && !competencia" class="invalid-feedback">
                         Este campo es obligatorio.
                     </div>
                 </div>
@@ -44,15 +42,16 @@
                     <button class="btn btn-primary" role="button" (click)="crearResultadoP(formRAP)">Crear</button>
                 </div>
             </div>
-
+            
             <!-- Botón de cancelar -->
+             <!--
             <div class="form-group row">
                 <div class="col-sm-6">
                     <button class="btn btn-danger" role="button"
                         [routerLink]="['/resultados/listarResultados']">Cancelar</button>
                 </div>
             </div>
-
+            -->
         </form>
     </div>
 </div>

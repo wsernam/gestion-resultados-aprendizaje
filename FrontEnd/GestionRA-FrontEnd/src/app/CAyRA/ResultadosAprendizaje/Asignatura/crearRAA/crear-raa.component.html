@@ -1,25 +1,37 @@
-<div class="card text-black">
+<div class="card bg-light text-black">
     <div class="card-header">Registrar Resultado de Aprendizaje Asignatura</div>
     <div class="card-body">
-        <form>
-            <div class="form-group">
-                <span class="input-icon"><i class="zmdi zmdi-label"></i></span>
-                <select class="form-control" required [(ngModel)]="resultadoA.competenciaAsignaturaId" name="tipo">
-                    <option value="" disabled>Tipo</option>
-                    <option>Cátedra</option>
-                    <option>Tiempo Completo</option>
-                    <option>Planta</option>
-                </select>
+        <form #FormRAA="ngForm">
+             <div class="form-group row">
+                <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
+                <input type="text" class="form-control" [(ngModel)]="resultadoA.nombre" name="nombre" placeholder="nombre"
+                    required>
+            </div>
+            <!--Select Compentencia-->
+             <label for="competencia" class="col-form-label col-sm-2">Competencia</label>
+            <div class="form-group row">
+               
+                <div class="col-sm-6">
+                    <select class="form-control" [(ngModel)]="resultadoA.competenciaAsignaturaId" name="competencia"
+                        id="competencia" [class.is-invalid]="FormRAA.submitted && !resultadoA.competenciaAsignaturaId">
+                        <option [ngValue]="null" disabled selected>Seleccione una competencia de asignatura</option>
+                        <option *ngFor="let competencia of competencias" [value]="competencia.id">{{
+                            competencia.nombre }}</option>
+                    </select>
+                    <div *ngIf="FormRAA.submitted && !resultadoA.competenciaAsignaturaId" class="invalid-feedback">
+                        Este campo es obligatorio.
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group">
-                <span class="input-icon"><i class="zmdi zmdi-graduation-cap"></i></span>
-                <input type="text" class="form-control" [(ngModel)]="resultadoA.descripcion" name="titulo" placeholder="Titulo"
+            <div class="form-group row">
+                <label for="descripcion" class="col-form-label col-sm-2">Descripción</label>
+                <input type="text" class="form-control" [(ngModel)]="resultadoA.descripcion" name="descripcion" placeholder="Descripción"
                     required>
             </div>
 
             <div class="form-group">
-                <button class="btn btn-primary" role="button" (click)='registrarResultadoA()'>Registrar</button>
+                <button class="btn btn-primary" role="button" (click)='registrarResultadoA()'>Crear RA</button>
             </div>
         </form>
     </div>
