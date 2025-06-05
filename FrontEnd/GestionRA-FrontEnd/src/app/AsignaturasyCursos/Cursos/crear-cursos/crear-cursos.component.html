@@ -34,12 +34,12 @@
 
       <!-- Semestre -->
       <div class="row mb-4 align-items-center">
-        <label for="periodoSemestre" class="col-sm-3 col-form-label">Semestre</label>
+        <label for="periodoSemestre" class="col-sm-3 col-form-label">Periodo</label>
         <div class="col-sm-9">
           <select class="form-select" [(ngModel)]="curso.periodo.semestre" name="periodoSemestre" id="periodoSemestre"
             [class.is-invalid]="formCurso.submitted && !curso.periodo.semestre">
-            <option [ngValue]="null" disabled selected>Seleccione un semestre</option>
-            <option *ngFor="let s of [1,2,3,4,5,6,7,8,9,10]" [value]="s">{{ s }}</option>
+            <option [ngValue]="null" disabled selected>Seleccione un periodo</option>
+            <option *ngFor="let s of [1,2]" [value]="s">{{ s }}</option>
           </select>
           <div *ngIf="formCurso.submitted && !curso.periodo.semestre" class="invalid-feedback">
             Este campo es obligatorio.
