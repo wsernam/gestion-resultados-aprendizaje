@@ -106,7 +106,7 @@ public class CursoService {
     public ResponseEntity findById(String id){
         Optional<Curso> c = cursoRepository.findById(id);
         if(c.isPresent()){
-            return ResponseEntity.status(HttpStatus.FOUND).body(c);
+            return ResponseEntity.status(HttpStatus.OK).body(c);
         }
         throw new CursoNotFoundException("No se encontró un curso con id = " + id);  
     }
