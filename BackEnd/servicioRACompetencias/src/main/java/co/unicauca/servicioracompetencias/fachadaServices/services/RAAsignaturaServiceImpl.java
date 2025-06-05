@@ -34,7 +34,7 @@ public class RAAsignaturaServiceImpl implements IRAAsignaturaService {
 
     @Override
     public List<RAAsignaturaDTORespuesta> listarPorAsignatura(String asignaturaId) {
-        return repository.findByCompetenciaAsignaturaId(asignaturaId).stream()
+        return repository.findByCompetenciaAsignaturaAsignaturaId(asignaturaId).stream()
             .map(mapeador::convertirEntityARespuesta)
             .collect(Collectors.toList());
     }

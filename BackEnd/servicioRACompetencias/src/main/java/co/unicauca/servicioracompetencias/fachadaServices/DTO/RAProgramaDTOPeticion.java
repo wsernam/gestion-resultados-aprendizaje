@@ -7,7 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RAProgramaDTOPeticion {
-    @NotBlank(message = "competenciaProgramaId no puede estar vacío.")
+    
     private String competenciaProgramaId;
     @NotBlank(message = "el nombre de resultado aprendisaje programa no puede estar vacío.")
     private String nombre;

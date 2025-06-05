@@ -12,7 +12,7 @@ public class MapeadorRAAsignatura {
     public RAAsignatura convertirPeticionAEntity(RAAsignaturaDTOPeticion dto) {
         RAAsignatura entity = new RAAsignatura();
         entity.setNombre(dto.getNombre());
-        entity.setCompetenciaAsignaturaId(dto.getCompetenciaAsignaturaId());
+        entity.setCompetenciaAsignatura(dto.getCompetenciaAsignatura());
         entity.setDescripcion(dto.getDescripcion());
         return entity;
     }
@@ -20,7 +20,7 @@ public class MapeadorRAAsignatura {
     public RAAsignaturaDTORespuesta convertirEntityARespuesta(RAAsignatura entity) {
         return new RAAsignaturaDTORespuesta(
             entity.getId(),
-            entity.getCompetenciaAsignaturaId(),
+            entity.getCompetenciaAsignatura(),
             entity.getNombre(),
             entity.getDescripcion()
         );

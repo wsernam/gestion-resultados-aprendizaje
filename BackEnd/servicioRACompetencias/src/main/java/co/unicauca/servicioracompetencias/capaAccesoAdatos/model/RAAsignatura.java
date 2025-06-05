@@ -12,7 +12,7 @@ import lombok.*;
 public class RAAsignatura {
     @Id
     private String id;
-    private String competenciaAsignaturaId;
+    private CompetenciaAsignatura competenciaAsignatura; 
     private String nombre;
     private String descripcion;
 }

@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface RAAsignaturaRepository extends MongoRepository<RAAsignatura, String> {
     List<RAAsignatura> findByCompetenciaAsignaturaId(String competenciaAsignaturaId);
-
+    List<RAAsignatura> findByCompetenciaAsignaturaAsignaturaId(String asignaturaId);
 }
