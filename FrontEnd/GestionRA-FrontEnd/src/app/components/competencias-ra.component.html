@@ -5,7 +5,7 @@
       <div class="card shadow-sm p-3 position-relative">
         <h5 class="mb-3 d-flex justify-content-between align-items-center">
           Competencias de programa
-          <button class="btn btn-sm btn-outline-success rounded-circle" (click)="irACrearCompetenciaP()">
+          <button class="btn btn-sm btn-outline-success rounded-circle" (click)="irACrearCompetenciaP()" *ngIf="isCoordinador">
             +
           </button>
         </h5>
@@ -31,7 +31,7 @@
       <div class="card shadow-sm p-3 position-relative">
         <h5 class="mb-3 d-flex justify-content-between align-items-center">
           Resultados de aprendizaje de programa
-          <button class="btn btn-sm btn-outline-success rounded-circle" (click)="irACrearRAP()">
+          <button class="btn btn-sm btn-outline-success rounded-circle" (click)="irACrearRAP()" *ngIf="isCoordinador">
             +
           </button>
         </h5>

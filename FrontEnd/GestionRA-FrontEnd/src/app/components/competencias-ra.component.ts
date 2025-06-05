@@ -7,6 +7,7 @@ import { CrearCompetenciasAComponent } from '../CAyRA/CompetenciasAprendizaje/Co
 import { ResultadosPComponent } from '../CAyRA/ResultadosAprendizaje/Programa/ListarRAP/resultados-p.component';
 import { ListarRAAComponent } from '../CAyRA/ResultadosAprendizaje/Asignatura/listarRAA/listar-raa.component';
 import { Router } from '@angular/router';
+import { StorageServiceService } from '../Servicios/storage-service.service';
 
 @Component({
   selector: 'app-competencias-ra',
@@ -25,7 +26,14 @@ import { Router } from '@angular/router';
 })
 export class CompetenciasRaComponent {
 
-  constructor(private router: Router) { }
+  isCoordinador = false;
+
+  constructor(private router: Router, private storageService: StorageServiceService) { }
+
+  ngOnInit() {
+    const roles = this.storageService.getRoles() || [];
+    this.isCoordinador = roles.includes('COORDINADOR');
+  }
   
   irACrearCompetenciaP() {
     this.router.navigate(['/competenciasAprendizaje/crearCompetenciasAprendizajeP']);
