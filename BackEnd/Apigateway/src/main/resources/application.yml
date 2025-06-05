@@ -19,12 +19,6 @@ spring:
             - Path=/api/evaluadores/**
           filters:
             - name: JwtAuthenticationFilter
-        - id: evaluadores-service
-          uri: http://localhost:8080
-          predicates:
-            - Path=/api/evaluadores/**
-          filters:
-            - name: JwtAuthenticationFilter
         - id: login-service
           uri: http://localhost:8082
           predicates:
