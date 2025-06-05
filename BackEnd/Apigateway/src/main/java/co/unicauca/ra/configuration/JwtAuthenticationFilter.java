@@ -80,11 +80,11 @@ public class JwtAuthenticationFilter extends AbstractGatewayFilterFactory<JwtAut
                 if (path.startsWith("/api/rubricas/**") && !roles.contains("DOCENTE")) {
                     return unauthorized(exchange, "Acceso denegado: requiere rol DOCENTE");
                 }
-                if ((path.startsWith("/api/RAAsignatura/**") || path.startsWith("/api/competenciasAsignatura/**") ) && !roles.contains("DOCENTE")) {
+                if ((path.startsWith("/api/RAAsignatura/**") || path.startsWith("/api/competenciasAsignatura/**") && method.equalsIgnoreCase("POST")) && !roles.contains("DOCENTE")) {
                     return unauthorized(exchange, "Acceso denegado: requiere rol DOCENTE");
                 }
                 
-                if ((path.startsWith("/api/RAPrograma/**") || path.startsWith("/api/competenciasPrograma/**") ) && !roles.contains("COORDINADOR")) {
+                if ((path.startsWith("/api/RAPrograma/**") || path.startsWith("/api/competenciasPrograma/**") && method.equalsIgnoreCase("POST")) && !roles.contains("COORDINADOR")) {
                     return unauthorized(exchange, "Acceso denegado: requiere rol COORDINADOR");
                 }
                 

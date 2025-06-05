@@ -18,7 +18,7 @@ import co.unicauca.servicioracompetencias.capaControladores.controladorExcepcion
 
 @ControllerAdvice
 public class RestApiExceptionHandler {
-
+        
         @ExceptionHandler(Exception.class)
         public ResponseEntity<Error> handleGenericException(final HttpServletRequest req,
                         final Exception ex, final Locale locale) {
@@ -29,7 +29,7 @@ public class RestApiExceptionHandler {
                                 .setUrl(req.getRequestURL().toString()).setMetodo(req.getMethod());
                 return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
+        
         @ExceptionHandler(EntidadYaExisteException.class)
         public ResponseEntity<Error> handleGenericException(final HttpServletRequest req,
                         final EntidadYaExisteException ex) {

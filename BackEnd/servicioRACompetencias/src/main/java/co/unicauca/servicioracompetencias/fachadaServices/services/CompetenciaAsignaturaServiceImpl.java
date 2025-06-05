@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import co.unicauca.servicioracompetencias.capaAccesoAdatos.model.CompetenciaAsignatura;
 import co.unicauca.servicioracompetencias.capaAccesoAdatos.repository.CompetenciaAsignaturaRepository;
+import co.unicauca.servicioracompetencias.capaAccesoAdatos.repository.CompetenciaProgramaRepository;
 import co.unicauca.servicioracompetencias.capaControladores.controladorExcepciones.excepcionesPropias.EntidadNoExisteException;
 import co.unicauca.servicioracompetencias.capaControladores.controladorExcepciones.excepcionesPropias.ReglaNegocioExcepcion;
 import co.unicauca.servicioracompetencias.fachadaServices.DTO.CompetenciaAsignaturaDTOPeticion;
@@ -17,12 +18,15 @@ public class CompetenciaAsignaturaServiceImpl implements ICompetenciaAsignaturaS
 
     @Autowired
     private CompetenciaAsignaturaRepository repository;
+
+    @Autowired
+    private CompetenciaProgramaRepository competenciaProgramaRepository; 
     @Autowired
     private MapeadorCompetenciaAsignatura mapeador;
 
     @Override
     public CompetenciaAsignaturaDTORespuesta crear(CompetenciaAsignaturaDTOPeticion dto) {
-        if (!repository.existsByCompetenciaProgramaId(dto.getCompetenciaProgramaId())) {
+        if (!competenciaProgramaRepository.existsById(dto.getCompetenciaProgramaId())) {
             throw new ReglaNegocioExcepcion("No existe una competencia de programa con el ID proporcionado.");
         }
         CompetenciaAsignatura entity = mapeador.convertirPeticionAEntity(dto);

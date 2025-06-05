@@ -5,4 +5,5 @@ import co.unicauca.servicioracompetencias.capaAccesoAdatos.model.CompetenciaProg
 
 // MongoRepository<Entidad, TipoDeID>
 public interface CompetenciaProgramaRepository extends MongoRepository<CompetenciaPrograma, String> {
+    boolean existsById(String id);
 }

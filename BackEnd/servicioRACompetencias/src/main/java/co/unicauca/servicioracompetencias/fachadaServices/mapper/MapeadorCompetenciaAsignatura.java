@@ -23,8 +23,8 @@ public class MapeadorCompetenciaAsignatura {
         return new CompetenciaAsignaturaDTORespuesta(
             entity.getId(),
             entity.getCompetenciaProgramaId(),
-            entity.getNombre(),
             entity.getAsignaturaId(),
+            entity.getNombre(),
             entity.getDescripcion(),
             entity.getEstado()
         );
