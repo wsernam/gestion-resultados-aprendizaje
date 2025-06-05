@@ -10,11 +10,11 @@ import { CompetenciasAprendizajePService } from '../../../serviciosCAP/competenc
 import { CompetenciasAprendizajeP } from '../../../../Modelos/competencias-aprendizaje-p';
 import { Asignatura } from '../../../../../AsignaturasyCursos/modelos/asignatura';
 import { CommonModule } from '@angular/common';
-import {AsignaturaService} from '../../../../../AsignaturasyCursos/Cursos/services/asignatura.service'
+import { AsignaturaService } from '../../../../../AsignaturasyCursos/Cursos/services/asignatura.service'
 @Component({
   selector: 'app-crear-competencias-a',
   standalone: true,
-  imports: [ CommonModule, FormsModule, SweetAlert2Module, HttpClientModule ],
+  imports: [CommonModule, FormsModule, SweetAlert2Module, HttpClientModule],
   templateUrl: './crear-competencias-a.component.html',
   styleUrl: './crear-competencias-a.component.css'
 })
@@ -24,22 +24,21 @@ export class CrearCompetenciasAComponent {
   public asignaturas: Asignatura[] = [];
   public title: string = "Crear Competencia de Asignatura";
 
-  constructor (private asignaturaService:AsignaturaService, private competenciaPService: CompetenciasAprendizajePService, private competenciaAService: CompetenciaAsignaturaService, private router: Router) {}
+  constructor(private asignaturaService: AsignaturaService, private competenciaPService: CompetenciasAprendizajePService, private competenciaAService: CompetenciaAsignaturaService, private router: Router) { }
 
-  public crearCAA()
-  {    
-    this.competenciaAService.create(this.competenciaA).subscribe(
-      response => {
-        console.log("Creando compentencia de asignatura");
+  public crearCAA() {
+    this.competenciaAService.create(this.competenciaA).subscribe({
+      next: response => {
+        console.log("Creando compentencia de aprendizaje de asignatura");
         console.log(this.competenciaA);
-       // this.router.navigate(['/compentenciasAprendizaje/listarCompetenciasAprendizajeA']);
+        // this.router.navigate(['/compentenciasAprendizaje/listarCompetenciasAprendizajeA']);
         Swal.fire('Nueva competencia de aprendizaje de programa', `Competencia de asignatura creada con éxito`, 'success');
       },
-      error => {
-        console.log("Ha ocurrido un error", error);
-        Swal.fire('Error', `Ha ocurrido un error`, 'error');
+      error: error => {
+        console.log("Error al crear competencia de aprendizaje de programa", error.message);
+        //Swal.fire('Error', `Ha ocurrido un error`, 'error');
       }
-    )
+    });
   }
 
   ngOnInit(): void {

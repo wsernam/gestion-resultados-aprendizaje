@@ -25,11 +25,16 @@ export class FormCAPComponent {
   public crearCAP() {
     console.log('Creando Competencias de Programa');
     this.competenciasAprendizajePService.create(this.competenciasAprendizajeP).subscribe(
-      response => {
-        console.log("Creando Competencias de Programa");
-        console.log(this.competenciasAprendizajeP);
-        //this.router.navigate(['/CompetenciasAprendizaje/listarCompetenciasAprendizajeP']);
-        Swal.fire('Nueva Competencias de Programa', `Competencias de Programa creada con éxito`, 'success');
+      {
+        next: (response) => {
+          console.log("Creando Competencias de Programa");
+          console.log(this.competenciasAprendizajeP);
+          //this.router.navigate(['/CompetenciasAprendizaje/listarCompetenciasAprendizajeP']);
+          Swal.fire('Nueva Competencias de Programa', `Competencias de Programa creada con éxito`, 'success');
+        },
+        error: (error) => {
+          console.log("Error al crear Competencias de Aprendizaje de Programa", error.message);
+        }
       }
     )
   }

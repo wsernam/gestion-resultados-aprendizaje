@@ -44,18 +44,18 @@ export class FormComponent {
     }
 
     console.log("Creando resultado de aprendizaje de programa");
-    this.resultadoPService.create(this.resultadoP).subscribe(
-      response => {
+    this.resultadoPService.create(this.resultadoP).subscribe({
+      next: response => {
         console.log("Resultado de aprendizaje creado exitosamente");
         console.log(this.resultadoP);
         this.router.navigate(['CAyRA/listarCa']),
           Swal.fire('Nuevo resultado de aprendizaje', `Resultado: ${this.resultadoP.descripcion} creado con éxito`, 'success');
       },
-      error => {
-        console.error("Error al registrar el resultado de aprendizaje", error);
-        Swal.fire('Error', 'Hubo un problema al registrar el resultado de aprendizaje', 'error');
+      error: error => {
+        console.error("Error al registrar el resultado de aprendizaje", error.message);
+        //Swal.fire('Error', 'Hubo un problema al registrar el resultado de aprendizaje', 'error');
       }
-    );
+    });
   }
 
 }

@@ -40,7 +40,7 @@ export class RegistrarEvaluadorComponent {
         },
         error: (err) => {
           console.log("Error al registrar evaluador.\n Error: ", err.message);
-          Swal.fire('Error', `Hubo un problema al registrar el evaluador`, 'error');
+          //Swal.fire('Error', `Hubo un problema al registrar el evaluador`, 'error');
         }
       }
     )

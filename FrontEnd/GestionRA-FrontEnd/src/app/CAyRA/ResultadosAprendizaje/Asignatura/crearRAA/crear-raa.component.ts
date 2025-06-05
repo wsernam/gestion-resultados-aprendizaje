@@ -22,18 +22,18 @@ export class CrearRAAComponent {
 
   public registrarResultadoA() {
     console.log("Registrando Resultado de Aprendizaje Asignatura: ", this.resultadoA);
-    this.resultadoAService.create(this.resultadoA).subscribe(
-      response => {
+    this.resultadoAService.create(this.resultadoA).subscribe({
+      next: response => {
         console.log("Resultado de Aprendizaje Asignatura creado exitosamente");
         console.log(this.resultadoA);
         this.router.navigate(['resultadosAprendizaje/listarRAA'])
         Swal.fire('Nuevo Resultado de Aprendizaje Asignatura', `Resultado de Aprendizaje Asignatura ${response.competenciaAsignaturaId} creado con éxito`, 'success');
       },
-      error => {
-        console.error("Error al registrar Resultado de Aprendizaje Asignatura: ", error);
-        Swal.fire('Error', 'Hubo un problema al crear Resultado de Aprendizaje Asignatura', 'error');
+      error: error => {
+        console.error("Error al registrar Resultado de Aprendizaje Asignatura: ", error.mesage);
+        //Swal.fire('Error', 'Hubo un problema al crear Resultado de Aprendizaje Asignatura', 'error');
       }
-    );
+    });
   }
 
 }

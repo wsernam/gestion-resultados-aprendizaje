@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Login } from './Modelo/login';
 import { DocenteService } from '../DocentesyEvaluadores/servicios/docente.service';
-import { error } from 'console';
 
 @Component({
   selector: 'app-login',
@@ -24,8 +23,8 @@ export class LoginComponent {
   }
 
   public ingresar() {
-    this.loginService.login(this.login).subscribe(
-      (response) => {
+    this.loginService.login(this.login).subscribe({
+      next: (response) => {
         console.log('Login successful');
         sessionStorage.setItem('token', response.toString());
         sessionStorage.setItem('correo', this.login.nombreUsuario);
@@ -42,10 +41,10 @@ export class LoginComponent {
         );
         this.router.navigate(['cursos/listarCursos']);
       },
-      (error) => {
-        console.error('Login failed:', error);
+      error: (error) => {
+        console.error('Login fallido: ', error.message);
       }
-    );
+    });
   }
 
   public logout(): void {

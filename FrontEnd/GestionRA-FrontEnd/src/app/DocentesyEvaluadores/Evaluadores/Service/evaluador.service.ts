@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { Evaluador } from '../../Modelos/evaluador';
 import Swal from 'sweetalert2';
 
@@ -26,12 +26,16 @@ export class EvaluadorService {
 
   createEvaluador(evaluador: Evaluador): Observable<Evaluador> {
     console.log("Creando evaluador desde el servicio");
-    return this.http.post<Evaluador>(`${this.urlEndPoint}/guardar`, evaluador, { headers: this.httpHeaders });
+    return this.http.post<Evaluador>(`${this.urlEndPoint}/guardar`, evaluador, { headers: this.httpHeaders }).pipe(
+      catchError(this.handlerError)
+    );
   }
 
   invitarEvaluador(correo: string): Observable<any> {
     console.log("Invitando evaluador con correo: ", correo);
-    return this.http.post<any>(`${this.urlEndPoint}/invitar`, { correo }, { headers: this.httpHeaders })
+    return this.http.post<any>(`${this.urlEndPoint}/invitar`, { correo }, { headers: this.httpHeaders }).pipe(
+      catchError(this.handlerError)
+    );
   }
 
   private handlerError(error: HttpErrorResponse) {

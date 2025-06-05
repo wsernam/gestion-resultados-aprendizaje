@@ -40,6 +40,7 @@ export class InvitarEvaluadorComponent {
         this.cerrarModalInvitar();
       },
       error: err => {
+        console.error('Error al invitar evaluador:', err.message);
         Swal.fire('Error', 'Error al invitar evaluador', 'error');
       }
     });

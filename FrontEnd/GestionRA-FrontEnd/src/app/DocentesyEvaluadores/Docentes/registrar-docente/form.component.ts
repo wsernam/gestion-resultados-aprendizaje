@@ -57,8 +57,8 @@ export class FormComponent {
         Swal.fire('Nuevo docente', `Docente ${response.nombres} creado con éxito`, 'success');
       },
       error => {
-        console.error("Error al registrar docente: ", error);
-        Swal.fire('Error', 'Hubo un problema al registrar el docente', 'error');
+        console.error("Error al registrar docente: ", error.message);
+        //Swal.fire('Error', 'Hubo un problema al registrar el docente', 'error');
       }
     );
   }

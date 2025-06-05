@@ -83,8 +83,8 @@ export class CrearCursosComponent implements OnInit {
 
     console.log("Creando curso...");
     this.curso.correoDocente = sessionStorage.getItem('correo') || '';
-    this.cursoService.create(this.curso).subscribe(
-      response => {
+    this.cursoService.create(this.curso).subscribe({
+      next: (response) => {
         console.log("Curso creado exitosamente");
         console.log(this.curso);
         this.cursoService.notifyCursoCreado(); // Notificar que se ha creado un curso
@@ -93,11 +93,11 @@ export class CrearCursosComponent implements OnInit {
             this.router.navigate(['/cursos/listarCursos']);
           });
       },
-      error => {
-        console.log("Error al crear curso");
-        Swal.fire('Error al crear Curso', `Ha ocurrido un error al crear el curso`, 'error');
+      error: (error) => {
+        console.log("Error al crear curso", error.message);
+        //Swal.fire('Error al crear Curso', `Ha ocurrido un error al crear el curso`, 'error');
       }
-    );
+    });
   }
 
 }
