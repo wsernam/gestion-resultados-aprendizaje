@@ -37,9 +37,11 @@ export class LoginService {
   }
 
   private handleError(error: HttpErrorResponse) {
+    let mensajeError = 'Ocurrió un error inesperado.';
     if (error.status === 400 || error.status === 404) {
       const codigoError = error.error.codigoError;
-      const mensajeError = error.error.mensaje;
+      const errorJson = typeof error.error === 'string' ? JSON.parse(error.error) : error.error;
+      mensajeError = errorJson.error || errorJson.mensaje || mensajeError;
       const codigoHttp = error.error.codigoHttp;
       const url = error.error.url;
       const metodo = error.error.metodo;
