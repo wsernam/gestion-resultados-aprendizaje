@@ -8,10 +8,17 @@
       <!-- Resultado de Aprendizaje asociado -->
       <div class="mb-3">
         <label for="resultadoAprendizaje" class="form-label fw-semibold">Resultado de Aprendizaje asociado</label>
+
         <select class="form-select" id="resultadoAprendizaje" [(ngModel)]="rubrica.idRaAsignatura">
           <option [ngValue]="null" disabled selected>Seleccione un resultado de aprendizaje</option>
-          <option *ngFor="let ra of resultadosAprendizaje" [value]="ra.descripcion">{{ ra.descripcion }}</option>
+          <option *ngFor="let ra of resultadosAprendizaje" [value]="ra.id">{{ ra.descripcion }}</option>
         </select>
+
+        <!-- Provisional para pruebas -->
+        <!--
+         <input type="text" class="form-control" [(ngModel)]="rubrica.idRaAsignatura"
+          placeholder="Descripción del Resultado de Aprendizaje">
+          -->
       </div>
 
       <!-- Descripción de la rúbrica -->

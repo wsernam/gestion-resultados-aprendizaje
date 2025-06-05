@@ -54,6 +54,9 @@ export class CrearRubricaComponent {
         console.log("No se pudo obtener el curso para extraer la asignatura.");
       }
     );
+
+    this.cargarResultadosAprendizaje();
+    
   }
 
   cargarResultadosAprendizaje() {
@@ -85,10 +88,10 @@ export class CrearRubricaComponent {
 
 
   public guardarRubrica() {
+    this.rubrica.idCurso = this.idCurso
     this.rubricaService.createRubrica(this.rubrica).subscribe(
       response => {
         console.log("Creando Rúbrica...");
-        this.rubrica.idCurso = this.idCurso; //Asignar el ID del curso a la rúbrica
         this.rubricaService.noficarRubricaCreada(response); //Notificar a otros componentes que se ha creado una rúbrica
         console.log("Rúbrica creada con éxito");
         this.router.navigate(['/rubricas', this.idCurso]); //Redirigir a la lista de rúbricas del curso
