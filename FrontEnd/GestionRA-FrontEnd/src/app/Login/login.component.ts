@@ -39,7 +39,6 @@ export class LoginComponent {
             console.error('Error fetching docente by email:', error);
           }
         );
-        this.router.navigate(['cursos/listarCursos']);
       },
       error: (error) => {
         console.error('Login fallido: ', error.message);
