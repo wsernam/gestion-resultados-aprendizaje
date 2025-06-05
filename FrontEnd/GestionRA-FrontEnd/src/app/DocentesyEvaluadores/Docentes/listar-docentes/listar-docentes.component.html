@@ -3,11 +3,11 @@
 
     <!-- Buscador -->
     <div class="input-group mb-4 w-50">
-        <input type="text" class="form-control rounded-start-pill" placeholder="Buscar docente correo"
-            (input)="filtrarDocentes()" /> <!--[(ngModel)]="filtro"-->
-        <span class="input-group-text bg-secondary text-white rounded-end-pill">
+        <span class="input-group-text bg-secondary text-white rounded-start-pill">
             <i class="bi bi-search"></i>
         </span>
+        <input type="text" class="form-control rounded-end-pill" placeholder="Buscar docente correo"
+            [(ngModel)]="filtro" (input)="filtrarDocentes()" />
     </div>
 
     <!-- Tabla -->

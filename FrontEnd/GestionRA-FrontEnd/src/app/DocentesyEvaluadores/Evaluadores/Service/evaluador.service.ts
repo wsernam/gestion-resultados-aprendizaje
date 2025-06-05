@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Evaluador } from '../../Modelos/evaluador';
 import Swal from 'sweetalert2';
+import { ConsultarCurso } from '../../../AsignaturasyCursos/modelos/consultar-curso';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +42,13 @@ export class EvaluadorService {
   getEvaluadorByEmail(correo: string): Observable<Evaluador> {
     console.log("Buscando evaluador por correo: ", correo);
     return this.http.get<Evaluador>(`${this.urlEndPoint}/buscar-correo/${correo}`).pipe(
+      catchError(this.handlerError)
+    );
+  }
+
+  getCursosEvaluador(correo: string): Observable<ConsultarCurso[]> {
+    console.log("Listando cursos del evaluador con correo: ", correo);
+    return this.http.get<ConsultarCurso[]>(`${this.urlEndPoint}/buscar-cursos/${correo}`).pipe(
       catchError(this.handlerError)
     );
   }

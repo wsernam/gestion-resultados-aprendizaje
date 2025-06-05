@@ -29,7 +29,7 @@ export class FormCAPComponent {
         next: (response) => {
           console.log("Creando Competencias de Programa");
           console.log(this.competenciasAprendizajeP);
-          //this.router.navigate(['/CompetenciasAprendizaje/listarCompetenciasAprendizajeP']);
+          this.router.navigate(['competencias-ra']);
           Swal.fire('Nueva Competencias de Programa', `Competencias de Programa creada con éxito`, 'success');
         },
         error: (error) => {

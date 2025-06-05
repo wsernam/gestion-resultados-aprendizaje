@@ -53,8 +53,8 @@ export class FormComponent {
       response => {
         console.log("Resultado de aprendizaje creado exitosamente");
         console.log(this.resultadoP);
-        //this.router.navigate(['CAyRA/listarCa']),
-          Swal.fire('Nuevo resultado de aprendizaje', `Resultado: ${this.resultadoP.nombre} creado con éxito`, 'success');
+        this.router.navigate(['competencias-ra']);
+        Swal.fire('Nuevo resultado de aprendizaje', `Resultado: ${this.resultadoP.nombre} creado con éxito`, 'success');
       },
       error => {
         console.error("Error al registrar el resultado de aprendizaje", error.message);

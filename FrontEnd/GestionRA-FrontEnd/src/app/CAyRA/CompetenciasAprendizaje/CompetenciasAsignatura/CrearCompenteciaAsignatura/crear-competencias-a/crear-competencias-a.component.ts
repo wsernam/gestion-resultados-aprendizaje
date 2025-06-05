@@ -31,7 +31,7 @@ export class CrearCompetenciasAComponent {
       next: response => {
         console.log("Creando compentencia de aprendizaje de asignatura");
         console.log(this.competenciaA);
-        // this.router.navigate(['/compentenciasAprendizaje/listarCompetenciasAprendizajeA']);
+        this.router.navigate(['competencias-ra']);
         Swal.fire('Nueva competencia de aprendizaje de programa', `Competencia de asignatura creada con éxito`, 'success');
       },
       error: error => {
