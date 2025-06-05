@@ -1,136 +1,99 @@
-<!--
-<div class="container mt-4">
-    <h2>{{title}}</h2>
-     
-    <div class="form-group mt-2">
-        <label for="descripcionRubrica">Descripción</label>
-        <textarea clas="form-control" id="descripcionRubrica" rows="2" [(ngModel)]="rubrica.descripcion"></textarea>
+<div class="container my-5">
+  <div class="card shadow rounded-4">
+    <div class="card-header bg-primary text-white rounded-top-4">
+      <h2 class="mb-0">{{ title }}</h2>
     </div>
+    <div class="card-body">
 
-    <div class="mb-3">
-        <label class="form-label">Ponderado</label>
-        <input type="number" class="form-control" [(ngModel)]="rubrica.ponderado" step="0.1" min="0" max="1">
-    </div>
-
-    <hr>
-
-    <div *ngFor="let criterio of rubrica.listaCriterios; let i = index" class="mb-4 border rounded p-3">
-        <h5>Criterio {{ i + 1 }}</h5>
-
-        <div class="mb-2">
-            <label class="form-label">Descripción</label>
-            <textarea class="form-control" rows="2" [(ngModel)]="criterio.descripcion"></textarea>
-        </div>
-
-        <div *ngFor="let nivel of criterio.listaNiveles; let j = index" class="ms-3 mb-2">
-            <h6 class="fw-bold">Nivel {{ j + 1 }}</h6>
-
-            <div class="mb-2">
-                <label class="form-label">Descripción</label>
-                <textarea class="form-control" [(ngModel)]="nivel.descripcion" rows="2"></textarea>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Nota</label>
-                <input type="number" class="form-control" [(ngModel)]="nivel.nota" min="0" max="5">
-            </div>
-
-            <button class="btn btn-sm btn-danger" (click)="eliminarNivel(i, j)">Eliminar nivel</button>
-
-            <hr>
-
-        </div>
-
-        <button class="btn btn-sm btn-secondary mb-3" (click)="agregarNivel(i)">Agregar Nivel</button>
-        <button class="btn btn-sm btn-danger ms-2" (click)="eliminarCriterio(i)">Eliminar Criterio</button>
-
-        <hr>
-
-    </div>
-
-    <button class="btn btn-primary" (click)="agregarCriterio()">Agregar Criterio</button>
-
-    <hr>
-
-</div>
-
-<button class="btn btn-primary" (click)="guardarRubrica()">Guardar Rúbrica</button>
--->
-
-<div class="container mt-4">
-  <h2>{{title}}</h2>
-
-  <!-- Descripción de la rúbrica -->
-  <div class="form-group mt-2">
-    <label for="descripcionRubrica">Descripción</label>
-    <textarea class="form-control" id="descripcionRubrica" rows="2" [(ngModel)]="rubrica.descripcion"></textarea>
-  </div>
-
-  <!-- Ponderado -->
-  <div class="mb-3">
-    <label class="form-label">Ponderado</label>
-    <input type="number" class="form-control" [(ngModel)]="rubrica.ponderado" step="0.1" min="0" max="1">
-  </div>
-
-  <hr>
-
-  <!-- Criterios -->
-  <div *ngFor="let criterio of rubrica.listaCriterios; let i = index" class="mb-5 border p-3 rounded">
-    <h5 class="fw-bold">Criterio {{ i + 1 }}</h5>
-
-    <div class="mb-2">
-      <label>Descripción del criterio</label>
-      <textarea class="form-control" rows="2" [(ngModel)]="criterio.descripcion"></textarea>
-    </div>
-
-    <!-- Niveles horizontal -->
-    <div class="row text-center">
-      <div *ngFor="let nivel of criterio.listaNiveles; let j = index" class="col border mx-1 p-2 rounded shadow-sm bg-light">
-        <!-- Nota -->
-        <div class="mb-2">
-          <label>Puntos (obligatorio)</label>
-          <input type="number" class="form-control text-center" [(ngModel)]="nivel.nota" min="0" max="5" />
-        </div>
-
-        <!-- Título del nivel 
-        <div class="mb-2">
-          <label>Título del nivel</label>
-          <input type="text" class="form-control text-center fw-bold" [(ngModel)]="nivel.titulo" />
-        </div> 
+      <!-- Resultado de Aprendizaje asociado -->
+      <div class="mb-3">
+        <label for="resultadoAprendizaje" class="form-label fw-semibold">Resultado de Aprendizaje asociado</label>
+        <!--
+        <select class="form-select" id="resultadoAprendizaje" [(ngModel)]="rubrica.idResultadoAprendizaje">
+          <option [ngValue]="null" disabled selected>Seleccione un resultado de aprendizaje</option>
+          <option *ngFor="let ra of resultadosAprendizaje" [value]="ra.id">{{ ra.descripcion }}</option>
+        </select>
         -->
-        
+      </div>
 
-        <!-- Descripción -->
-        <div class="mb-2">
-          <label>Descripción</label>
-          <textarea class="form-control" rows="4" [(ngModel)]="nivel.descripcion"></textarea>
+      <!-- Descripción de la rúbrica -->
+      <div class="mb-3">
+        <label for="descripcionRubrica" class="form-label fw-semibold">Descripción de la rúbrica</label>
+        <textarea class="form-control" id="descripcionRubrica" rows="2" [(ngModel)]="rubrica.descripcion"
+          placeholder="Describe brevemente la rúbrica"></textarea>
+      </div>
+
+      <!-- Ponderado -->
+      <div class="mb-4">
+        <label class="form-label fw-semibold">Ponderado</label>
+        <input type="number" class="form-control" [(ngModel)]="rubrica.ponderado" step="0.1" min="0" max="1"
+          placeholder="Ej: 0.3">
+      </div>
+
+      <hr>
+
+      <!-- Criterios -->
+      <div *ngFor="let criterio of rubrica.criterios; let i = index"
+        class="mb-5 border rounded-4 p-4 bg-light-subtle shadow-sm">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h5 class="fw-bold mb-0">Criterio {{ i + 1 }}</h5>
+          <button class="btn btn-outline-danger btn-sm" (click)="eliminarCriterio(i)">
+            <i class="bi bi-trash"></i> Eliminar Criterio
+          </button>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Descripción del criterio</label>
+          <textarea class="form-control" rows="2" [(ngModel)]="criterio.descripcion"
+            placeholder="Describe el criterio"></textarea>
         </div>
 
-        <!-- Botón eliminar nivel -->
-        <button class="btn btn-sm btn-danger" (click)="eliminarNivel(i, j)">Eliminar nivel</button>
+        <!-- Niveles horizontal -->
+        <div class="row g-3">
+          <div *ngFor="let nivel of criterio.niveles; let j = index" class="col-md-3">
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-body">
+                <h6 class="fw-bold text-primary mb-2">Nivel {{ j + 1 }}</h6>
+                <div class="mb-2">
+                  <label class="form-label">Puntos</label>
+                  <input type="number" class="form-control text-center" [(ngModel)]="nivel.nota" min="0" max="5"
+                    placeholder="Ej: 3">
+                </div>
+                <div class="mb-2">
+                  <label class="form-label">Descripción</label>
+                  <textarea class="form-control" rows="3" [(ngModel)]="nivel.descripcion"
+                    placeholder="Describe el nivel"></textarea>
+                </div>
+                <button class="btn btn-sm btn-outline-danger w-100" (click)="eliminarNivel(i, j)">
+                  <i class="bi bi-x-circle"></i> Eliminar Nivel
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Botón agregar nivel -->
+          <div class="col-md-2 d-flex align-items-center justify-content-center">
+            <button class="btn btn-outline-primary rounded-circle fs-3" (click)="agregarNivel(i)" title="Agregar Nivel">
+              <i class="bi bi-plus"></i>
+            </button>
+          </div>
+        </div>
       </div>
 
-      <!-- Botón agregar nivel -->
-      <div class="col-auto d-flex align-items-center">
-        <button class="btn btn-outline-primary rounded-circle fs-4" (click)="agregarNivel(i)">+</button>
+      <!-- Agregar criterio -->
+      <div class="text-center mb-4">
+        <button class="btn btn-success px-4" (click)="agregarCriterio()">
+          <i class="bi bi-plus-circle"></i> Agregar Criterio
+        </button>
+      </div>
+
+      <!-- Guardar rúbrica -->
+      <div class="text-end d-flex justify-content-end gap-2">
+        <button class="btn btn-secondary px-4" (click)="cancelarCreacion()">
+          <i class="bi bi-x-circle"></i> Cancelar
+        </button>
+        <button class="btn btn-primary px-5" (click)="guardarRubrica()">
+          <i class="bi bi-save"></i> Guardar Rúbrica
+        </button>
       </div>
     </div>
-
-    <!-- Botón eliminar criterio -->
-    <div class="mt-3 text-end">
-      <button class="btn btn-danger btn-sm" (click)="eliminarCriterio(i)">Eliminar Criterio</button>
-    </div>
-
-    <hr>
-  </div>
-
-  <!-- Agregar criterio -->
-  <div class="text-center mb-3">
-    <button class="btn btn-primary" (click)="agregarCriterio()">Agregar Criterio</button>
-  </div>
-
-  <!-- Guardar rúbrica -->
-  <div class="text-end">
-    <button class="btn btn-success" (click)="guardarRubrica()">Guardar Rúbrica</button>
   </div>
 </div>
