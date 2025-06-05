@@ -3,36 +3,43 @@
     <a class="navbar-brand me-auto" href="cursos/listarCursos" routerLinkActive="active">
       <i class="zmdi zmdi-home"></i>
     </a>
+
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Logo</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
+
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
-          <li class="nav-item">
+          <li class="nav-item border-end pe-3 me-3">
             <a class="nav-link mx-lg-2 active" aria-current="page" routerLink="cursos/listarCursos"
               routerLinkActive="active">Mis Cursos</a>
           </li>
-          <li *ngIf="isDocente" class="nav-item">
-            <a class="nav-link" routerLink="/competencias-ra" routerLinkActive="active">Competencias y Resultados de
-              Aprendizaje</a>
+
+          <li *ngIf="isDocente" class="nav-item border-end pe-3 me-3">
+            <a class="nav-link" routerLink="/competencias-ra" routerLinkActive="active">
+              Competencias y Resultados de Aprendizaje
+            </a>
           </li>
-          <li *ngIf="isCoordinador" class="nav-item">
-            <a class="nav-link" routerLink="/docentes/listarDocentes" routerLinkActive="active">Docentes y Evaluadores
-              Externos</a>
+
+          <li *ngIf="isCoordinador" class="nav-item border-end pe-3 me-3">
+            <a class="nav-link" routerLink="/docentes/listarDocentes" routerLinkActive="active">
+              Docentes y Evaluadores Externos
+            </a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" routerLink="/perfil" routerLinkActive="active">Perfil</a>
           </li>
         </ul>
+
         <form class="d-flex justify-content-center mt-3">
           <button class="btn btn-outline-secondary" type="button" (click)="logOut()">Cerrar Sesión</button>
         </form>
       </div>
     </div>
-    <!--
-    <a class="login-button" routerLink="/Login" routerLinkActive="active">Login</a>-->
+
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
       aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
