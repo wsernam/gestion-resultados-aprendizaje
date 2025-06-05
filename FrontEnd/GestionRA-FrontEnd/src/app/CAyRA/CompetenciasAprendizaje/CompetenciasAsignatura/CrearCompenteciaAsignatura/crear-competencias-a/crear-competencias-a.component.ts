@@ -6,19 +6,25 @@ import { CompetenciaAprendizajeA } from '../../../../Modelos/competencia-aprendi
 import { CompetenciaAsignaturaService } from '../../ServiceCompetenciaAsignatura/competencia-asignatura.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-
+import { CompetenciasAprendizajePService } from '../../../serviciosCAP/competencias-aprendizaje-p.service';
+import { CompetenciasAprendizajeP } from '../../../../Modelos/competencias-aprendizaje-p';
+import { Asignatura } from '../../../../../AsignaturasyCursos/modelos/asignatura';
+import { CommonModule } from '@angular/common';
+import {AsignaturaService} from '../../../../../AsignaturasyCursos/Cursos/services/asignatura.service'
 @Component({
   selector: 'app-crear-competencias-a',
   standalone: true,
-  imports: [ FormsModule, SweetAlert2Module, HttpClientModule ],
+  imports: [ CommonModule, FormsModule, SweetAlert2Module, HttpClientModule ],
   templateUrl: './crear-competencias-a.component.html',
   styleUrl: './crear-competencias-a.component.css'
 })
 export class CrearCompetenciasAComponent {
   public competenciaA: CompetenciaAprendizajeA = new CompetenciaAprendizajeA();
+  public competenciasPrograma: CompetenciasAprendizajeP[] = [];
+  public asignaturas: Asignatura[] = [];
   public title: string = "Crear Competencia de Aprendizaje de Asignatura";
 
-  constructor (private competenciaAService: CompetenciaAsignaturaService, private router: Router) {}
+  constructor (private asignaturaService:AsignaturaService, private competenciaPService: CompetenciasAprendizajePService, private competenciaAService: CompetenciaAsignaturaService, private router: Router) {}
 
   public crearCAA()
   {    
@@ -33,6 +39,15 @@ export class CrearCompetenciasAComponent {
         console.log("Ha ocurrido un error", error);
         Swal.fire('Error', `Ha ocurrido un error`, 'error');
       }
+    )
+  }
+
+  ngOnInit(): void {
+    this.competenciaPService.getCompetenciasAprendizajeP().subscribe(
+      competenciasP => this.competenciasPrograma = competenciasP
+    )
+    this.asignaturaService.getAsignaturas().subscribe(
+      asignaturas_response => this.asignaturas = asignaturas_response
     )
   }
 }

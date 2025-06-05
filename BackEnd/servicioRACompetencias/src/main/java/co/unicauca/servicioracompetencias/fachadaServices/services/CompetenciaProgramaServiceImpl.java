@@ -36,6 +36,7 @@ public class CompetenciaProgramaServiceImpl implements ICompetenciaProgramaServi
 
     @Override
     public List<CompetenciaProgramaDTORespuesta> listarTodos() {
+        System.out.println("Listado competencias de programa");   
         return competenciaProgramaRepository.findAll().stream()
             .map(mapeador::convertirEntityARespuesta)
             .collect(Collectors.toList());

@@ -1,5 +1,6 @@
 export class CompetenciasAprendizajeP {
-    id!: number;
+    id!: string;
+    nombre!: string;
     programa!: string;
     descripcion!: string;
     estado!: string;

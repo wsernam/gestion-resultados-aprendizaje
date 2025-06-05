@@ -17,7 +17,7 @@ import { response } from 'express';
 })
 export class FormCAPComponent {
   public competenciasAprendizajeP: CompetenciasAprendizajeP = new CompetenciasAprendizajeP();
-  public titulo: string = "Crear Competencias de Aprendizaje";
+  public titulo: string = "Crear Competencias de Pograma";
 
   constructor(private competenciasAprendizajePService: CompetenciasAprendizajePService,
     private router: Router) { }

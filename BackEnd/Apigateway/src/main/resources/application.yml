@@ -30,25 +30,25 @@ spring:
           predicates:
             - Path=/api/login/**
         - id: competencias-asignatura-service
-          uri: http://localhost:8083
+          uri: http://localhost:8081
           predicates:
             - Path=/api/competenciasAsignatura/**
           filters:
             - name: JwtAuthenticationFilter
         - id: competencias-programa-service
-          uri: http://localhost:8083
+          uri: http://localhost:8081
           predicates:
             - Path=/api/competenciasPrograma/**
           filters:
             - name: JwtAuthenticationFilter
         - id: ra-asignatura-service
-          uri: http://localhost:8083
+          uri: http://localhost:8081
           predicates:
             - Path=/api/RAAsignatura/**
           filters:
             - name: JwtAuthenticationFilter
         - id: ra-programa-service
-          uri: http://localhost:8083
+          uri: http://localhost:8081
           predicates:
             - Path=/api/RAAsignatura/**
           filters:

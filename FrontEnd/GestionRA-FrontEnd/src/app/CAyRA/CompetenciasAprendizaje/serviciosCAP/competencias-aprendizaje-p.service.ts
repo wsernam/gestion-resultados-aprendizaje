@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class CompetenciasAprendizajePService {
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
-  private urlEndPoint: string = 'http://localhost:8079/api/competenciasAsignatura';
+  private urlEndPoint: string = 'http://localhost:8079/api/competenciasPrograma';
   
   constructor(private http: HttpClient) { }
 
