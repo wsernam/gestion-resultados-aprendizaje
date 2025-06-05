@@ -1,15 +1,28 @@
 import { CanActivateFn } from '@angular/router';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { StorageServiceService } from '../Servicios/storage-service.service';
 
 export const authGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
-  const token = (typeof window !== 'undefined' && window.sessionStorage) ? window.sessionStorage.getItem('token') || "" : "";
+  const storageService = inject(StorageServiceService);
+  const token = storageService.getToken();
+  console.log("Token desde el guard:", token);
 
-  if (token !== ""){
-    return true;
-  } else {
+  if (!token){
     router.navigate(['']);
     return false;
   }
+
+  const allowedRoles = route.data['roles'] as string[];
+  if (allowedRoles && allowedRoles.length > 0) {
+    const userRoles = storageService.getRoles() || [];
+    const hasRole = userRoles.some(role => allowedRoles.includes(role));
+    if (!hasRole) {
+      router.navigate(['']); // O a una página de acceso denegado
+      return false;
+    }
+  }
+
+  return true;
 };

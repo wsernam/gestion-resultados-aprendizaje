@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { InvitarEvaluadorComponent } from "../../DocentesyEvaluadores/Evaluadores/InvitarEvaluador/invitar-evaluador.component";
 import { CursoService } from '../../AsignaturasyCursos/Cursos/services/curso.service';
+import { StorageServiceService } from '../../Servicios/storage-service.service';
 
 @Component({
   selector: 'app-listar-rubrica',
@@ -20,10 +21,14 @@ export class ListarRubricaComponent {
   nombreCurso: string = '';
   rubricas: Rubrica[] = [];
   rubrica: Rubrica = new Rubrica();
+  isEvaluador = false;
 
-  constructor(private cursoService: CursoService, private rubricaService: RubricaService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private cursoService: CursoService, private rubricaService: RubricaService, private route: ActivatedRoute, private router: Router, private storageService: StorageServiceService) { }
 
   ngOnInit(): void {
+    const roles = this.storageService.getRoles() || [];
+    this.isEvaluador = roles.includes('EVALUADOR');
+
     this.idCurso = this.route.snapshot.paramMap.get('idCurso') || '';
     console.log("ID del curso recibido: ", this.idCurso);
     this.getNombreCurso();

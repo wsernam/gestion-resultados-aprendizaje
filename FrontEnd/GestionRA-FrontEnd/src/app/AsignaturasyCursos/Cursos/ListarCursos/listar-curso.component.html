@@ -12,7 +12,7 @@
 -->
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <button class="btn btn-outline-secondary rounded-pill px-4" (click)="toggleCrear()">
+        <button class="btn btn-outline-secondary rounded-pill px-4" (click)="toggleCrear()" *ngIf="!isEvaluador">
             {{ mostrarCrear ? 'Cerrar' : 'Crear curso' }}
         </button>
     </div>

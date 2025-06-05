@@ -3,6 +3,7 @@ import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs';
 import { LoginService } from '../Login/Servicio/login.service';
+import { StorageServiceService } from '../Servicios/storage-service.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,41 +15,27 @@ import { LoginService } from '../Login/Servicio/login.service';
 export class NavbarComponent {
 
   public isCoordinador: boolean = false;
+  public isDocente: boolean = false;
+  public isEvaluador: boolean = false;
 
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(private loginService: LoginService, private router: Router, private storageService: StorageServiceService) {}
 
   ngOnInit() {
-    this.verificarRol();
+    this.verificarRoles();
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
-    ).subscribe(() => this.verificarRol());
+    ).subscribe(() => this.verificarRoles());
   }
 
-  private verificarRol() {
-    if (typeof window !== 'undefined') {
-      const token = sessionStorage.getItem('token');
-      if (token) {
-        const payload = this.parseToken(token);
-        this.isCoordinador = payload && Array.isArray(payload.roles) && payload.roles.includes('COORDINADOR');
-        console.log('isCoordinador:', this.isCoordinador);
-      } else {
-        this.isCoordinador = false;
-        console.log('isCoordinador:', this.isCoordinador);
-      }
-    }
-  }
-  private parseToken(token: string): any {
-    try {
-      return JSON.parse(atob(token.split('.')[1]));
-    }
-    catch (error) {
-      console.error('Error parsing token:', error);
-      return null;
-    }
+  private verificarRoles() {
+    const roles = this.storageService.getRoles() || [];
+    this.isCoordinador = roles.includes('COORDINADOR');
+    this.isDocente = roles.includes('DOCENTE');
+    this.isEvaluador = roles.includes('EVALUADOR');
   }
 
   public logOut(): void{
-    this.loginService.logout();
+    this.storageService.clean();
     this.router.navigate(['/Login']);
   }
 
