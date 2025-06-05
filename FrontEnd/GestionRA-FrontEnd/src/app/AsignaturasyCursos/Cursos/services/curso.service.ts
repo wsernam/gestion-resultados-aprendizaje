@@ -36,6 +36,12 @@ export class CursoService {
     return this.http.get<Curso[]>(this.urlEndPoint)
   }
 
+  getCursoById(id: string): Observable<ConsultarCurso>
+  {
+    console.log("Obteniendo curso por ID desde el servicio...");
+    return this.http.get<ConsultarCurso>(`${this.urlEndPoint}/buscar/${id}`);
+  }
+
   notifyCursoCreado(): void {
     this.cursoCreadoSource.next();
   }
